@@ -1,0 +1,13 @@
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\AutomationEntry.exe.config
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\AutomationEntry.exe
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\AutomationEntry.pdb
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\Automation.dll
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\WebDriver.dll
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\Automation.pdb
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\WebDriver.xml
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\obj\Debug\AutomationEntry.csprojAssemblyReference.cache
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\obj\Debug\AutomationEntry.csproj.CoreCompileInputs.cache
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\obj\Debug\AutomationEntry.csproj.CopyComplete
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\obj\Debug\AutomationEntry.exe
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\obj\Debug\AutomationEntry.pdb
+C:\Users\islavchev\source\repos\Automation\AutomationEntry\bin\Debug\chromedriver.exe
