@@ -31,19 +31,6 @@ namespace ConsoleApp1
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     }
 }
