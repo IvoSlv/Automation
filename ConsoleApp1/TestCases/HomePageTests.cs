@@ -20,9 +20,20 @@ namespace ConsoleApp1
     
     class LogInTest
     {
-        
-
         [Test, Order(1)]
+        public void GoToLoginPageTest()
+        {
+
+            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            driver.Url = ConfigurationManager.AppSettings["URL"];
+
+            var homePage = new HomePage(driver);
+            homePage.WindowMaximize();
+            homePage.GoToLoginPage();
+            driver.Close();
+        }
+
+        [Test, Order(2)]
         public void KraftBoardMenuTest()
         {
 
@@ -35,7 +46,7 @@ namespace ConsoleApp1
             driver.Close();
         }
 
-        [Test, Order(2)]
+        [Test, Order(3)]
         public void KraftBoardPlansMenuTest()
         {
 
@@ -48,7 +59,7 @@ namespace ConsoleApp1
             driver.Close();
         }
 
-        [Test, Order(3)]
+        [Test, Order(4)]
         public void KraftCrmMenuTest()
         {
 
@@ -61,7 +72,7 @@ namespace ConsoleApp1
             driver.Close();
         }
 
-        [Test, Order(4)]
+        [Test, Order(5)]
         public void KraftCrmPlansMenuTest()
         {
 
@@ -74,7 +85,7 @@ namespace ConsoleApp1
             driver.Close();
         }
 
-        [Test, Order(5)]
+        [Test, Order(6)]
         public void FeaturesMenuTest()
         {
 
@@ -87,24 +98,18 @@ namespace ConsoleApp1
             driver.Close();
         }
 
-        [Test, Order(6)]
-        public void LoginTest()
+        [Test, Order(7)]
+        public void TermsOfUse_PrivacyPollicyTest()
         {
 
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
-            driver.Url = ConfigurationManager.AppSettings["URL"];
-            
+            driver.Url = "https://www.bindkraft.com/en/";
+
             var homePage = new HomePage(driver);
             homePage.WindowMaximize();
-            homePage.GoToLoginPage();
-
-            var loginPage = new LoginPage(driver);
-            loginPage.LoginToApplication("LogInTest");
-
+            homePage.TermsOfUse_PrivacyPollicy();
             driver.Close();
         }
-
-
         
     }
 }

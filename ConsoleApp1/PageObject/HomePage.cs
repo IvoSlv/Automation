@@ -233,5 +233,16 @@ namespace ConsoleApp1.PageObject
             Task.Delay(2000).Wait();
             GetStarted.ClickOnIt("GetStarted");
         }
+        public void TermsOfUse_PrivacyPollicy()
+        {
+            Task.Delay(2000).Wait();
+            TermsOfUse.Click();
+            Task.Delay(2000).Wait();
+            driver.Navigate().Back();
+            Task.Delay(2000).Wait();
+            PrivacyPollicy.Click();
+            Task.Delay(2000).Wait();
+            driver.Navigate().Back();
+        }
     }
 }
