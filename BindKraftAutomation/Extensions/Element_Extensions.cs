@@ -1,10 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BindKraftAutomation.Extensions
 {
@@ -12,7 +8,6 @@ namespace BindKraftAutomation.Extensions
     {
         public static void EnterText(this IWebElement element, string text, string elementName)
         {
-
             element.Clear();
             element.SendKeys(text);
             Console.WriteLine(text + " entered in the " + elementName + " field.");

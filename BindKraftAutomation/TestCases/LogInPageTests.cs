@@ -1,19 +1,8 @@
 ﻿using BindKraftAutomation.PageObject;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
 using System.Configuration;
-using System.Threading.Tasks;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.IO;
-using System.Reflection;
-using OpenQA.Selenium.Support;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Support.PageObjects;
 
 namespace BindKraftAutomation.TestCases
 {

@@ -1,9 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using BindKraftAutomation.Extensions;
 
@@ -130,10 +126,12 @@ namespace BindKraftAutomation.PageObject
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
+
         public void WindowMaximize()
         {
             driver.Manage().Window.Maximize();
         }
+
         public void KraftBoardMenu()
         {
             Task.Delay(2000).Wait();
@@ -155,6 +153,7 @@ namespace BindKraftAutomation.PageObject
             Task.Delay(2000).Wait();
             KraftMenuClose.Click();
         }
+
         public void KraftBoardPlansMenu()
         {
             Task.Delay(2000).Wait();
@@ -168,27 +167,37 @@ namespace BindKraftAutomation.PageObject
             Task.Delay(2000).Wait();
             driver.Navigate().Back();
         }
+
         public void KraftCrmMenu()
         {
             Task.Delay(2000).Wait();
             KraftCrm.Click();
+
             Task.Delay(2000).Wait();
             KraftCrm_PrivateAndSharedCrm.Click();
+
             Task.Delay(2000).Wait();
             KraftMenuClose.Click();
+
             Task.Delay(2000).Wait();
             KraftCrm_CompanyAndIndividualCards.Click();
+
             Task.Delay(2000).Wait();
-            KraftMenuClose.Click();;
+            KraftMenuClose.Click();
+
             Task.Delay(2000).Wait();
             KraftCrm_CustomizedFeatures.Click();
+
             Task.Delay(2000).Wait();
-            KraftMenuClose.Click();;
+            KraftMenuClose.Click();
+
             Task.Delay(2000).Wait();
             KraftCrm_PlayDemo.Click();
+
             Task.Delay(2000).Wait();
-            KraftMenuClose.Click();;
+            KraftMenuClose.Click();
         }
+
         public void KraftCrmPlansMenu()
         {
             Task.Delay(2000).Wait();
@@ -202,6 +211,7 @@ namespace BindKraftAutomation.PageObject
             Task.Delay(2000).Wait();
             driver.Navigate().Back();
         }
+
         public void FeaturesMenu()
         {
             Task.Delay(2000).Wait();
@@ -223,16 +233,19 @@ namespace BindKraftAutomation.PageObject
             Task.Delay(2000).Wait();
             Features_Close.Click();
         }
+
         public void HomeMenu()
         {
             Task.Delay(2000).Wait();
             Home.Click();
         }
+
         public void GoToLoginPage()
         {
             Task.Delay(2000).Wait();
             GetStarted.ClickOnIt("GetStarted");
         }
+
         public void TermsOfUse_PrivacyPollicy()
         {
             Task.Delay(2000).Wait();
