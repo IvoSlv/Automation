@@ -9,7 +9,7 @@ using ConsoleApp1.Extensions;
 
 namespace ConsoleApp1.PageObject
 {
-    class HomePage
+    class LandingPage
     {
         private IWebDriver driver;
 
@@ -125,7 +125,7 @@ namespace ConsoleApp1.PageObject
         [CacheLookup]
         public IWebElement GetStarted { get; set; }
 
-        public HomePage(IWebDriver driver)
+        public LandingPage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);

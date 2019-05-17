@@ -18,7 +18,7 @@ using OpenQA.Selenium.Support.PageObjects;
 namespace ConsoleApp1
 {
     
-    class LogInTest
+    class LandingPageTests
     {
         [Test, Order(1)]
         public void GoToLoginPageTest()
@@ -27,7 +27,7 @@ namespace ConsoleApp1
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = ConfigurationManager.AppSettings["URL"];
 
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.GoToLoginPage();
             driver.Close();
@@ -40,7 +40,7 @@ namespace ConsoleApp1
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = "https://www.bindkraft.com/en/";
           
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftBoardMenu();
             driver.Close();
@@ -53,7 +53,7 @@ namespace ConsoleApp1
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = "https://www.bindkraft.com/en/";
 
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftBoardPlansMenu();
             driver.Close();
@@ -66,7 +66,7 @@ namespace ConsoleApp1
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = "https://www.bindkraft.com/en/";
 
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftCrmMenu();
             driver.Close();
@@ -79,7 +79,7 @@ namespace ConsoleApp1
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = "https://www.bindkraft.com/en/";
 
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftCrmPlansMenu();
             driver.Close();
@@ -92,7 +92,7 @@ namespace ConsoleApp1
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = "https://www.bindkraft.com/en/";
 
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.FeaturesMenu();
             driver.Close();
@@ -105,7 +105,7 @@ namespace ConsoleApp1
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = "https://www.bindkraft.com/en/";
 
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.TermsOfUse_PrivacyPollicy();
             driver.Close();

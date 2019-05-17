@@ -26,7 +26,7 @@ namespace ConsoleApp1.TestCases
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = ConfigurationManager.AppSettings["URL"];
 
-            var homePage = new HomePage(driver);
+            var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.GoToLoginPage();
 
