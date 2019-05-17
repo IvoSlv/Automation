@@ -185,7 +185,10 @@ ModelManifest.xml
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
-
+bin/
+obj/
+bin\
+obj\
 # Folder config file
 Desktop.ini
 
@@ -229,3 +232,7 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+bin
+/Automation/obj
+/ConsoleApp1/bin
+/ConsoleApp1/obj
