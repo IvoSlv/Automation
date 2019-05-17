@@ -20,11 +20,13 @@ namespace ConsoleApp1
     
     class LogInTest
     {
+        private readonly string chromeDriverPath = @"D:\_Development\ChromeDriverOld";
+
         [Test, Order(1)]
         public void GoToLoginPageTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = ConfigurationManager.AppSettings["URL"];
 
             var homePage = new HomePage(driver);
@@ -37,7 +39,7 @@ namespace ConsoleApp1
         public void KraftBoardMenuTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = "https://www.bindkraft.com/en/";
           
             var homePage = new HomePage(driver);
@@ -50,7 +52,7 @@ namespace ConsoleApp1
         public void KraftBoardPlansMenuTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new HomePage(driver);
@@ -63,7 +65,7 @@ namespace ConsoleApp1
         public void KraftCrmMenuTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new HomePage(driver);
@@ -76,7 +78,7 @@ namespace ConsoleApp1
         public void KraftCrmPlansMenuTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new HomePage(driver);
@@ -89,7 +91,7 @@ namespace ConsoleApp1
         public void FeaturesMenuTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new HomePage(driver);
@@ -102,7 +104,7 @@ namespace ConsoleApp1
         public void TermsOfUse_PrivacyPollicyTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new HomePage(driver);
