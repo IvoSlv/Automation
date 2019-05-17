@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.TestDataAccess
+namespace BindKraftAutomation.TestDataAccess
 {
     class ExcelDataAccess
     {
         public static string TestDataFileConnection()
         {
-            var fileName = ConfigurationManager.AppSettings["C:\\Users\\islavchev\\source\\repos\\Automation\\ConsoleApp1\\TestDataAccess\\TestData.xlsx"];
+            var fileName = ConfigurationManager.AppSettings["C:\\Users\\islavchev\\source\\repos\\Automation\\BindKraftAutomation\\TestDataAccess\\TestData.xlsx"];
             var con = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source = {0}; Extended Properties=Excel 12.0;", fileName);
             return con;
         }

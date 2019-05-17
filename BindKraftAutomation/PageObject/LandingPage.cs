@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleApp1.Extensions;
+using BindKraftAutomation.Extensions;
 
-namespace ConsoleApp1.PageObject
+namespace BindKraftAutomation.PageObject
 {
     class LandingPage
     {

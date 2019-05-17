@@ -1,4 +1,4 @@
-﻿using ConsoleApp1.PageObject;
+﻿using BindKraftAutomation.PageObject;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -15,7 +15,7 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace ConsoleApp1.TestCases
+namespace BindKraftAutomation.TestCases
 {
     class LogInPageTests
     {

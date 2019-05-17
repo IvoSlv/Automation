@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.Extensions
+namespace BindKraftAutomation.Extensions
 {
     public static class Element_Extensions
     {

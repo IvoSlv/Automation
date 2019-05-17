@@ -1,4 +1,4 @@
-﻿using ConsoleApp1.PageObject;
+﻿using BindKraftAutomation.PageObject;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -15,12 +15,12 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace ConsoleApp1
+namespace BindKraftAutomation
 {
     
     class LandingPageTests
     {
-        private readonly string chromeDriverPath = @"D:\_Development\ChromeDriverOld";
+        private readonly string chromeDriverPath = @"F:\_Development\ChromeDriverOld";
 
         [Test, Order(1)]
         public void GoToLoginPageTest()

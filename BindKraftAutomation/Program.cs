@@ -19,18 +19,15 @@ using System.Configuration;
 using Automation;
 using OpenQA.Selenium.Support.PageObjects;
 using NUnit.Framework;
-using ConsoleApp1.PageObject;
+using BindKraftAutomation.PageObject;
 
-namespace ConsoleApp1
-
+namespace BindKraftAutomation
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-
+            
         }
-        
     }
 }

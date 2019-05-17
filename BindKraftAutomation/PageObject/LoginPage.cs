@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Chrome;
-using ConsoleApp1.Extensions;
-using ConsoleApp1.TestDataAccess;
+using BindKraftAutomation.Extensions;
+using BindKraftAutomation.TestDataAccess;
 
-namespace ConsoleApp1.PageObject
+namespace BindKraftAutomation.PageObject
 {
     class LoginPage
     {
