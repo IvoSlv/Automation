@@ -187,6 +187,8 @@ Thumbs.db
 ehthumbs.db
 bin/
 obj/
+bin\
+obj\
 # Folder config file
 Desktop.ini
 
