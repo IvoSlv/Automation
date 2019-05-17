@@ -33,15 +33,15 @@ namespace ConsoleApp1.PageObject
             PageFactory.InitElements(driver, this);
         }
 
-        public void LoginToApplication(string testName)
+        public void LoginToApplication(string LogInTest)
         {
-            var userData = ExcelDataAccess.GetTestData(testName);
-            Email.SendKeys(userData.Username);
-            Password.SendKeys(userData.Password);
+            //var userData = ExcelDataAccess.GetTestData(LogInTest);
+            //Email.SendKeys(userData.Username);
+            //Password.SendKeys(userData.Password);
+           
+            Email.EnterText( "drake@abv.bg","Email" );
+            Password.EnterText("Dsa_123", "Password"); 
             Submit.Submit();
-            //Email.EnterText(userData.Username, "drake@abv.bg");
-            //Password.Clear();
-            //Password.SendKeys("Dsa_123");
         }
 
     }

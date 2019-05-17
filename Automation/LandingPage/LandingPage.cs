@@ -39,7 +39,7 @@ namespace Automation
             var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/*")));
             clickableElement.Click();
         }
-        [Test]
+        
         public void OpenBindKraft()
         {
             webDriver.Url = "https://www.bindkraft.com/en/";
@@ -47,7 +47,7 @@ namespace Automation
             Assert.IsTrue(webDriver.PageSource.Contains("Email"));
             
         }
-        [Test]
+      
         public void LoginBK()
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromMilliseconds(5000));
@@ -61,7 +61,7 @@ namespace Automation
             //Assert.IsTrue(webDriver.PageSource.Contains("dasdasd"));
             //Assert.Fail("LoginBK step");
          }
-        [Test]
+        
         public void ProfileMenu()
         {
 

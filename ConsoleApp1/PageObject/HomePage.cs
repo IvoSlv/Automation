@@ -29,17 +29,9 @@ namespace ConsoleApp1.PageObject
         [CacheLookup]
         public IWebElement TermsOfUse { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//h3[contains(text(),'Improve teamwork')]")]
+        [FindsBy(How = How.XPath, Using = "//a[@id='user-friendly']//div[@class='ka-bind-txt']")]
         [CacheLookup]
-        public IWebElement Features_ImproveTeamwork { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//h3[contains(text(),'User Friendly')]")]
-        [CacheLookup]
-        public IWebElement Features_UserFriendly { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//a[@id='easy-share-information']//div[@class='ka-bind-txt']")]
-        [CacheLookup]
-        public IWebElement Features_EasyShareInformation { get; set; }
+        public IWebElement Features_Visionary { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[@id='accurate-and-rapid']//div[@class='ka-bind-txt']")]
         [CacheLookup]
@@ -89,9 +81,9 @@ namespace ConsoleApp1.PageObject
         [CacheLookup]
         public IWebElement KraftBoard_PlayDemo{ get; set; }
 
-        [FindsBy(How =How.XPath, Using = "//span[contains(text(),'Activities and Boards')]")]
+        [FindsBy(How =How.XPath, Using = "//span[contains(text(),'Boards')]")]
         [CacheLookup]
-        public IWebElement KraftBoard_ActivitiesAndBoards { get; set; }
+        public IWebElement KraftBoard_Boards { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@class='ellipsis'][contains(text(),'Best practices are to assign task to few projects ')]")]
         [CacheLookup]
@@ -138,18 +130,16 @@ namespace ConsoleApp1.PageObject
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-
         public void WindowMaximize()
         {
             driver.Manage().Window.Maximize();
         }
-
         public void KraftBoardMenu()
         {
             Task.Delay(2000).Wait();
             KraftBoard.Click();
             Task.Delay(2000).Wait();
-            KraftBoard_ActivitiesAndBoards.Click();
+            KraftBoard_Boards.Click();
             Task.Delay(2000).Wait();
             KraftMenuClose.Click();
             Task.Delay(2000).Wait();
@@ -165,7 +155,6 @@ namespace ConsoleApp1.PageObject
             Task.Delay(2000).Wait();
             KraftMenuClose.Click();
         }
-
         public void KraftBoardPlansMenu()
         {
             Task.Delay(2000).Wait();
@@ -179,7 +168,6 @@ namespace ConsoleApp1.PageObject
             Task.Delay(2000).Wait();
             driver.Navigate().Back();
         }
-
         public void KraftCrmMenu()
         {
             Task.Delay(2000).Wait();
@@ -201,7 +189,6 @@ namespace ConsoleApp1.PageObject
             Task.Delay(2000).Wait();
             KraftMenuClose.Click();;
         }
-
         public void KraftCrmPlansMenu()
         {
             Task.Delay(2000).Wait();
@@ -215,7 +202,6 @@ namespace ConsoleApp1.PageObject
             Task.Delay(2000).Wait();
             driver.Navigate().Back();
         }
-
         public void FeaturesMenu()
         {
             Task.Delay(2000).Wait();
@@ -225,7 +211,7 @@ namespace ConsoleApp1.PageObject
             Task.Delay(2000).Wait();
             Features_Close.Click();
             Task.Delay(2000).Wait();
-            Features_AwesomeUI.Click();
+            Features_Visionary.Click();
             Task.Delay(2000).Wait();
             Features_Close.Click();
             Task.Delay(2000).Wait();
@@ -233,19 +219,10 @@ namespace ConsoleApp1.PageObject
             Task.Delay(2000).Wait();
             Features_Close.Click();
             Task.Delay(2000).Wait();
-            Features_EasyShareInformation.Click();
-            Task.Delay(2000).Wait();
-            Features_Close.Click();
-            Task.Delay(2000).Wait();
-            Features_UserFriendly.Click();
-            Task.Delay(2000).Wait();
-            Features_Close.Click();
-            Task.Delay(2000).Wait();
-            Features_ImproveTeamwork.Click();
+            Features_AwesomeUI.Click();
             Task.Delay(2000).Wait();
             Features_Close.Click();
         }
-
         public void HomeMenu()
         {
             Task.Delay(2000).Wait();

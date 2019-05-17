@@ -64,10 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\Element_Extensions.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="TestCases\LogInTest.cs" />
     <Compile Include="PageObject\HomePage.cs" />
     <Compile Include="PageObject\LoginPage.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDataAccess\ExcelDataAccess.cs" />
     <Compile Include="TestDataAccess\UserData.cs" />

@@ -93,8 +93,7 @@ namespace ConsoleApp1
 
             IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
             driver.Url = ConfigurationManager.AppSettings["URL"];
-            //driver.Url = "https://www.bindkraft.com/en/";
-
+            
             var homePage = new HomePage(driver);
             homePage.WindowMaximize();
             homePage.GoToLoginPage();

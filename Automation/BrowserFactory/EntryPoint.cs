@@ -38,7 +38,7 @@ namespace Automation
             
         }
 
-        [SetUp]
+        
         public void Init ()
         {
             switch (browser.ToLower())
@@ -57,7 +57,7 @@ namespace Automation
         }
 
         
-        [TearDown]
+        
         public void EndTest()
         {
             webDriver.Quit();
