@@ -8,7 +8,7 @@ namespace BindKraftAutomation
 {
     class LandingPageTests
     {
-        private readonly string chromeDriverPath = @"F:\_Development\ChromeDriverOld";
+        private readonly string chromeDriverPath = @"D:\_Development\ChromeDriverOld";
 
         [Test, Order(1)]
         public void GoToLoginPageTest()
@@ -92,6 +92,30 @@ namespace BindKraftAutomation
             homePage.WindowMaximize();
             homePage.TermsOfUse_PrivacyPollicy();
             driver.Close();
+        }
+
+        [Test, Order(8)]
+        public void Certificate1Test()
+        {
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
+            driver.Url = "https://www.bindkraft.com/en/";
+
+            var homePage = new LandingPage(driver);
+            homePage.WindowMaximize();
+            homePage.Certificate1();
+            driver.Close();  
+        }
+
+        [Test, Order(9)]
+        public void Certificate2Test()
+        {
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
+            driver.Url = "https://www.bindkraft.com/en/";
+
+            var homePage = new LandingPage(driver);
+            homePage.WindowMaximize();
+            homePage.Certificate2();
+            driver.Close();  
         }
     }
 }

@@ -8,11 +8,13 @@ namespace BindKraftAutomation.TestCases
 {
     class LogInPageTests
     {
-        [Test, Order(8)]
+        private readonly string chromeDriverPath = @"D:\_Development\ChromeDriverOld";
+
+        [Test, Order(10)]
         public void LoginTest()
         {
 
-            IWebDriver driver = new ChromeDriver(@"D:\_Development\ChromeDriverOld");
+            IWebDriver driver = new ChromeDriver(chromeDriverPath);
             driver.Url = ConfigurationManager.AppSettings["URL"];
 
             var homePage = new LandingPage(driver);

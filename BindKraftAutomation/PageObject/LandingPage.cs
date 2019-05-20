@@ -2,6 +2,8 @@
 using OpenQA.Selenium.Support.PageObjects;
 using System.Threading.Tasks;
 using BindKraftAutomation.Extensions;
+using System.Linq;
+using NUnit.Framework;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -120,6 +122,15 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@class='ka-btn-start is-active']//a[contains(text(),'Get Started')]")]
         [CacheLookup]
         public IWebElement GetStarted { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "//div[4]//a[1]//img[1]")]
+        [CacheLookup]
+        public IWebElement Certificate_Iso27001 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[5]//a[1]//img[1]")]
+        [CacheLookup]
+        public IWebElement Certificate_Iso9001 { get; set; }
 
         public LandingPage(IWebDriver driver)
         {
@@ -256,6 +267,28 @@ namespace BindKraftAutomation.PageObject
             PrivacyPollicy.Click();
             Task.Delay(2000).Wait();
             driver.Navigate().Back();
+        }
+
+        public void Certificate1()
+        {
+            Certificate_Iso27001.Click();
+
+            string newTabHandle = driver.WindowHandles.Last();
+            var newTab = driver.SwitchTo().Window(newTabHandle);
+
+            var expectedNewTabTitle = "CN-17405IIS-EN.jpg (584×830)";
+            Assert.AreEqual(expectedNewTabTitle, newTab.Title);
+        }
+
+        public void Certificate2()
+        {
+            Certificate_Iso9001.Click();
+
+            string newTabHandle = driver.WindowHandles.Last();
+            var newTab = driver.SwitchTo().Window(newTabHandle);
+
+            var expectedNewTabTitle = "ISO-CN-17405IQ-EN.jpg (584×830)";
+            Assert.AreEqual(expectedNewTabTitle, newTab.Title);
         }
     }
 }
