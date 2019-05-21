@@ -12,6 +12,7 @@ namespace BindKraftAutomation.PageObject
         private IWebDriver driver;
         private readonly WebDriverWait wait;
 
+        #region
         [FindsBy(How = How.XPath, Using = "//input[@id='Email']")]
         [CacheLookup]
         public IWebElement Email { get; set; }
@@ -23,6 +24,7 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-block bk-margin-bottom-1']")]
         [CacheLookup]
         public IWebElement Submit { get; set; }
+        #endregion
 
         public LoginPage(IWebDriver driver)
         {
@@ -31,6 +33,17 @@ namespace BindKraftAutomation.PageObject
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
+        }
+
+        public void ClickElement(IWebElement el, IWebElement close = null)
+        {
+            var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(el));
+            clickableElement.Click();
+            if (close != null)
+            {
+                clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(close));
+                clickableElement.Click();
+            }
         }
 
         public void LoginToApplication(string LogInTest)
