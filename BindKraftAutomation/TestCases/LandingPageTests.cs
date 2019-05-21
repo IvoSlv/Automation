@@ -17,7 +17,6 @@ namespace BindKraftAutomation
             driver.Url = ConfigurationManager.AppSettings["URL"];
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.GoToLoginPage();
             driver.Dispose();
         }
@@ -29,7 +28,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
           
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.KraftBoardMenu();
             driver.Dispose();
         }
@@ -41,7 +39,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.KraftBoardPlansMenu();
             driver.Dispose();
         }
@@ -53,8 +50,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
-            homePage.KraftCrmMenu();
             homePage.KraftCrmMenu();
             driver.Dispose();
         }
@@ -66,7 +61,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.KraftCrmPlansMenu();
             driver.Dispose();
         }
@@ -78,7 +72,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.FeaturesMenu();
             driver.Dispose();
         }
@@ -90,7 +83,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.TermsOfUse_PrivacyPollicy();
             driver.Dispose();
         }
@@ -102,7 +94,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.Certificate1();
             driver.Dispose();  
         }
@@ -114,7 +105,6 @@ namespace BindKraftAutomation
             driver.Url = "https://www.bindkraft.com/en/";
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.Certificate2();
             driver.Dispose();  
         }

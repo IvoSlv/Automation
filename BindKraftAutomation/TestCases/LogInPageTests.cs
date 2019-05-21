@@ -18,7 +18,6 @@ namespace BindKraftAutomation.TestCases
             driver.Url = ConfigurationManager.AppSettings["URL"];
 
             var homePage = new LandingPage(driver);
-            homePage.WindowMaximize();
             homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);

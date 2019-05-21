@@ -2,12 +2,15 @@
 using OpenQA.Selenium.Support.PageObjects;
 using BindKraftAutomation.Extensions;
 using BindKraftAutomation.TestDataAccess;
+using System;
+using OpenQA.Selenium.Support.UI;
 
 namespace BindKraftAutomation.PageObject
 {
     class LoginPage
     {
         private IWebDriver driver;
+        private readonly WebDriverWait wait;
 
         [FindsBy(How = How.XPath, Using = "//input[@id='Email']")]
         [CacheLookup]
@@ -24,6 +27,9 @@ namespace BindKraftAutomation.PageObject
         public LoginPage(IWebDriver driver)
         {
             this.driver = driver;
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
 

@@ -141,14 +141,10 @@ namespace BindKraftAutomation.PageObject
         public LandingPage(IWebDriver driver)
         {
             this.driver = driver;
+            driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
-        }
-
-        public void WindowMaximize()
-        {
-            driver.Manage().Window.Maximize();
         }
 
         public void ClickElement(IWebElement el, IWebElement close = null)
@@ -176,7 +172,6 @@ namespace BindKraftAutomation.PageObject
             ClickElement(KraftBoardPlans);
             ClickElement(KraftBoardPlansBasicPlan_SeeAll, KraftMenuClose);
             ClickElement(KraftBoardPlans_GetStarted);
-            ClickElement(KraftBoard);
             driver.Navigate().Back();
         }
 
@@ -214,8 +209,8 @@ namespace BindKraftAutomation.PageObject
         public void GoToLoginPage()
         {
             //TODO: Optimize this for consistency
-            Task.Delay(2000).Wait();
-            GetStarted.ClickOnIt("GetStarted");
+            //GetStarted.ClickOnIt("GetStarted");
+            ClickElement(GetStarted);
         }
 
         public void TermsOfUse_PrivacyPollicy()
