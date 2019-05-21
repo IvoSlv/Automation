@@ -19,7 +19,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.GoToLoginPage();
-            driver.Close();
+            driver.Dispose();
         }
 
         [Test, Order(2)]
@@ -31,7 +31,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftBoardMenu();
-            driver.Close();
+            driver.Dispose();
         }
 
         [Test, Order(3)]
@@ -43,7 +43,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftBoardPlansMenu();
-            driver.Close();
+            driver.Dispose();
         }
 
         [Test, Order(4)]
@@ -55,7 +55,8 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftCrmMenu();
-            driver.Close();
+            homePage.KraftCrmMenu();
+            driver.Dispose();
         }
 
         [Test, Order(5)]
@@ -67,7 +68,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.KraftCrmPlansMenu();
-            driver.Close();
+            driver.Dispose();
         }
 
         [Test, Order(6)]
@@ -79,7 +80,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.FeaturesMenu();
-            driver.Close();
+            driver.Dispose();
         }
 
         [Test, Order(7)]
@@ -91,7 +92,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.TermsOfUse_PrivacyPollicy();
-            driver.Close();
+            driver.Dispose();
         }
 
         [Test, Order(8)]
@@ -103,7 +104,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.Certificate1();
-            driver.Close();  
+            driver.Dispose();  
         }
 
         [Test, Order(9)]
@@ -115,7 +116,7 @@ namespace BindKraftAutomation
             var homePage = new LandingPage(driver);
             homePage.WindowMaximize();
             homePage.Certificate2();
-            driver.Close();  
+            driver.Dispose();  
         }
     }
 }

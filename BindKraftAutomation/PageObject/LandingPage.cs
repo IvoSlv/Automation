@@ -103,11 +103,11 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement Features { get; set; }
 
-        [FindsBy(How =How.XPath, Using = "//div[@class='nav-container']//a[contains(text(),'Kraft CRM plans')]")]
+        [FindsBy(How =How.XPath, Using = "//div[@class='nav-container']//a[contains(text(),'KraftCRM plans')]")]
         [CacheLookup]
         public IWebElement KraftCrmPlans { get; set; }
 
-        [FindsBy(How =How.XPath, Using = "//div[@class='nav-container']//a[contains(text(),'Kraft Board plans')]")]
+        [FindsBy(How =How.XPath, Using = "//div[@class='nav-container']//a[contains(text(),'KraftBoard plans')]")]
         [CacheLookup]
         public IWebElement KraftBoardPlans { get; set; }
 

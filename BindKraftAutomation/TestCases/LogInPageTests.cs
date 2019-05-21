@@ -24,7 +24,7 @@ namespace BindKraftAutomation.TestCases
             var loginPage = new LoginPage(driver);
             loginPage.LoginToApplication("LogInTest");
 
-            driver.Close();
+            driver.Dispose();
         }
     }
 }
