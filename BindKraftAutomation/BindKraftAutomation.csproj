@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\Element_Extensions.cs" />
+    <Compile Include="Globals\Constants.cs" />
+    <Compile Include="Models\PageTestBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TestCases\LandingPageTests.cs" />
     <Compile Include="PageObject\LandingPage.cs" />
@@ -78,12 +80,6 @@
     </None>
     <None Include="packages.config" />
     <None Include="TestDataAccess\TestData.xlsx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Automation\Automation.csproj">
-      <Project>{8cc0ef9a-5f64-4815-aeef-c581f75570d6}</Project>
-      <Name>Automation</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
