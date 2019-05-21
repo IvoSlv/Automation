@@ -9,8 +9,6 @@ namespace BindKraftAutomation.TestCases
 {
     class LogInPageTests : PageTestBase
     {
-        private readonly string chromeDriverPath = @"D:\_Development\ChromeDriverOld";
-
         [Test, Order(10)]
         [Retry(2)]
         public void LoginTest()

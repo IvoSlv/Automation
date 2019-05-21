@@ -88,7 +88,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftBoard_Boards { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='ellipsis'][contains(text(),'Best practices are to assign task to few projects ')]")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Teams')]")]
         [CacheLookup]
         public IWebElement KraftBoard_Teams { get; set; }
 
@@ -161,10 +161,15 @@ namespace BindKraftAutomation.PageObject
         public void KraftBoardMenu()
         {
             ClickElement(KraftBoard);
+            Assert.AreEqual(KraftBoard, KraftBoard);
             ClickElement(KraftBoard_Boards, KraftMenuClose);
+            Assert.AreEqual(KraftBoard_Boards, KraftBoard_Boards);
             ClickElement(KraftBoard_Teams, KraftMenuClose);
+            Assert.AreEqual(KraftBoard_Teams, KraftBoard_Teams);
             ClickElement(KraftBoard_DiversifiedAccessRight, KraftMenuClose);
+            Assert.AreEqual(KraftBoard_DiversifiedAccessRight, KraftBoard_DiversifiedAccessRight);
             ClickElement(KraftBoard_PlayDemo, KraftMenuClose);
+            Assert.AreEqual(KraftBoard_PlayDemo, KraftBoard_PlayDemo);
         }
 
         public void KraftBoardPlansMenu()
@@ -208,8 +213,6 @@ namespace BindKraftAutomation.PageObject
 
         public void GoToLoginPage()
         {
-            //TODO: Optimize this for consistency
-            //GetStarted.ClickOnIt("GetStarted");
             ClickElement(GetStarted);
         }
 
