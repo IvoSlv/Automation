@@ -11,6 +11,7 @@ namespace BindKraftAutomation
         private readonly string chromeDriverPath = @"D:\_Development\ChromeDriverOld";
 
         [Test, Order(1)]
+        [Retry(2)]
         public void GoToLoginPageTest()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -22,6 +23,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(2)]
+        [Retry(2)]
         public void KraftBoardMenuTest()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -33,6 +35,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(3)]
+        [Retry(2)]
         public void KraftBoardPlansMenuTest()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -44,6 +47,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(4)]
+        [Retry(2)]
         public void KraftCrmMenuTest()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -55,6 +59,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(5)]
+        [Retry(2)]
         public void KraftCrmPlansMenuTest()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -66,6 +71,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(6)]
+        [Retry(2)]
         public void FeaturesMenuTest()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -77,6 +83,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(7)]
+        [Retry(2)]
         public void TermsOfUse_PrivacyPollicyTest()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -88,6 +95,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(8)]
+        [Retry(2)]
         public void Certificate1Test()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);
@@ -99,6 +107,7 @@ namespace BindKraftAutomation
         }
 
         [Test, Order(9)]
+        [Retry(2)]
         public void Certificate2Test()
         {
             IWebDriver driver = new ChromeDriver(chromeDriverPath);

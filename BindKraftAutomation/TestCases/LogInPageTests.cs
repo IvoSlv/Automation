@@ -9,21 +9,21 @@ namespace BindKraftAutomation.TestCases
     class LogInPageTests
     {
         private readonly string chromeDriverPath = @"D:\_Development\ChromeDriverOld";
+        
+            [Test, Order(10)]
+            [Retry(2)]
+            public void LoginTest()
+            {
+                IWebDriver driver = new ChromeDriver(chromeDriverPath);
+                driver.Url = ConfigurationManager.AppSettings["URL"];
 
-        [Test, Order(10)]
-        public void LoginTest()
-        {
+                var homePage = new LandingPage(driver);
+                homePage.GoToLoginPage();
 
-            IWebDriver driver = new ChromeDriver(chromeDriverPath);
-            driver.Url = ConfigurationManager.AppSettings["URL"];
+                var loginPage = new LoginPage(driver);
+                loginPage.LoginToApplication("LogInTest");
 
-            var homePage = new LandingPage(driver);
-            homePage.GoToLoginPage();
-
-            var loginPage = new LoginPage(driver);
-            loginPage.LoginToApplication("LogInTest");
-
-            driver.Dispose();
-        }
+                driver.Dispose();
+            }
     }
 }
