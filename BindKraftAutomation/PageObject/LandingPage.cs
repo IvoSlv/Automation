@@ -4,13 +4,18 @@ using System.Threading.Tasks;
 using BindKraftAutomation.Extensions;
 using System.Linq;
 using NUnit.Framework;
+using System;
+using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
 
 namespace BindKraftAutomation.PageObject
 {
-    class LandingPage
+    sealed class LandingPage
     {
         private IWebDriver driver;
+        private readonly WebDriverWait wait; 
 
+        #region
         [FindsBy(How = How.XPath, Using = "//i[@class='material-icons close']")]
         [CacheLookup]
         public IWebElement Features_Close { get; set; }
@@ -131,10 +136,13 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[5]//a[1]//img[1]")]
         [CacheLookup]
         public IWebElement Certificate_Iso9001 { get; set; }
+        #endregion
 
         public LandingPage(IWebDriver driver)
         {
             this.driver = driver;
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
 
@@ -143,129 +151,78 @@ namespace BindKraftAutomation.PageObject
             driver.Manage().Window.Maximize();
         }
 
+        public void ClickElement(IWebElement el, IWebElement close = null)
+        {
+            var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(el));
+            clickableElement.Click();
+            if (close != null)
+            {
+                clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(close));
+                clickableElement.Click();
+            }
+        }
+
         public void KraftBoardMenu()
         {
-            Task.Delay(2000).Wait();
-            KraftBoard.Click();
-            Task.Delay(2000).Wait();
-            KraftBoard_Boards.Click();
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
-            Task.Delay(2000).Wait();
-            KraftBoard_Teams.Click();
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
-            Task.Delay(2000).Wait();
-            KraftBoard_DiversifiedAccessRight.Click();
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
-            Task.Delay(2000).Wait();
-            KraftBoard_PlayDemo.Click();
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
+            ClickElement(KraftBoard);
+            ClickElement(KraftBoard_Boards, KraftMenuClose);
+            ClickElement(KraftBoard_Teams, KraftMenuClose);
+            ClickElement(KraftBoard_DiversifiedAccessRight, KraftMenuClose);
+            ClickElement(KraftBoard_PlayDemo, KraftMenuClose);
         }
 
         public void KraftBoardPlansMenu()
         {
-            Task.Delay(2000).Wait();
-            KraftBoardPlans.Click();
-            Task.Delay(2000).Wait();
-            KraftBoardPlansBasicPlan_SeeAll.Click();
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
-            Task.Delay(2000).Wait();
-            KraftBoardPlans_GetStarted.Click();
-            Task.Delay(2000).Wait();
+            ClickElement(KraftBoardPlans);
+            ClickElement(KraftBoardPlansBasicPlan_SeeAll, KraftMenuClose);
+            ClickElement(KraftBoardPlans_GetStarted);
+            ClickElement(KraftBoard);
             driver.Navigate().Back();
         }
 
         public void KraftCrmMenu()
         {
-            Task.Delay(2000).Wait();
-            KraftCrm.Click();
-
-            Task.Delay(2000).Wait();
-            KraftCrm_PrivateAndSharedCrm.Click();
-
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
-
-            Task.Delay(2000).Wait();
-            KraftCrm_CompanyAndIndividualCards.Click();
-
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
-
-            Task.Delay(2000).Wait();
-            KraftCrm_CustomizedFeatures.Click();
-
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
-
-            Task.Delay(2000).Wait();
-            KraftCrm_PlayDemo.Click();
-
-            Task.Delay(2000).Wait();
-            KraftMenuClose.Click();
+            ClickElement(KraftCrm);
+            ClickElement(KraftCrm_PrivateAndSharedCrm, KraftMenuClose);
+            ClickElement(KraftCrm_CompanyAndIndividualCards, KraftMenuClose);
+            ClickElement(KraftCrm_CustomizedFeatures, KraftMenuClose);
+            ClickElement(KraftCrm_PlayDemo, KraftMenuClose);
         }
 
         public void KraftCrmPlansMenu()
         {
-            Task.Delay(2000).Wait();
-            KraftCrmPlans.Click();
-            Task.Delay(2000).Wait();
-            KraftCrmPlans_BasicPlan_SeeAll.Click();
-            Task.Delay(2000).Wait();
-            KraftCrm_Close.Click();
-            Task.Delay(2000).Wait();
-            KraftCrmPlans_BasicPlan_GetStarted.Click();
-            Task.Delay(2000).Wait();
+            ClickElement(KraftCrmPlans);
+            ClickElement(KraftCrmPlans_BasicPlan_SeeAll, KraftCrm_Close);
+            ClickElement(KraftCrmPlans_BasicPlan_GetStarted);
             driver.Navigate().Back();
         }
 
         public void FeaturesMenu()
         {
-            Task.Delay(2000).Wait();
-            Features.Click();
-            Task.Delay(2000).Wait();
-            Features_NoLimits.Click();
-            Task.Delay(2000).Wait();
-            Features_Close.Click();
-            Task.Delay(2000).Wait();
-            Features_Visionary.Click();
-            Task.Delay(2000).Wait();
-            Features_Close.Click();
-            Task.Delay(2000).Wait();
-            Features_AccurateRapid.Click();
-            Task.Delay(2000).Wait();
-            Features_Close.Click();
-            Task.Delay(2000).Wait();
-            Features_AwesomeUI.Click();
-            Task.Delay(2000).Wait();
-            Features_Close.Click();
+            ClickElement(Features);
+            ClickElement(Features_NoLimits, Features_Close);
+            ClickElement(Features_Visionary, Features_Close);
+            ClickElement(Features_AccurateRapid, Features_Close);
+            ClickElement(Features_AwesomeUI, Features_Close);
         }
 
         public void HomeMenu()
         {
-            Task.Delay(2000).Wait();
-            Home.Click();
+            ClickElement(Home);
         }
 
         public void GoToLoginPage()
         {
+            //TODO: Optimize this for consistency
             Task.Delay(2000).Wait();
             GetStarted.ClickOnIt("GetStarted");
         }
 
         public void TermsOfUse_PrivacyPollicy()
         {
-            Task.Delay(2000).Wait();
-            TermsOfUse.Click();
-            Task.Delay(2000).Wait();
+            ClickElement(TermsOfUse);
             driver.Navigate().Back();
-            Task.Delay(2000).Wait();
-            PrivacyPollicy.Click();
-            Task.Delay(2000).Wait();
+            ClickElement(PrivacyPollicy);
             driver.Navigate().Back();
         }
 
