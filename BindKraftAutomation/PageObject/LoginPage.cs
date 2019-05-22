@@ -4,6 +4,7 @@ using BindKraftAutomation.Extensions;
 using BindKraftAutomation.TestDataAccess;
 using System;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -53,8 +54,11 @@ namespace BindKraftAutomation.PageObject
             //Password.SendKeys(userData.Password);
            
             Email.EnterText( "drake@abv.bg","Email" );
-            Password.EnterText("Dsa_123", "Password"); 
+            Assert.AreEqual(Email, Email);
+            Password.EnterText("Dsa_123", "Password");
+            Assert.AreEqual(Password, Password);
             Submit.Submit();
+            Assert.AreEqual(Submit, Submit);
         }
 
     }

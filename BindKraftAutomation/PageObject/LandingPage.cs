@@ -175,52 +175,72 @@ namespace BindKraftAutomation.PageObject
         public void KraftBoardPlansMenu()
         {
             ClickElement(KraftBoardPlans);
+            Assert.AreEqual(KraftBoardPlans, KraftBoardPlans);
             ClickElement(KraftBoardPlansBasicPlan_SeeAll, KraftMenuClose);
+            Assert.AreEqual(KraftBoardPlansBasicPlan_SeeAll, KraftBoardPlansBasicPlan_SeeAll);
             ClickElement(KraftBoardPlans_GetStarted);
+            Assert.AreEqual(KraftBoardPlans_GetStarted, KraftBoardPlans_GetStarted);
             driver.Navigate().Back();
         }
 
         public void KraftCrmMenu()
         {
             ClickElement(KraftCrm);
+            Assert.AreEqual(KraftCrm, KraftCrm);
             ClickElement(KraftCrm_PrivateAndSharedCrm, KraftMenuClose);
+            Assert.AreEqual(KraftCrm_PrivateAndSharedCrm, KraftCrm_PrivateAndSharedCrm);
             ClickElement(KraftCrm_CompanyAndIndividualCards, KraftMenuClose);
+            Assert.AreEqual(KraftCrm_CompanyAndIndividualCards, KraftCrm_CompanyAndIndividualCards);
             ClickElement(KraftCrm_CustomizedFeatures, KraftMenuClose);
+            Assert.AreEqual(KraftCrm_CustomizedFeatures, KraftCrm_CustomizedFeatures);
             ClickElement(KraftCrm_PlayDemo, KraftMenuClose);
+            Assert.AreEqual(KraftCrm_PlayDemo, KraftCrm_PlayDemo);
         }
 
         public void KraftCrmPlansMenu()
         {
             ClickElement(KraftCrmPlans);
+            Assert.AreEqual(KraftCrmPlans, KraftCrmPlans);
             ClickElement(KraftCrmPlans_BasicPlan_SeeAll, KraftCrm_Close);
+            Assert.AreEqual(KraftCrmPlans_BasicPlan_SeeAll, KraftCrmPlans_BasicPlan_SeeAll);
             ClickElement(KraftCrmPlans_BasicPlan_GetStarted);
+            Assert.AreEqual(KraftCrmPlans_BasicPlan_GetStarted, KraftCrmPlans_BasicPlan_GetStarted);
             driver.Navigate().Back();
         }
 
         public void FeaturesMenu()
         {
             ClickElement(Features);
+            Assert.AreEqual(Features, Features);
             ClickElement(Features_NoLimits, Features_Close);
+            Assert.AreEqual(Features_NoLimits, Features_NoLimits);
             ClickElement(Features_Visionary, Features_Close);
+            Assert.AreEqual(Features_Visionary, Features_Visionary);
             ClickElement(Features_AccurateRapid, Features_Close);
+            Assert.AreEqual(Features_AccurateRapid, Features_AccurateRapid);
             ClickElement(Features_AwesomeUI, Features_Close);
+            Assert.AreEqual(Features_AwesomeUI, Features_AwesomeUI);
         }
 
         public void HomeMenu()
         {
             ClickElement(Home);
+            Assert.AreEqual(Home, Home);
         }
 
         public void GoToLoginPage()
         {
             ClickElement(GetStarted);
+            Assert.AreEqual(GetStarted, GetStarted);
         }
 
         public void TermsOfUse_PrivacyPollicy()
         {
             ClickElement(TermsOfUse);
+            Assert.AreEqual(TermsOfUse, TermsOfUse);
             driver.Navigate().Back();
             ClickElement(PrivacyPollicy);
+            Assert.AreEqual(PrivacyPollicy, PrivacyPollicy);
             driver.Navigate().Back();
         }
 
