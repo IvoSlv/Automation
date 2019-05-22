@@ -6,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using BindKraftAutomation.Globals;
 using System;
 using BindKraftAutomation.Models;
+using AventStack.ExtentReports.Gherkin.Model;
 
 namespace BindKraftAutomation
 {
@@ -18,6 +19,15 @@ namespace BindKraftAutomation
             InitDriver();
             this.homePage.GoToLoginPage();
             this.driver.Dispose();
+            
+            //The test reporting feature is based in the PageTestBase class.
+            //Every test need to have those three steps - Feature -> Scenario -> (not sure the create node is needed, this needs sume further testing)
+            var feature = extent.CreateTest<Feature>("Go to Login");
+            var scenario = feature.CreateNode<Scenario>("Navigation to login");
+            scenario.CreateNode<Given>("I naviggate to login page");
+
+            //Here further testing is needed as well. This might be needed only on the last test. Practically this creates the file/appends the result tests.
+            extent.Flush();
         }
 
         [Test, Order(2)]
