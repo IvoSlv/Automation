@@ -64,7 +64,9 @@
     <Compile Include="Extensions\Element_Extensions.cs" />
     <Compile Include="Globals\Constants.cs" />
     <Compile Include="Models\PageTestBase.cs" />
+    <Compile Include="PageObject\HomePage.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="TestCases\HomePageTests.cs" />
     <Compile Include="TestCases\LandingPageTests.cs" />
     <Compile Include="PageObject\LandingPage.cs" />
     <Compile Include="PageObject\LoginPage.cs" />

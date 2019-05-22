@@ -21,5 +21,18 @@ namespace BindKraftAutomation.TestCases
 
             driver.Dispose();
         }
+
+        [Test, Order(11)]
+        [Retry(2)]
+        public void ForgotYourEmailTest()
+        {
+            InitDriver();
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.ForgotYourPasword();
+
+            driver.Dispose();
+        }
     }
 }
