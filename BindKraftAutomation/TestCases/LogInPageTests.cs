@@ -9,6 +9,7 @@ namespace BindKraftAutomation.TestCases
 {
     class LogInPageTests : PageTestBase
     {
+        private LandingPage homePage;
         [Test, Order(10)]
         [Retry(2)]
         public void LoginTest()
