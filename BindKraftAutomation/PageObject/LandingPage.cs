@@ -1,13 +1,20 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System.Threading.Tasks;
+using BindKraftAutomation.Extensions;
 using System.Linq;
 using NUnit.Framework;
-using BindKraftAutomation.Models;
+using System;
+using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
 
 namespace BindKraftAutomation.PageObject
 {
-    sealed class LandingPage : PageTestBase
+    sealed class LandingPage
     {
+        private IWebDriver driver;
+        private readonly WebDriverWait wait; 
+
         #region
         [FindsBy(How = How.XPath, Using = "//i[@class='material-icons close']")]
         [CacheLookup]
@@ -130,13 +137,27 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement Certificate_Iso9001 { get; set; }
         #endregion
-        
-        public LandingPage()
+
+        public LandingPage(IWebDriver driver)
         {
-            InitDriver();
+            this.driver = driver;
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
-        
+
+        public void ClickElement(IWebElement el, IWebElement close = null)
+        {
+            var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(el));
+            clickableElement.Click();
+            if (close != null)
+            {
+                clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(close));
+                clickableElement.Click();
+            }
+        }
+
         public void KraftBoardMenu()
         {
             ClickElement(KraftBoard);
@@ -149,8 +170,6 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftBoard_DiversifiedAccessRight, KraftBoard_DiversifiedAccessRight);
             ClickElement(KraftBoard_PlayDemo, KraftMenuClose);
             Assert.AreEqual(KraftBoard_PlayDemo, KraftBoard_PlayDemo);
-            driver.Close();
-            driver.Dispose();
         }
 
         public void KraftBoardPlansMenu()
@@ -162,8 +181,6 @@ namespace BindKraftAutomation.PageObject
             ClickElement(KraftBoardPlans_GetStarted);
             Assert.AreEqual(KraftBoardPlans_GetStarted, KraftBoardPlans_GetStarted);
             driver.Navigate().Back();
-            driver.Close();
-            driver.Dispose();
         }
 
         public void KraftCrmMenu()
@@ -178,8 +195,6 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftCrm_CustomizedFeatures, KraftCrm_CustomizedFeatures);
             ClickElement(KraftCrm_PlayDemo, KraftMenuClose);
             Assert.AreEqual(KraftCrm_PlayDemo, KraftCrm_PlayDemo);
-            driver.Close();
-            driver.Dispose();
         }
 
         public void KraftCrmPlansMenu()
@@ -191,8 +206,6 @@ namespace BindKraftAutomation.PageObject
             ClickElement(KraftCrmPlans_BasicPlan_GetStarted);
             Assert.AreEqual(KraftCrmPlans_BasicPlan_GetStarted, KraftCrmPlans_BasicPlan_GetStarted);
             driver.Navigate().Back();
-            driver.Close();
-            driver.Dispose();
         }
 
         public void FeaturesMenu()
@@ -207,24 +220,18 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(Features_AccurateRapid, Features_AccurateRapid);
             ClickElement(Features_AwesomeUI, Features_Close);
             Assert.AreEqual(Features_AwesomeUI, Features_AwesomeUI);
-            driver.Close();
-            driver.Dispose();
         }
 
         public void HomeMenu()
         {
             ClickElement(Home);
             Assert.AreEqual(Home, Home);
-            driver.Close();
-            driver.Dispose();
         }
 
         public void GoToLoginPage()
         {
             ClickElement(GetStarted);
             Assert.AreEqual(GetStarted, GetStarted);
-            driver.Close();
-            driver.Dispose();
         }
 
         public void TermsOfUse_PrivacyPollicy()
@@ -235,8 +242,6 @@ namespace BindKraftAutomation.PageObject
             ClickElement(PrivacyPollicy);
             Assert.AreEqual(PrivacyPollicy, PrivacyPollicy);
             driver.Navigate().Back();
-            driver.Close();
-            driver.Dispose();
         }
 
         public void Certificate1()
@@ -248,8 +253,6 @@ namespace BindKraftAutomation.PageObject
 
             var expectedNewTabTitle = "CN-17405IIS-EN.jpg (584×830)";
             Assert.AreEqual(expectedNewTabTitle, newTab.Title);
-            driver.Close();
-            driver.Dispose();
         }
 
         public void Certificate2()
@@ -261,8 +264,6 @@ namespace BindKraftAutomation.PageObject
 
             var expectedNewTabTitle = "ISO-CN-17405IQ-EN.jpg (584×830)";
             Assert.AreEqual(expectedNewTabTitle, newTab.Title);
-            driver.Close();
-            driver.Dispose();
         }
     }
 }
