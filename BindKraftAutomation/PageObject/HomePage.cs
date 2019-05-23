@@ -7,12 +7,12 @@ using NUnit.Framework;
 using System;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
+using BindKraftAutomation.Models;
 
 namespace BindKraftAutomation.PageObject
 {
-    class HomePage
+    class HomePage : PageTestBase
     {
-        private IWebDriver driver;
         private readonly WebDriverWait wait;
 
         public HomePage(IWebDriver driver)
@@ -23,17 +23,6 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
-
-        public void ClickElement(IWebElement el, IWebElement close = null)
-        {
-            var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(el));
-            clickableElement.Click();
-            if (close != null)
-            {
-                clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(close));
-                clickableElement.Click();
-            }
-        }
-
+        
     }
 }

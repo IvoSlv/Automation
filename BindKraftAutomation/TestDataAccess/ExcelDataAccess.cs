@@ -7,6 +7,9 @@ namespace BindKraftAutomation.TestDataAccess
 {
     class ExcelDataAccess
     {
+        //var userData = ExcelDataAccess.GetTestData(LogInTest);
+        //Email.SendKeys(userData.Username);
+        //Password.SendKeys(userData.Password);
         public static string TestDataFileConnection()
         {
             var fileName = ConfigurationManager.AppSettings["C:\\Users\\islavchev\\source\\repos\\Automation\\BindKraftAutomation\\TestDataAccess\\TestData.xlsx"];

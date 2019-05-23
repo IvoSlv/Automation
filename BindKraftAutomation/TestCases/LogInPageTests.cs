@@ -17,9 +17,9 @@ namespace BindKraftAutomation.TestCases
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
-            loginPage.LoginToApplication("LogInTest");
+           loginPage.LoginToApplication("LogInTest");
 
-            driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(11)]
@@ -32,7 +32,7 @@ namespace BindKraftAutomation.TestCases
             var loginPage = new LoginPage(driver);
             loginPage.ForgotYourPasword();
 
-            driver.Dispose();
+            CloseAllDrivers();
         }
     }
 }

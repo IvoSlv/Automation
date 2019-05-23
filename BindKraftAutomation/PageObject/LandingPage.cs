@@ -7,12 +7,12 @@ using NUnit.Framework;
 using System;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
+using BindKraftAutomation.Models;
 
 namespace BindKraftAutomation.PageObject
 {
-    sealed class LandingPage
+    sealed class LandingPage : PageTestBase
     {
-        private IWebDriver driver;
         private readonly WebDriverWait wait; 
 
         #region
@@ -147,16 +147,7 @@ namespace BindKraftAutomation.PageObject
             PageFactory.InitElements(driver, this);
         }
 
-        public void ClickElement(IWebElement el, IWebElement close = null)
-        {
-            var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(el));
-            clickableElement.Click();
-            if (close != null)
-            {
-                clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(close));
-                clickableElement.Click();
-            }
-        }
+        
 
         public void KraftBoardMenu()
         {

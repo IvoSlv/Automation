@@ -18,7 +18,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.GoToLoginPage();
-            this.driver.Dispose();
+            CloseAllDrivers();
             
             //The test reporting feature is based in the PageTestBase class.
             //Every test need to have those three steps - Feature -> Scenario -> (not sure the create node is needed, this needs sume further testing)
@@ -36,7 +36,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.KraftBoardMenu();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(3)]
@@ -45,7 +45,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.KraftBoardPlansMenu();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(4)]
@@ -54,7 +54,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.KraftCrmMenu();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(5)]
@@ -63,7 +63,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.KraftCrmPlansMenu();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(6)]
@@ -72,7 +72,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.FeaturesMenu();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(7)]
@@ -81,7 +81,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.TermsOfUse_PrivacyPollicy();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(8)]
@@ -90,7 +90,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.Certificate1();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
 
         [Test, Order(9)]
@@ -99,7 +99,7 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.Certificate2();
-            this.driver.Dispose();
+            CloseAllDrivers();
         }
     }
 }

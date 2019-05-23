@@ -6,12 +6,13 @@ using System;
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using System.Linq;
+using BindKraftAutomation.Models;
 
 namespace BindKraftAutomation.PageObject
 {
-    class LoginPage
+    class LoginPage : PageTestBase
     {
-        private IWebDriver driver;
+        
         private readonly WebDriverWait wait;
 
         #region
@@ -85,23 +86,10 @@ namespace BindKraftAutomation.PageObject
             PageFactory.InitElements(driver, this);
         }
 
-        public void ClickElement(IWebElement el, IWebElement close = null)
-        {
-            var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(el));
-            clickableElement.Click();
-            if (close != null)
-            {
-                clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(close));
-                clickableElement.Click();
-            }
-        }
+       
 
         public void LoginToApplication(string LogInTest)
         {
-            //var userData = ExcelDataAccess.GetTestData(LogInTest);
-            //Email.SendKeys(userData.Username);
-            //Password.SendKeys(userData.Password);
-           
             Email.EnterText( "drake@abv.bg","Email" );
             Assert.AreEqual(Email, Email);
             Password.EnterText("Dsa_123", "Password");
