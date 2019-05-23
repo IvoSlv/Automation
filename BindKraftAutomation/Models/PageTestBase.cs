@@ -25,12 +25,7 @@ namespace BindKraftAutomation.Models
             this.driver = new ChromeDriver(Constants.chromeDriverPath);
             this.driver.Url = url;
             this.homePage = new LandingPage(this.driver);
-            var rootPath = new DirectoryInfo(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
-                .Parent.Parent.Parent;
-            this.htmlReport = new ExtentHtmlReporter(rootPath.FullName + "\\TestResults\\Report.html");
-            htmlReport.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
-            extent.AttachReporter(htmlReport);
+            initReporter();
         }
 
         public void ClickElement(IWebElement el, IWebElement close = null)
@@ -44,7 +39,7 @@ namespace BindKraftAutomation.Models
                 if (close != null)
                 {
                     clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(1)).Until(ExpectedConditions.ElementToBeClickable(close));
-                    Thread.Sleep(100);
+                   Thread.Sleep(100);
                     clickableElement.Click();
                 }
             }
@@ -56,10 +51,26 @@ namespace BindKraftAutomation.Models
             }
         }
 
+        public void initReporter()
+        {
+            if (this.htmlReport != null)
+            {
+                return;
+            }
+
+            var rootPath = new DirectoryInfo(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
+                .Parent.Parent.Parent;
+            this.htmlReport = new ExtentHtmlReporter(rootPath.FullName + "\\TestResults\\Report.html");
+            htmlReport.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
+            extent.AttachReporter(htmlReport);
+
+        }
+
         public void CloseAllDrivers()
         {
-                this.driver.Close();
-                this.driver.Dispose();
+            this.driver.Close();
+            this.driver.Dispose();
         }
     }
 }

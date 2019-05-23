@@ -1,10 +1,4 @@
-﻿using BindKraftAutomation.PageObject;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using System.Configuration;
-using OpenQA.Selenium.Chrome;
-using BindKraftAutomation.Globals;
-using System;
+﻿using NUnit.Framework;
 using BindKraftAutomation.Models;
 using AventStack.ExtentReports.Gherkin.Model;
 
@@ -36,6 +30,12 @@ namespace BindKraftAutomation
         {
             InitDriver();
             this.homePage.KraftBoardMenu();
+
+            var feature = extent.CreateTest<Feature>("Go to Board");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Guzz");
+            extent.Flush();
+
             CloseAllDrivers();
         }
 
