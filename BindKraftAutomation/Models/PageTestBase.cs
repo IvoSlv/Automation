@@ -32,14 +32,14 @@ namespace BindKraftAutomation.Models
         {
             try
             {
-                var clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(2)).Until(ExpectedConditions.ElementToBeClickable(el));
-                Thread.Sleep(200);
+                var clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(3)).Until(ExpectedConditions.ElementToBeClickable(el));
+                //Thread.Sleep(200);
                 clickableElement.Click();
 
                 if (close != null)
                 {
                     clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(1)).Until(ExpectedConditions.ElementToBeClickable(close));
-                   Thread.Sleep(100);
+                   //Thread.Sleep(100);
                     clickableElement.Click();
                 }
             }

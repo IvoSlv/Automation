@@ -23,6 +23,32 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
-        
+
+        #region
+        [FindsBy(How = How.XPath, Using = "//p[@class='bk-font-strong bk-fsize-normal bk-margin-normal'][contains(text(),'KraftCRM')]")]
+        [CacheLookup]
+        public IWebElement KraftCrm { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='bk-font-strong bk-fsize-normal bk-margin-normal'][contains(text(),'KraftBoard')]")]
+        [CacheLookup]
+        public IWebElement KraftBoard { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='bk-font-strong bk-fsize-normal bk-margin-normal'][contains(text(),'KraftHRM')]")]
+        [CacheLookup]
+        public IWebElement KraftHrm { get; set; }
+        #endregion
+
+        public void GoToCrm()
+        {
+            ClickElement(KraftCrm);
+            Assert.AreEqual(KraftCrm, KraftCrm);
+            driver.Navigate().Back();
+        }
+        public void GoToBoard()
+        {
+            ClickElement(KraftBoard);
+            Assert.AreEqual(KraftBoard, KraftBoard);
+            driver.Navigate().Back();
+        }
     }
 }
