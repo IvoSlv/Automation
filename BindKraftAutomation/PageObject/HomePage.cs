@@ -33,9 +33,9 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftBoard { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='bk-activity']//div//h3[@class='bk-fsize-large'][contains(text(),'Boards')]")]
+        [FindsBy(How = How.CssSelector, Using = "div.themed div.bk-ffamily-third div.bk-box-first:nth-child(1) div.header.f_view_container.window_active div:nth-child(1) div.bk-svg-main-oposit.hamburger-button svg:nth-child(1) g:nth-child(2) > path:nth-child(1)")]
         [CacheLookup]
-        public IWebElement KraftBoard_Assert { get; set; }
+        public IWebElement HomePage_Menu { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//p[@class='bk-font-strong bk-fsize-normal bk-margin-normal'][contains(text(),'KraftHRM')]")]
         [CacheLookup]
@@ -46,12 +46,22 @@ namespace BindKraftAutomation.PageObject
         {
             ClickElement(KraftCrm);
             Assert.AreEqual(KraftCrm, KraftCrm);
-            driver.Navigate().Back();
         }
         public void GoToBoard()
         {
             ClickElement(KraftBoard);
             Assert.AreEqual(KraftBoard, KraftBoard);
+        }
+
+        public void GoToHrm()
+        {
+            ClickElement(KraftHrm);
+            Assert.AreEqual(KraftHrm, KraftHrm);
+        }
+
+        public void OpenHomePageMenu()
+        {
+            ClickElement(HomePage_Menu);
         }
     }
 }
