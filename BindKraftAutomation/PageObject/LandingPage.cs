@@ -1,19 +1,16 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System.Threading.Tasks;
-using BindKraftAutomation.Extensions;
 using System.Linq;
 using NUnit.Framework;
 using System;
 using OpenQA.Selenium.Support.UI;
-using System.Collections.Generic;
 using BindKraftAutomation.Models;
 
 namespace BindKraftAutomation.PageObject
 {
     sealed class LandingPage : PageTestBase
     {
-        private readonly WebDriverWait wait; 
+        private readonly WebDriverWait wait;
 
         #region
         [FindsBy(How = How.XPath, Using = "//i[@class='material-icons close']")]
@@ -146,9 +143,7 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
-
         
-
         public void KraftBoardMenu()
         {
             ClickElement(KraftBoard);

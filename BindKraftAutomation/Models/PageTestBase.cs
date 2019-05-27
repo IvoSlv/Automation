@@ -8,7 +8,6 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 
 namespace BindKraftAutomation.Models
@@ -18,7 +17,9 @@ namespace BindKraftAutomation.Models
         internal IWebDriver driver;
         internal LandingPage homePage;
         internal ExtentHtmlReporter htmlReport;
-        internal ExtentReports extent = new ExtentReports();
+        internal static ExtentReports extent = new ExtentReports();
+        internal static ExtentTest test;
+
 
         internal void InitDriver(string url = Constants.BINDKRAFT_URL)
         {
@@ -45,8 +46,7 @@ namespace BindKraftAutomation.Models
             }
             catch (Exception ex)
             {
-                driver.Close();
-                driver.Dispose();
+                CloseAllDrivers();
                 throw ex;
             }
         }
@@ -61,7 +61,8 @@ namespace BindKraftAutomation.Models
             var rootPath = new DirectoryInfo(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
                 .Parent.Parent.Parent;
-            this.htmlReport = new ExtentHtmlReporter(rootPath.FullName + "\\TestResults\\Report.html");
+            var Date = DateTime.Now.ToString().Replace(' ', '_');
+            this.htmlReport = new ExtentHtmlReporter(rootPath.FullName + "\\TestResults\\Report" + Date + ".html");
             htmlReport.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             extent.AttachReporter(htmlReport);
 
