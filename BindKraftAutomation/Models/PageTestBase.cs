@@ -19,13 +19,19 @@ namespace BindKraftAutomation.Models
         internal ExtentHtmlReporter htmlReport;
         internal static ExtentReports extent = new ExtentReports();
         internal static ExtentTest test;
-
-
+        
         internal void InitDriver(string url = Constants.BINDKRAFT_URL)
         {
-            this.driver = new ChromeDriver(Constants.chromeDriverPath);
-            this.driver.Url = url;
-            this.homePage = new LandingPage(this.driver);
+            if (driver == null)
+            {
+                this.driver = new ChromeDriver(Constants.chromeDriverPath);
+                this.driver.Url = url;
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            }
+            if (homePage == null)
+            {
+                this.homePage = new LandingPage(this.driver);
+            }
             initReporter();
         }
 
