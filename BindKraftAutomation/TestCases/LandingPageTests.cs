@@ -27,7 +27,6 @@ namespace BindKraftAutomation
             }
 
             CloseAllDrivers();
-            extent.Flush();
         }
 
         [Test, Order(1)]
@@ -130,6 +129,12 @@ namespace BindKraftAutomation
             var feature = extent.CreateTest<Feature>("Go to Board Menu");
             var scenario = feature.CreateNode<Scenario>("Scenario");
             scenario.CreateNode<Given>("Steps...");
+        }
+
+        [OneTimeTearDown]
+        public void oneTimeTear()
+        {
+            extent.Flush();
         }
     }
 }
