@@ -40,6 +40,10 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//p[@class='bk-font-strong bk-fsize-normal bk-margin-normal'][contains(text(),'KraftHRM')]")]
         [CacheLookup]
         public IWebElement KraftHrm { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h1[contains(text(),'Kraft Board')]")]
+        [CacheLookup]
+        public IWebElement KraftBoard_Assert { get; set; }
         #endregion
 
         public void GoToCrm()
@@ -51,6 +55,7 @@ namespace BindKraftAutomation.PageObject
         {
             ClickElement(KraftBoard);
             Assert.AreEqual(KraftBoard, KraftBoard);
+            Assert.AreEqual(KraftBoard_Assert, KraftBoard_Assert);
         }
 
         public void GoToHrm()
