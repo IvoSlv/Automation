@@ -47,7 +47,7 @@ namespace BindKraftAutomation.TestCases
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
-           loginPage.LoginToApplication("LogInTest");
+            loginPage.LoginToApplication("LogInTest");
 
             var feature = extent.CreateTest<Feature>("Login to apps");
             var scenario = feature.CreateNode<Scenario>("Scenario");

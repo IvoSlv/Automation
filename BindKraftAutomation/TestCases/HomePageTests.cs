@@ -95,7 +95,7 @@ namespace BindKraftAutomation.TestCases
 
         [Test, Order(16)]
         [Retry(2)]
-        public void OpenHomePageMenuTest()
+        public void OpenUserProfileMenu()
         {
             test = extent.CreateTest("OpenHomePageMenuTest");
             this.homePage.GoToLoginPage();
@@ -104,7 +104,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.LoginToApplication("LogInTest");
 
             var HomePage = new HomePage(driver);
-            HomePage.OpenHomePageMenu();
+            HomePage.OpenUserProfileMenu();
 
             var feature = extent.CreateTest<Feature>("Open homepage menu");
             var scenario = feature.CreateNode<Scenario>("Scenario");

@@ -8,6 +8,7 @@ using System;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 using BindKraftAutomation.Models;
+using System.Threading;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -33,7 +34,11 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftBoard { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "div.themed div.bk-ffamily-third div.bk-box-first:nth-child(1) div.header.f_view_container.window_active div:nth-child(1) div.bk-svg-main-oposit.hamburger-button svg:nth-child(1) g:nth-child(2) > path:nth-child(1)")]
+        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/*")]
+        [CacheLookup]
+        public IWebElement UserProfile_Menu { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/*")]
         [CacheLookup]
         public IWebElement HomePage_Menu { get; set; }
 
@@ -64,9 +69,11 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftHrm, KraftHrm);
         }
 
-        public void OpenHomePageMenu()
+        public void OpenUserProfileMenu()
         {
-            ClickElement(HomePage_Menu);
+            ClickElement(UserProfile_Menu);
+            Assert.AreEqual(UserProfile_Menu, UserProfile_Menu);
+
         }
     }
 }
