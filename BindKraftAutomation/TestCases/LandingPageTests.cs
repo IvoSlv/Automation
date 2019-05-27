@@ -1,105 +1,135 @@
 ﻿using NUnit.Framework;
 using BindKraftAutomation.Models;
 using AventStack.ExtentReports.Gherkin.Model;
+using NUnit.Framework.Interfaces;
+using AventStack.ExtentReports;
 
 namespace BindKraftAutomation
 {
+    [TestFixture]
     class LandingPageTests : PageTestBase
     {
-        [Test, Order(1)]
-        [Retry(2)]
-        public void GoToLoginPageTest()
+        [SetUp]
+        public void setUp()
         {
             InitDriver();
-            this.homePage.GoToLoginPage();
-            CloseAllDrivers();
-            
-            //The test reporting feature is based in the PageTestBase class.
-            //Every test need to have those three steps - Feature -> Scenario -> (not sure the create node is needed, this needs sume further testing)
-            var feature = extent.CreateTest<Feature>("Go to Login");
-            var scenario = feature.CreateNode<Scenario>("Navigation to login");
-            scenario.CreateNode<Given>("I naviggate to login page");
+        }
 
-            //Here further testing is needed as well. This might be needed only on the last test. Practically this creates the file/appends the result tests.
+        [TearDown]
+        public void tearDown()
+        {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var errorMessage = TestContext.CurrentContext.Result.Message;
+
+            if (status == TestStatus.Failed)
+            {
+                test.Log(Status.Fail, status + errorMessage);
+            }
+
+            CloseAllDrivers();
             extent.Flush();
         }
+
+        [Test, Order(1)]
+        public void GoToLoginPageTest()
+        {
+            /*
+             * The test reporting feature is based in the PageTestBase class.
+             * Every test need to have those three steps - Feature -> Scenario -> Nodes
+             */
+            test = extent.CreateTest("GoToLoginPageTest");
+            this.homePage.GoToLoginPage();
+            var feature = extent.CreateTest<Feature>("Go to Login");
+            var scenario = feature.CreateNode<Scenario>("Navigation to login");
+        }
+        
 
         [Test, Order(2)]
         [Retry(2)]
         public void KraftBoardMenuTest()
         {
-            InitDriver();
+            test = extent.CreateTest("KraftBoardMenuTest");
             this.homePage.KraftBoardMenu();
-
             var feature = extent.CreateTest<Feature>("Go to Board");
             var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Guzz");
-            extent.Flush();
-
-            CloseAllDrivers();
+            scenario.CreateNode<Given>("Steps...");
         }
 
         [Test, Order(3)]
         [Retry(2)]
         public void KraftBoardPlansMenuTest()
         {
-            InitDriver();
+            test = extent.CreateTest("KraftBoardPlansMenuTest");
             this.homePage.KraftBoardPlansMenu();
-            CloseAllDrivers();
+            var feature = extent.CreateTest<Feature>("Go to Board Menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
         }
 
         [Test, Order(4)]
         [Retry(2)]
         public void KraftCrmMenuTest()
         {
-            InitDriver();
+            test = extent.CreateTest("KraftCrmMenuTest");
             this.homePage.KraftCrmMenu();
-            CloseAllDrivers();
+            var feature = extent.CreateTest<Feature>("Go to CRM Menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
         }
 
         [Test, Order(5)]
         [Retry(2)]
         public void KraftCrmPlansMenuTest()
         {
-            InitDriver();
+            test = extent.CreateTest("KraftCrmPlansMenuTest");
             this.homePage.KraftCrmPlansMenu();
-            CloseAllDrivers();
+            var feature = extent.CreateTest<Feature>("Go to CRM Plans");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
         }
 
         [Test, Order(6)]
         [Retry(2)]
         public void FeaturesMenuTest()
         {
-            InitDriver();
+            test = extent.CreateTest("FeaturesMenuTest");
             this.homePage.FeaturesMenu();
-            CloseAllDrivers();
+            var feature = extent.CreateTest<Feature>("Go to Feature Menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
         }
 
         [Test, Order(7)]
         [Retry(2)]
         public void TermsOfUse_PrivacyPollicyTest()
         {
-            InitDriver();
+            test = extent.CreateTest("TermsOfUse_PrivacyPollicyTest");
             this.homePage.TermsOfUse_PrivacyPollicy();
-            CloseAllDrivers();
+            var feature = extent.CreateTest<Feature>("Go to Privacy Policy");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
         }
 
         [Test, Order(8)]
         [Retry(2)]
         public void Certificate1Test()
         {
-            InitDriver();
+            test = extent.CreateTest("Certificate1Test");
             this.homePage.Certificate1();
-            CloseAllDrivers();
+            var feature = extent.CreateTest<Feature>("Go certificate one");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
         }
 
         [Test, Order(9)]
         [Retry(2)]
         public void Certificate2Test()
         {
-            InitDriver();
+            test = extent.CreateTest("Go to certificate two");
             this.homePage.Certificate2();
-            CloseAllDrivers();
+            var feature = extent.CreateTest<Feature>("Go to Board Menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
         }
     }
 }
