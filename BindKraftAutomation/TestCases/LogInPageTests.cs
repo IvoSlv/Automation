@@ -34,5 +34,18 @@ namespace BindKraftAutomation.TestCases
 
             CloseAllDrivers();
         }
+
+        [Test, Order(12)]
+        [Retry(2)]
+        public void ResendConfirmationTest()
+        {
+            InitDriver();
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.ResendConfirmation();
+
+            CloseAllDrivers();
+        }
     }
 }

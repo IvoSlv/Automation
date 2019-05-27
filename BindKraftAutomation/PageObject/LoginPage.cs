@@ -75,6 +75,18 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//input[@id='RegisterConsentsViewModel_PrivacyPolicy']")]
         [CacheLookup]
         public IWebElement PrivacyPolicy_CheckBox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Resend Confirmation')]")]
+        [CacheLookup]
+        public IWebElement Resend_Confirmation { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@id='Email']")]
+        [CacheLookup]
+        public IWebElement ResendConfirmation_EnterYourEmail { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-block bk-login-button margin-top']")]
+        [CacheLookup]
+        public IWebElement ResendConfirmation_Submit { get; set; }
         #endregion
 
         public LoginPage(IWebDriver driver)
@@ -117,6 +129,16 @@ namespace BindKraftAutomation.PageObject
         {
             ClickElement(CreateAccount_Button);
             FirstName_Field.EnterText("","");
+        }
+
+        public void ResendConfirmation()
+        {
+            ClickElement(Resend_Confirmation);
+            Assert.AreEqual(Resend_Confirmation, Resend_Confirmation);
+            ResendConfirmation_EnterYourEmail.EnterText("drake@abv.bg","Enter your email");
+            Assert.AreEqual(ResendConfirmation_EnterYourEmail, ResendConfirmation_EnterYourEmail);
+            ClickElement(ResendConfirmation_Submit);
+            Assert.AreEqual(ResendConfirmation_Submit, ResendConfirmation_Submit);
         }
 
     }

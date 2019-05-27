@@ -33,6 +33,10 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftBoard { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@class='bk-activity']//div//h3[@class='bk-fsize-large'][contains(text(),'Boards')]")]
+        [CacheLookup]
+        public IWebElement KraftBoard_Assert { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//p[@class='bk-font-strong bk-fsize-normal bk-margin-normal'][contains(text(),'KraftHRM')]")]
         [CacheLookup]
         public IWebElement KraftHrm { get; set; }
@@ -48,7 +52,6 @@ namespace BindKraftAutomation.PageObject
         {
             ClickElement(KraftBoard);
             Assert.AreEqual(KraftBoard, KraftBoard);
-            driver.Navigate().Back();
         }
     }
 }
