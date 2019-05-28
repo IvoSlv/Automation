@@ -28,10 +28,12 @@ namespace BindKraftAutomation.Models
                 this.driver.Url = url;
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             }
+
             if (homePage == null)
             {
                 this.homePage = new LandingPage(this.driver);
             }
+
             initReporter();
         }
 
@@ -64,13 +66,23 @@ namespace BindKraftAutomation.Models
                 return;
             }
 
-            var rootPath = new DirectoryInfo(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
-                .Parent.Parent.Parent;
-            var Date = DateTime.Now.ToString().Replace(' ', '_');
-            this.htmlReport = new ExtentHtmlReporter(rootPath.FullName + "\\TestResults\\Report" + Date + ".html");
-            htmlReport.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
-            extent.AttachReporter(htmlReport);
+            try
+            {
+                var rootPath = new DirectoryInfo(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
+                    .Parent.Parent.Parent;
+                var date = DateTime.Now.ToString().Replace(' ', '-').Replace(':', '.');
+                var path = rootPath.FullName + @"\TestResults\Test" + date;
+                Directory.CreateDirectory(path);
+                this.htmlReport = new ExtentHtmlReporter(path + "\\");
+                htmlReport.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
+                extent.AttachReporter(htmlReport);
+            }
+            catch (Exception)
+            {
+                CloseAllDrivers();
+                //TODO: Log the error
+            }
 
         }
 
