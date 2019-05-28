@@ -3,16 +3,22 @@ using BindKraftAutomation.Models;
 using AventStack.ExtentReports.Gherkin.Model;
 using NUnit.Framework.Interfaces;
 using AventStack.ExtentReports;
+using BindKraftAutomation.PageObject;
+using System.Threading.Tasks;
 
 namespace BindKraftAutomation
 {
     [TestFixture]
     class LandingPageTests : PageTestBase
     {
+        private LandingPage homePage;
+
         [SetUp]
         public void setUp()
         {
             InitDriver();
+            homePage = new LandingPage(this.driver);
+            Task.Delay(444).Wait();
         }
 
         [TearDown]
@@ -37,7 +43,7 @@ namespace BindKraftAutomation
              * Every test need to have those three steps - Feature -> Scenario -> Nodes
              */
             test = extent.CreateTest("GoToLoginPageTest");
-            this.homePage.GoToLoginPage();
+            homePage.GoToLoginPage();
             var feature = extent.CreateTest<Feature>("Go to Login");
             var scenario = feature.CreateNode<Scenario>("Navigation to login");
         }
