@@ -103,11 +103,12 @@ namespace BindKraftAutomation.TestCases
             var loginPage = new LoginPage(driver);
             loginPage.LoginToApplication("LogInTest");
 
+            var feature = extent.CreateTest<Feature>("Open homepage menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            
             var HomePage = new HomePage(driver);
             HomePage.OpenUserProfileMenu();
 
-            var feature = extent.CreateTest<Feature>("Open homepage menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
             scenario.CreateNode<Given>("Steps...");
         }
     }

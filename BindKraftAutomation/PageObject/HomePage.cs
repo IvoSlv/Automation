@@ -49,6 +49,9 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//h1[contains(text(),'Kraft Board')]")]
         [CacheLookup]
         public IWebElement KraftBoard_Assert { get; set; }
+        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[2]")]
+        [CacheLookup]
+        public IWebElement UserProfile { get; set; }
         #endregion
 
         public void GoToCrm()
@@ -73,6 +76,7 @@ namespace BindKraftAutomation.PageObject
         {
             ClickElement(UserProfile_Menu);
             Assert.AreEqual(UserProfile_Menu, UserProfile_Menu);
+            ClickElement(UserProfile);
 
         }
     }
