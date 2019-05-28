@@ -13,10 +13,13 @@ namespace BindKraftAutomation.TestCases
     [TestFixture]
     class LogInPageTests : PageTestBase
     {
+        private LandingPage homePage;
+
         [SetUp]
         public void setUp()
         {
             InitDriver();
+            homePage = new LandingPage(this.driver);
         }
 
         [TearDown]

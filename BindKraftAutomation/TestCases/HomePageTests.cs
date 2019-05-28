@@ -7,16 +7,20 @@ using BindKraftAutomation.Models;
 using NUnit.Framework.Interfaces;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
+using System.Threading.Tasks;
 
 namespace BindKraftAutomation.TestCases
 {
     [TestFixture]
     class HomePageTests : PageTestBase
     {
+        private LandingPage homePage;
+
         [SetUp]
         public void setUp()
         {
             InitDriver();
+            homePage = new LandingPage(this.driver);
         }
 
         [TearDown]

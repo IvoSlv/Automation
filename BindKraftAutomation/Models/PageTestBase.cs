@@ -9,30 +9,22 @@ using System;
 using System.Threading;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace BindKraftAutomation.Models
 {
     public abstract class PageTestBase
     {
         internal IWebDriver driver;
-        internal LandingPage homePage;
         internal ExtentHtmlReporter htmlReport;
         internal static ExtentReports extent = new ExtentReports();
         internal static ExtentTest test;
         
         internal void InitDriver(string url = Constants.BINDKRAFT_URL)
         {
-            if (driver == null)
-            {
-                this.driver = new ChromeDriver(Constants.chromeDriverPath);
-                this.driver.Url = url;
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            }
-
-            if (homePage == null)
-            {
-                this.homePage = new LandingPage(this.driver);
-            }
+            this.driver = new ChromeDriver();
+            this.driver.Url = url;
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             initReporter();
         }
@@ -42,13 +34,13 @@ namespace BindKraftAutomation.Models
             try
             {
                 var clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(ExpectedConditions.ElementToBeClickable(el));
-                //Thread.Sleep(300);
+                Task.Delay(300).Wait();
                 clickableElement.Click();
 
                 if (close != null)
                 {
                     clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(ExpectedConditions.ElementToBeClickable(close));
-                    //Thread.Sleep(200);
+                    Task.Delay(300).Wait();
                     clickableElement.Click();
                 }
             }
