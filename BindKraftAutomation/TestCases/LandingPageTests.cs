@@ -4,7 +4,6 @@ using AventStack.ExtentReports.Gherkin.Model;
 using NUnit.Framework.Interfaces;
 using AventStack.ExtentReports;
 using BindKraftAutomation.PageObject;
-using System.Threading.Tasks;
 
 namespace BindKraftAutomation
 {
@@ -18,7 +17,6 @@ namespace BindKraftAutomation
         {
             InitDriver();
             homePage = new LandingPage(this.driver);
-            Task.Delay(444).Wait();
         }
 
         [TearDown]

@@ -1,14 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System.Threading.Tasks;
-using BindKraftAutomation.Extensions;
-using System.Linq;
 using NUnit.Framework;
 using System;
 using OpenQA.Selenium.Support.UI;
-using System.Collections.Generic;
 using BindKraftAutomation.Models;
-using System.Threading;
 
 namespace BindKraftAutomation.PageObject
 {
