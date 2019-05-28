@@ -99,7 +99,7 @@ namespace BindKraftAutomation.TestCases
 
         [Test, Order(16)]
         [Retry(2)]
-        public void OpenUserProfileMenu()
+        public void OpenUserOptionMenuTest()
         {
             test = extent.CreateTest("OpenHomePageMenuTest");
             this.homePage.GoToLoginPage();
@@ -111,7 +111,83 @@ namespace BindKraftAutomation.TestCases
             var scenario = feature.CreateNode<Scenario>("Scenario");
             
             var HomePage = new HomePage(driver);
-            HomePage.OpenUserProfileMenu();
+            HomePage.OpenUserOptionMenu();
+
+            scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(17)]
+        [Retry(2)]
+        public void OpenUserProfileMenuTest()
+        {
+            test = extent.CreateTest("OpenHomePageMenuTest");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var feature = extent.CreateTest<Feature>("Open homepage menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+
+            var HomePage = new HomePage(driver);
+            HomePage.OpenUserProfile();
+
+            scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(18)]
+        [Retry(2)]
+        public void CheckUserProfileInfoTest()
+        {
+            test = extent.CreateTest("OpenHomePageMenuTest");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var feature = extent.CreateTest<Feature>("Open homepage menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+
+            var HomePage = new HomePage(driver);
+            HomePage.CheckUserProfileInfo();
+
+            scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(19)]
+        [Retry(2)]
+        public void CheckUserProfileButtonsTest()
+        {
+            test = extent.CreateTest("OpenHomePageMenuTest");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var feature = extent.CreateTest<Feature>("Open homepage menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+
+            var HomePage = new HomePage(driver);
+            HomePage.CheckUserProfileButtons();
+
+            scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void OpenHamburgerMenuBottonTest()
+        {
+            test = extent.CreateTest("OpenHomePageMenuTest");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var feature = extent.CreateTest<Feature>("Open homepage menu");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+
+            var HomePage = new HomePage(driver);
+            HomePage.OpenHamburgerMenuBotton();
 
             scenario.CreateNode<Given>("Steps...");
         }
