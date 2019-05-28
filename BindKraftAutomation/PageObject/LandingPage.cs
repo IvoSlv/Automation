@@ -133,6 +133,10 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[5]//a[1]//img[1]")]
         [CacheLookup]
         public IWebElement Certificate_Iso9001 { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//iframe")]
+        [CacheLookup]
+        public IWebElement PlayDemo_Assert { get; set; }
         #endregion
 
         public LandingPage(IWebDriver driver)
@@ -156,6 +160,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftBoard_DiversifiedAccessRight, KraftBoard_DiversifiedAccessRight);
             ClickElement(KraftBoard_PlayDemo, KraftMenuClose);
             Assert.AreEqual(KraftBoard_PlayDemo, KraftBoard_PlayDemo);
+            Assert.AreEqual(PlayDemo_Assert, PlayDemo_Assert);
         }
 
         public void KraftBoardPlansMenu()
@@ -181,6 +186,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftCrm_CustomizedFeatures, KraftCrm_CustomizedFeatures);
             ClickElement(KraftCrm_PlayDemo, KraftMenuClose);
             Assert.AreEqual(KraftCrm_PlayDemo, KraftCrm_PlayDemo);
+            Assert.AreEqual(PlayDemo_Assert, PlayDemo_Assert);
         }
 
         public void KraftCrmPlansMenu()
