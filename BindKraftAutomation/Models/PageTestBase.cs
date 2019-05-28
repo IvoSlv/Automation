@@ -1,12 +1,10 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using BindKraftAutomation.Globals;
-using BindKraftAutomation.PageObject;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -63,8 +61,8 @@ namespace BindKraftAutomation.Models
                 var rootPath = new DirectoryInfo(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
                     .Parent.Parent.Parent;
-                var date = DateTime.Now.ToString().Replace(' ', '-').Replace(':', '.');
-                var path = rootPath.FullName + @"\TestResults\Test" + date;
+                var date = DateTime.UtcNow.ToString().Replace(' ', '-').Replace(':', '.').Replace('/', '.').Replace('\\', '.');
+                var path = rootPath.FullName + @"\TestResults\Test " + date;
                 Directory.CreateDirectory(path);
                 this.htmlReport = new ExtentHtmlReporter(path + "\\");
                 htmlReport.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
@@ -72,7 +70,6 @@ namespace BindKraftAutomation.Models
             }
             catch (Exception)
             {
-                CloseAllDrivers();
                 //TODO: Log the error
             }
 
