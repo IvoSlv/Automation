@@ -12,6 +12,8 @@ namespace BindKraftAutomation.PageObject
     sealed class LandingPage : PageTestBase
     {
         private readonly WebDriverWait wait;
+        private const int BOOL_INDEX = 0;
+        private const int ERR_MSG_INDEX = 1;
 
         #region
         [FindsBy(How = How.XPath, Using = "//i[@class='material-icons close']")]
@@ -177,10 +179,13 @@ namespace BindKraftAutomation.PageObject
         
         public void KraftBoardMenu()
         {
+            string[] assertTopElements = Helpers.assertByStartHtml(BoardsPopContent.Text, "Easily", 6);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+
             Assert.That(KraftBoard.Text == "KraftBoard");
             ClickElement(KraftBoard_Boards);
             Assert.That(testBoardPopUp(), "Kraft board pop up error.");
-            Assert.That(Helpers.assertByStartHtml(BoardsPopContent.Text, "Easily", 6), "Kraft board pop up error.");
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
 
             ClickElement(KraftBoard_Teams);
