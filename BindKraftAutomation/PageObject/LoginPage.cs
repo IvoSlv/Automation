@@ -97,9 +97,7 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
-
-       
-
+        
         public void LoginToApplication(string LogInTest)
         {
             Email.EnterText( "drake@abv.bg","Email" );

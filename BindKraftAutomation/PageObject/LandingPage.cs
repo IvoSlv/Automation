@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using OpenQA.Selenium.Support.UI;
 using BindKraftAutomation.Models;
+using BindKraftAutomation.Globals;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -137,6 +138,15 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//iframe")]
         [CacheLookup]
         public IWebElement PlayDemo_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h4[@id='modal-title']")]
+        [CacheLookup]
+        public IWebElement BoardsPopTitle { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//div[contains(text(),'Easily create your boards and share them with your')]")]
+        [CacheLookup]
+        public IWebElement BoardsPopContent { get; set; }
+        
         #endregion
 
         public LandingPage(IWebDriver driver)
@@ -148,18 +158,41 @@ namespace BindKraftAutomation.PageObject
             PageFactory.InitElements(driver, this);
         }
         
+        //Sample - used in KraftBoardMenu()
+        public bool testBoardPopUp()
+        {
+            var len = BoardsPopContent.Text.Length;
+            var textStart = BoardsPopContent.Text.Trim().Substring(0, 6);
+            var textEnd = BoardsPopContent.Text.Substring(len - 6);
+
+            if (BoardsPopTitle.Text != "Boards" ||
+                textStart != "Easily" ||
+                textEnd != "teams.")
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
         public void KraftBoardMenu()
         {
-            ClickElement(KraftBoard);
-            Assert.AreEqual(KraftBoard, KraftBoard);
-            ClickElement(KraftBoard_Boards, KraftMenuClose);
-            Assert.AreEqual(KraftBoard_Boards, KraftBoard_Boards);
-            ClickElement(KraftBoard_Teams, KraftMenuClose);
-            Assert.AreEqual(KraftBoard_Teams, KraftBoard_Teams);
-            ClickElement(KraftBoard_DiversifiedAccessRight, KraftMenuClose);
-            Assert.AreEqual(KraftBoard_DiversifiedAccessRight, KraftBoard_DiversifiedAccessRight);
+            Assert.That(KraftBoard.Text == "KraftBoard");
+            ClickElement(KraftBoard_Boards);
+            Assert.That(testBoardPopUp(), "Kraft board pop up error.");
+            Assert.That(Helpers.assertByStartHtml(BoardsPopContent.Text, "Easily", 6), "Kraft board pop up error.");
+            ClickElement(KraftMenuClose);
+
+            ClickElement(KraftBoard_Teams);
+            //TODO: Assert the text in the pop up
+            ClickElement(KraftMenuClose);
+
+            ClickElement(KraftBoard_DiversifiedAccessRight);
+            //TODO: Assert the text in the pop up
+            ClickElement(KraftMenuClose);
+
+            //Think of something to assert video is playing
             ClickElement(KraftBoard_PlayDemo, KraftMenuClose);
-            Assert.AreEqual(KraftBoard_PlayDemo, KraftBoard_PlayDemo);
             Assert.AreEqual(PlayDemo_Assert, PlayDemo_Assert);
         }
 

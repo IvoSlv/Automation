@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Extensions\Element_Extensions.cs" />
     <Compile Include="Globals\Constants.cs" />
+    <Compile Include="Globals\Helpers.cs" />
     <Compile Include="Models\PageTestBase.cs" />
     <Compile Include="PageObject\HomePage.cs" />
     <Compile Include="Program.cs" />
