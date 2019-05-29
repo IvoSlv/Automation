@@ -148,7 +148,15 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//div[contains(text(),'Easily create your boards and share them with your')]")]
         [CacheLookup]
         public IWebElement BoardsPopContent { get; set; }
-        
+
+        [FindsBy(How = How.XPath, Using = "//h2[@class='bk-login-title']")]
+        [CacheLookup]
+        public IWebElement LogInPage_LogInTitle { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//div[contains(text(),'The best practices are to assign tasks to few proj')]")]
+        [CacheLookup]
+        public IWebElement TeamsPopContent { get; set; }
+
         #endregion
 
         public LandingPage(IWebDriver driver)
@@ -184,11 +192,15 @@ namespace BindKraftAutomation.PageObject
 
             Assert.That(KraftBoard.Text == "KraftBoard");
             ClickElement(KraftBoard_Boards);
-            Assert.That(testBoardPopUp(), "Kraft board pop up error.");
+            //Assert.That(testBoardPopUp(), "Kraft board pop up error.");
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Assert.That(KraftMenuClose.Displayed);
             ClickElement(KraftMenuClose);
 
+            assertTopElements = Helpers.assertByStartHtml(TeamsPopContent.Text, "The best", 8);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             ClickElement(KraftBoard_Teams);
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             //TODO: Assert the text in the pop up
             ClickElement(KraftMenuClose);
 
@@ -260,8 +272,9 @@ namespace BindKraftAutomation.PageObject
 
         public void GoToLoginPage()
         {
+            Assert.That(GetStarted.Text == "Get Started","Get Started button error");
             ClickElement(GetStarted);
-            Assert.AreEqual(GetStarted, GetStarted);
+            Assert.That(LogInPage_LogInTitle.Text == "Log in","Log in title is missing");
         }
 
         public void TermsOfUse_PrivacyPollicy()
@@ -294,6 +307,16 @@ namespace BindKraftAutomation.PageObject
 
             var expectedNewTabTitle = "ISO-CN-17405IQ-EN.jpg (584×830)";
             Assert.AreEqual(expectedNewTabTitle, newTab.Title);
+        }
+
+        public void TopNavigationMenu()
+        {
+            Assert.That(Home.Text == "Home", "Home button error");
+            Assert.That(KraftBoard.Text == "KraftBoard", "KraftBoard button error");
+            Assert.That(KraftBoardPlans.Text == "KraftBoard plans", "KraftBoardPlans button error");
+            Assert.That(KraftCrm.Text == "KraftCRM", "KraftCRM button error");
+            Assert.That(KraftCrmPlans.Text == "KraftCRM plans", "KraftCRM plans button error");
+            Assert.That(Features.Text == "Features", "Features button error");
         }
     }
 }

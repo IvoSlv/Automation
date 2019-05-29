@@ -45,7 +45,18 @@ namespace BindKraftAutomation
             var feature = extent.CreateTest<Feature>("Go to Login");
             var scenario = feature.CreateNode<Scenario>("Navigation to login");
         }
-        
+
+        [Test, Order(2)]
+        [Retry(2)]
+        public void TopNavigationMenuTest()
+        {
+            test = extent.CreateTest("TopNavigationMenuTest");
+            this.homePage.TopNavigationMenu();
+            var feature = extent.CreateTest<Feature>("Check Top Navigation Menu is visible");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
+        }
+
 
         [Test, Order(2)]
         [Retry(2)]
