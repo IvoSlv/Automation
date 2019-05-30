@@ -26,7 +26,7 @@ namespace BindKraftAutomation.PageObject
 
         [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-block bk-margin-bottom-1']")]
         [CacheLookup]
-        public IWebElement Submit { get; set; }
+        public IWebElement Login { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Forgot your password?')]")]
         [CacheLookup]
@@ -87,6 +87,42 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-block bk-login-button margin-top']")]
         [CacheLookup]
         public IWebElement ResendConfirmation_Submit { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='bk-font-strong bk-fsize-normal bk-margin-normal'][contains(text(),'KraftBoard')]")]
+        [CacheLookup]
+        public IWebElement LoginTest_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h2[@class='bk-login-title']")]
+        [CacheLookup]
+        public IWebElement ForgotPasswodPage_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h2[@class='bk-login-title']")]
+        [CacheLookup]
+        public IWebElement ResendConfirmationPage_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='Capa_1']")]
+        [CacheLookup]
+        public IWebElement MicrosoftAccount { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Sign in')]")]
+        [CacheLookup]
+        public IWebElement MicrosoftAccount_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body[@class='themed']/div[@class='bk-box-primary bk-ffamily-first']/div[contains(@class,'bk-login-form-section')]/section[@class='bk-login-form']/div[@class='center-text']/div[@class='bk-login-external-providers']/form[2]/button[1]/*[1]")]
+        [CacheLookup]
+        public IWebElement FacebookAccount { get; set; }
+
+        [FindsBy(How = How.Id, Using = "facebook")]
+        [CacheLookup]
+        public IWebElement FacebookAccount_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body[@class='themed']/div[@class='bk-box-primary bk-ffamily-first']/div[contains(@class,'bk-login-form-section')]/section[@class='bk-login-form']/div[@class='center-text']/div[@class='bk-login-external-providers']/form[1]/button[1]/*[1]")]
+        [CacheLookup]
+        public IWebElement GoogleAccount { get; set; }
+
+        [FindsBy(How = How.Id, Using = "yDmH0d")]
+        [CacheLookup]
+        public IWebElement GoogleAccount_Assert { get; set; }
         #endregion
 
         public LoginPage(IWebDriver driver)
@@ -101,28 +137,27 @@ namespace BindKraftAutomation.PageObject
         public void LoginToApplication(string LogInTest)
         {
             Email.EnterText( "drake@abv.bg","Email" );
-            Assert.AreEqual(Email, Email);
             Password.EnterText("Dsa_123", "Password");
-            Assert.AreEqual(Password, Password);
-            Submit.Submit();
-            Assert.AreEqual(Submit, Submit);
+            Login.Submit();
+            Assert.That(LoginTest_Assert.Text == "KraftBoard", "Login - error");
+
         }
 
         public void ForgotYourPasword()
         {
+            Assert.That(ForgotYourPasswordLink.Text == "Forgot your password?", "Forgot password link is not working");
             ClickElement(ForgotYourPasswordLink);
-            Assert.AreEqual(ForgotYourPasswordLink, ForgotYourPasswordLink);
+            Assert.That(ForgotPasswodPage_Assert.Text == "Forgot your password?", "Forgot password page is not working");
             ForgotPass_EnterYourEmail.EnterText("drake@abv.bg", "Enter your email");
-            Assert.AreEqual(ForgotPass_EnterYourEmail, ForgotPass_EnterYourEmail);
+            Assert.That(ForgotPass_Submit.Text == "Submit", "Submit button is not working");
             ClickElement(ForgotPass_Submit);
-            Assert.AreEqual(ForgotPass_Submit, ForgotPass_Submit);
 
             string newTabHandle = driver.WindowHandles.Last();
             var newTab = driver.SwitchTo().Window(newTabHandle);
             var expectedNewTabTitle = "Forgot password confirmation - KraftApps-Authorization";
             Assert.AreEqual(expectedNewTabTitle, newTab.Title);
         }
-        //TODO: Kosio
+        //TODO: under construction
         public void CreateAccount()
         {
             ClickElement(CreateAccount_Button);
@@ -131,12 +166,33 @@ namespace BindKraftAutomation.PageObject
 
         public void ResendConfirmation()
         {
+            Assert.That(Resend_Confirmation.Text == "Resend Confirmation", "Resend Confirmation link is not work");
             ClickElement(Resend_Confirmation);
-            Assert.AreEqual(Resend_Confirmation, Resend_Confirmation);
+            Assert.That(ResendConfirmationPage_Assert.Text == "Resend confirmation", "Resend Confirmation page error");
             ResendConfirmation_EnterYourEmail.EnterText("drake@abv.bg","Enter your email");
-            Assert.AreEqual(ResendConfirmation_EnterYourEmail, ResendConfirmation_EnterYourEmail);
+            Assert.That(ResendConfirmation_Submit.Text == "Submit", "Submit button is not working");
             ClickElement(ResendConfirmation_Submit);
-            Assert.AreEqual(ResendConfirmation_Submit, ResendConfirmation_Submit);
+            
+        }
+
+        public void SignUpWithMicrosoftAcc()
+        {
+            ClickElement(MicrosoftAccount);
+            Assert.That(MicrosoftAccount_Assert.Text == "Sign in", "Microsoft Account link is not working");
+        }
+
+        public void SignUpWithFacebookAcc()
+        {
+            Assert.That(FacebookAccount.Displayed, "Facebook icon is not displayed");
+            ClickElement(FacebookAccount);
+            Assert.That(FacebookAccount_Assert.Displayed, "Facebook Sign Up page error");
+        }
+
+        public void SignUpWithGoogleAcc()
+        {
+            Assert.That(GoogleAccount.Displayed, "Google icon is not displayed");
+            ClickElement(GoogleAccount);
+            Assert.That(GoogleAccount_Assert.Displayed, "Google Sign Up page error");
         }
 
     }

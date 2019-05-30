@@ -40,7 +40,7 @@ namespace BindKraftAutomation
              * The test reporting feature is based in the PageTestBase class.
              * Every test need to have those three steps - Feature -> Scenario -> Nodes
              */
-            test = extent.CreateTest("GoToLoginPageTest");
+            test = extent.CreateTest("Go To Login Page Test");
             homePage.GoToLoginPage();
             var feature = extent.CreateTest<Feature>("Go to Login");
             var scenario = feature.CreateNode<Scenario>("Navigation to login");
@@ -50,9 +50,9 @@ namespace BindKraftAutomation
         [Retry(2)]
         public void TopNavigationMenuTest()
         {
-            test = extent.CreateTest("TopNavigationMenuTest");
+            test = extent.CreateTest("Top Navigation Menu Test");
             this.homePage.TopNavigationMenu();
-            var feature = extent.CreateTest<Feature>("Check Top Navigation Menu is visible");
+            var feature = extent.CreateTest<Feature>("Check Top Navigation Menu - visibility");
             var scenario = feature.CreateNode<Scenario>("Scenario");
             scenario.CreateNode<Given>("Steps...");
         }
@@ -62,9 +62,9 @@ namespace BindKraftAutomation
         [Retry(2)]
         public void KraftBoardMenuTest()
         {
-            test = extent.CreateTest("KraftBoardMenuTest");
+            test = extent.CreateTest("KraftBoard Menu Test");
             this.homePage.KraftBoardMenu();
-            var feature = extent.CreateTest<Feature>("Go to Board");
+            var feature = extent.CreateTest<Feature>("Check KraftBoard menu pop ups ");
             var scenario = feature.CreateNode<Scenario>("Scenario");
             scenario.CreateNode<Given>("Steps...");
         }
@@ -130,7 +130,7 @@ namespace BindKraftAutomation
         {
             test = extent.CreateTest("Certificate1Test");
             this.homePage.Certificate1();
-            var feature = extent.CreateTest<Feature>("Go certificate one");
+            var feature = extent.CreateTest<Feature>("Check certificate 1");
             var scenario = feature.CreateNode<Scenario>("Scenario");
             scenario.CreateNode<Given>("Steps...");
         }
@@ -139,9 +139,9 @@ namespace BindKraftAutomation
         [Retry(2)]
         public void Certificate2Test()
         {
-            test = extent.CreateTest("Go to certificate two");
+            test = extent.CreateTest("Certificate2Test");
             this.homePage.Certificate2();
-            var feature = extent.CreateTest<Feature>("Go to Board Menu");
+            var feature = extent.CreateTest<Feature>("Check certificate 2");
             var scenario = feature.CreateNode<Scenario>("Scenario");
             scenario.CreateNode<Given>("Steps...");
         }

@@ -80,7 +80,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftBoardPlansBasicPlan_SeeAll { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[@id='play-demo-boads']//div[@class='ka-app-feature-content']")]
+        [FindsBy(How = How.XPath, Using = "//a[@id='play-demo-boads']//span[@class='ka-feature-heading'][contains(text(),'Play Demo')]")]
         [CacheLookup]
         public IWebElement KraftBoard_PlayDemo{ get; set; }
 
@@ -96,7 +96,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftMenuClose { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[@id='diversified-access-rights']//div[@class='ka-app-feature-content']")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Diversified Access Rights')]")]
         [CacheLookup]
         public IWebElement KraftBoard_DiversifiedAccessRight { get; set; }
 
@@ -145,7 +145,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement BoardsPopTitle { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//div[contains(text(),'Easily create your boards and share them with your')]")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='myModal']//p[1]")]
         [CacheLookup]
         public IWebElement BoardsPopContent { get; set; }
 
@@ -157,6 +157,22 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement TeamsPopContent { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//iframe")]
+        [CacheLookup]
+        public IWebElement KraftBoard_PlayDemoPopContent { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']")]
+        [CacheLookup]
+        public IWebElement KraftBoard_DiversifiedAccessRightPopContent { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='ka-document']")]
+        [CacheLookup]
+        public IWebElement TermsOfService_AssertContent { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='ka-document']")]
+        [CacheLookup]
+        public IWebElement PrivacyPolicy_AssertContent { get; set; }
+
         #endregion
 
         public LandingPage(IWebDriver driver)
@@ -167,8 +183,8 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
-        
-        //Sample - used in KraftBoardMenu()
+
+        //Sample - used in KraftBoardMenu() [//Assert.That(testBoardPopUp(), "Kraft board pop up error.");]
         public bool testBoardPopUp()
         {
             var len = BoardsPopContent.Text.Length;
@@ -187,32 +203,40 @@ namespace BindKraftAutomation.PageObject
         
         public void KraftBoardMenu()
         {
+            //Boards
+            Assert.That(KraftBoard_Boards.Text == "Boards", "Boards pop up error");
+            ClickElement(KraftBoard_Boards);
             string[] assertTopElements = Helpers.assertByStartHtml(BoardsPopContent.Text, "Easily", 6);
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
-
-            Assert.That(KraftBoard.Text == "KraftBoard");
-            ClickElement(KraftBoard_Boards);
-            //Assert.That(testBoardPopUp(), "Kraft board pop up error.");
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Assert.That(KraftMenuClose.Displayed);
             ClickElement(KraftMenuClose);
-
+            //Teams
+            Assert.That(KraftBoard_Teams.Text == "Teams", "Teams pop up error");
+            ClickElement(KraftBoard_Teams);
             assertTopElements = Helpers.assertByStartHtml(TeamsPopContent.Text, "The best", 8);
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
-            ClickElement(KraftBoard_Teams);
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-            //TODO: Assert the text in the pop up
+            Assert.That(KraftMenuClose.Displayed);
             ClickElement(KraftMenuClose);
-
+            //Diversified Access Right
+            Assert.That(KraftBoard_DiversifiedAccessRight.Text == "Diversified Access Rights", "Diversified Access Rights pop up error");
             ClickElement(KraftBoard_DiversifiedAccessRight);
-            //TODO: Assert the text in the pop up
+            assertTopElements = Helpers.assertByStartHtml(KraftBoard_DiversifiedAccessRightPopContent.Text, "The ability", 11);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Assert.That(KraftMenuClose.Displayed);
+            ClickElement(KraftMenuClose);
+            //Play demo
+            //TODO: Think of something to assert video is playing
+            Assert.That(KraftBoard_PlayDemo.Text == "Play Demo", "Play Demo pop up error");
+            ClickElement(KraftBoard_PlayDemo);
+            Assert.That(KraftBoard_PlayDemoPopContent.Displayed);
+            Assert.That(KraftMenuClose.Displayed);
             ClickElement(KraftMenuClose);
 
-            //Think of something to assert video is playing
-            ClickElement(KraftBoard_PlayDemo, KraftMenuClose);
-            Assert.AreEqual(PlayDemo_Assert, PlayDemo_Assert);
         }
-
+        // Under construction
         public void KraftBoardPlansMenu()
         {
             ClickElement(KraftBoardPlans);
@@ -223,7 +247,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftBoardPlans_GetStarted, KraftBoardPlans_GetStarted);
             driver.Navigate().Back();
         }
-
+        // Under construction
         public void KraftCrmMenu()
         {
             ClickElement(KraftCrm);
@@ -238,7 +262,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftCrm_PlayDemo, KraftCrm_PlayDemo);
             Assert.AreEqual(PlayDemo_Assert, PlayDemo_Assert);
         }
-
+        // Under construction
         public void KraftCrmPlansMenu()
         {
             ClickElement(KraftCrmPlans);
@@ -249,7 +273,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftCrmPlans_BasicPlan_GetStarted, KraftCrmPlans_BasicPlan_GetStarted);
             driver.Navigate().Back();
         }
-
+        // Under construction
         public void FeaturesMenu()
         {
             ClickElement(Features);
@@ -263,13 +287,7 @@ namespace BindKraftAutomation.PageObject
             ClickElement(Features_AwesomeUI, Features_Close);
             Assert.AreEqual(Features_AwesomeUI, Features_AwesomeUI);
         }
-
-        public void HomeMenu()
-        {
-            ClickElement(Home);
-            Assert.AreEqual(Home, Home);
-        }
-
+        
         public void GoToLoginPage()
         {
             Assert.That(GetStarted.Text == "Get Started","Get Started button error");
@@ -279,11 +297,21 @@ namespace BindKraftAutomation.PageObject
 
         public void TermsOfUse_PrivacyPollicy()
         {
+            //Terms of Use
+            Assert.That(TermsOfUse.Text == "Terms of Use", "Terms of Use link is not work");
             ClickElement(TermsOfUse);
-            Assert.AreEqual(TermsOfUse, TermsOfUse);
+
+            string[] assertTopElements = Helpers.assertByStartHtml(TermsOfService_AssertContent.Text, "TERMS", 5);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             driver.Navigate().Back();
+            //Privacy Policy
+            Assert.That(PrivacyPollicy.Text == "Privacy Policy", "Privacy Policy link is not work");
             ClickElement(PrivacyPollicy);
-            Assert.AreEqual(PrivacyPollicy, PrivacyPollicy);
+
+            assertTopElements = Helpers.assertByStartHtml(PrivacyPolicy_AssertContent.Text, "Privacy", 7);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             driver.Navigate().Back();
         }
 

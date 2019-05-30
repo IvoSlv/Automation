@@ -43,7 +43,7 @@ namespace BindKraftAutomation.TestCases
         [Retry(2)]
         public void LoginTest()
         {
-            test = extent.CreateTest("LoginTest");
+            test = extent.CreateTest("Log in Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -58,7 +58,7 @@ namespace BindKraftAutomation.TestCases
         [Retry(2)]
         public void ForgotYourEmailTest()
         {
-            test = extent.CreateTest("ForgotYourEmailTest");
+            test = extent.CreateTest("Forgot Your Email Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -73,13 +73,58 @@ namespace BindKraftAutomation.TestCases
         [Retry(2)]
         public void ResendConfirmationTest()
         {
-            test = extent.CreateTest("ResendConfirmationTest");
+            test = extent.CreateTest("Resend Confirmation Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
             loginPage.ResendConfirmation();
 
             var feature = extent.CreateTest<Feature>("Resend Confirmation");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(12)]
+        [Retry(2)]
+        public void SignUpWithMicrosoftAccountTest()
+        {
+            test = extent.CreateTest("Sign Up With Microsoft Account");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.SignUpWithMicrosoftAcc();
+
+            var feature = extent.CreateTest<Feature>("Sign Up With Microsoft Account");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(12)]
+        [Retry(2)]
+        public void SignUpWithFacebookAccountTest()
+        {
+            test = extent.CreateTest("Sign Up With Facebook Account");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.SignUpWithFacebookAcc();
+
+            var feature = extent.CreateTest<Feature>("Sign Up With Facebook Account");
+            var scenario = feature.CreateNode<Scenario>("Scenario");
+            scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(12)]
+        [Retry(2)]
+        public void SignUpWithGoogleAccountTest()
+        {
+            test = extent.CreateTest("Sign Up With Google Account");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.SignUpWithGoogleAcc();
+
+            var feature = extent.CreateTest<Feature>("Sign Up With Google Account");
             var scenario = feature.CreateNode<Scenario>("Scenario");
             scenario.CreateNode<Given>("Steps...");
         }
