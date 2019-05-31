@@ -93,38 +93,39 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement HamburgerMenuBotton { get; set; }
         #endregion
-
+        // Under construction
         public void GoToCrm()
         {
             ClickElement(KraftCrm);
             Assert.AreEqual(KraftCrm, KraftCrm);
         }
+        // Under construction
         public void GoToBoard()
         {
             ClickElement(KraftBoard);
             Assert.AreEqual(KraftBoard, KraftBoard);
             Assert.AreEqual(KraftBoard_Assert, KraftBoard_Assert);
         }
-
+        // Under construction
         public void GoToHrm()
         {
             ClickElement(KraftHrm);
             Assert.AreEqual(KraftHrm, KraftHrm);
         }
-
+        // Under construction
         public void OpenUserOptionMenu()
         {
             ClickElement(UserOption_Menu);
             Assert.AreEqual(UserOption_Menu, UserOption_Menu);
         }
-
+        // Under construction
         public void OpenUserProfile()
         {
             ClickElement(UserOption_Menu);
             ClickElement(UserProfile);
             Assert.AreEqual(UserProfile, UserProfile);
         }
-
+        // Under construction
         public void CheckUserProfileInfo()
         {
             ClickElement(UserOption_Menu);
@@ -134,7 +135,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(UserProfile_Subscribe, UserProfile_Subscribe);
             Assert.AreEqual(UserProfile_LastLoginDate, UserProfile_LastLoginDate);
         }
-
+        // Under construction
         public void CheckUserProfileButtons()
         {
             ClickElement(UserOption_Menu);
@@ -149,7 +150,7 @@ namespace BindKraftAutomation.PageObject
             ClickElement(UserProfile_SaveButton);
             Assert.AreEqual(UserProfile_SaveButton, UserProfile_SaveButton);
         }
-
+        // Under construction
         public void OpenHamburgerMenuBotton()
         {
             ClickElement(HamburgerMenuBotton);

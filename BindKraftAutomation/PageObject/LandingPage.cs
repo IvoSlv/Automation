@@ -299,7 +299,7 @@ namespace BindKraftAutomation.PageObject
             //Terms of Use
             Assert.That(TermsOfUse.Text == "Terms of Use", "Terms of Use link is not work");
             ClickElement(TermsOfUse);
-
+            //Assert content
             string[] assertTopElements = Helpers.assertByStartHtml(TermsOfService_AssertContent.Text, "TERMS", 5);
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
@@ -307,7 +307,7 @@ namespace BindKraftAutomation.PageObject
             //Privacy Policy
             Assert.That(PrivacyPollicy.Text == "Privacy Policy", "Privacy Policy link is not work");
             ClickElement(PrivacyPollicy);
-
+            //Assert content
             assertTopElements = Helpers.assertByStartHtml(PrivacyPolicy_AssertContent.Text, "Privacy", 7);
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
@@ -316,24 +316,26 @@ namespace BindKraftAutomation.PageObject
 
         public void Certificate1()
         {
+            Assert.That(Certificate_Iso27001.Displayed, "Certificate1 icon is not displayed");
             Certificate_Iso27001.Click();
 
             string newTabHandle = driver.WindowHandles.Last();
             var newTab = driver.SwitchTo().Window(newTabHandle);
 
             var expectedNewTabTitle = "CN-17405IIS-EN.jpg (584×830)";
-            Assert.AreEqual(expectedNewTabTitle, newTab.Title);
+            Assert.AreEqual(expectedNewTabTitle, newTab.Title, "Certificate1 - Iso27001 is not displayed");
         }
 
         public void Certificate2()
         {
+            Assert.That(Certificate_Iso9001.Displayed, "Certificate2 icon is not displayed");
             Certificate_Iso9001.Click();
 
             string newTabHandle = driver.WindowHandles.Last();
             var newTab = driver.SwitchTo().Window(newTabHandle);
 
             var expectedNewTabTitle = "ISO-CN-17405IQ-EN.jpg (584×830)";
-            Assert.AreEqual(expectedNewTabTitle, newTab.Title);
+            Assert.AreEqual(expectedNewTabTitle, newTab.Title, "Certificate2 - Iso9001 is not displayed");
         }
 
         public void TopNavigationMenu()

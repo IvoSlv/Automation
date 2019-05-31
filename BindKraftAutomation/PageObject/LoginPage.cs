@@ -7,6 +7,7 @@ using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using System.Linq;
 using BindKraftAutomation.Models;
+using BindKraftAutomation.Extensions;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -14,6 +15,8 @@ namespace BindKraftAutomation.PageObject
     {
         
         private readonly WebDriverWait wait;
+        private const int BOOL_INDEX = 0;
+        private const int ERR_MSG_INDEX = 1;
 
         #region
         [FindsBy(How = How.XPath, Using = "//input[@id='Email']")]
@@ -140,26 +143,41 @@ namespace BindKraftAutomation.PageObject
         
         public void LoginToApplication(string LogInTest)
         {
-            Email.EnterText( "drake@abv.bg","Email" );
-            Password.EnterText("Dsa_123", "Password");
+            //Email
+            string[] assertTopElements = Element_Extensions.IsDisplayed(Email);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Email.EnterText( "drake@abv.bg");
+            //Password
+            assertTopElements = Element_Extensions.IsDisplayed(Password);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Password.EnterText("Dsa_123");
+            //Login
             Login.Submit();
             Assert.That(LoginTest_Assert.Text == "KraftBoard", "Login - error");
-
         }
 
         public void ForgotYourPasword()
         {
+            //ForgotYourPasswordLink
             Assert.That(ForgotYourPasswordLink.Text == "Forgot your password?", "Forgot password link is not working");
             ClickElement(ForgotYourPasswordLink);
+            //Forgot pass page
             Assert.That(ForgotPasswodPage_Assert.Text == "Forgot your password?", "Forgot password page is not working");
-            ForgotPass_EnterYourEmail.EnterText("drake@abv.bg", "Enter your email");
+            //Forgot pass field
+            string[] assertTopElements = Element_Extensions.IsDisplayed(ForgotPass_EnterYourEmail);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ForgotPass_EnterYourEmail.EnterText("drake@abv.bg");
+            //Submit
             Assert.That(ForgotPass_Submit.Text == "Submit", "Submit button is not working");
             ClickElement(ForgotPass_Submit);
-
+            //Forgot password confirmation page
             string newTabHandle = driver.WindowHandles.Last();
             var newTab = driver.SwitchTo().Window(newTabHandle);
             var expectedNewTabTitle = "Forgot password confirmation - KraftApps-Authorization";
-            Assert.AreEqual(expectedNewTabTitle, newTab.Title);
+            Assert.AreEqual(expectedNewTabTitle, newTab.Title, "Forgot password confirmation page error");
         }
         //TODO: under construction
         public void CreateAccount()
@@ -167,20 +185,27 @@ namespace BindKraftAutomation.PageObject
             Assert.That(CreateAccount_Button.Text == "Create Account", "Create Account Button is not working");
             ClickElement(CreateAccount_Button);
             Assert.That(CreateAccount_AssertPage.Text == "Create Account", "Create Account page error");
-            FirstName_Field.EnterText("John","");
-            LastName_Field.EnterText("Spring", "");
-            Email_Field.EnterText("John@abv.bg","");
-            Password_Field.EnterText("Dsa_123", "");
-            ConfirmPassword_Field.EnterText("Dsa_123","");
+            FirstName_Field.EnterText("John");
+            LastName_Field.EnterText("Spring");
+            Email_Field.EnterText("John@abv.bg");
+            Password_Field.EnterText("Dsa_123");
+            ConfirmPassword_Field.EnterText("Dsa_123");
             Assert.That(ConfirmPassword_Field.Text == "ConfirmPassword", "Create Account Button is not working");
         }
 
         public void ResendConfirmation()
         {
+            //Resend Confirmation link
             Assert.That(Resend_Confirmation.Text == "Resend Confirmation", "Resend Confirmation link is not work");
             ClickElement(Resend_Confirmation);
+            //Resend Confirmation page
             Assert.That(ResendConfirmationPage_Assert.Text == "Resend confirmation", "Resend Confirmation page error");
-            ResendConfirmation_EnterYourEmail.EnterText("drake@abv.bg","Enter your email");
+            //Resend Confirmation field
+            string[] assertTopElements = Element_Extensions.IsDisplayed(ResendConfirmation_EnterYourEmail);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ResendConfirmation_EnterYourEmail.EnterText("drake@abv.bg");
+            //Submit
             Assert.That(ResendConfirmation_Submit.Text == "Submit", "Submit button is not working");
             ClickElement(ResendConfirmation_Submit);
             
@@ -188,8 +213,9 @@ namespace BindKraftAutomation.PageObject
 
         public void SignUpWithMicrosoftAcc()
         {
+            Assert.That(MicrosoftAccount.Displayed, "Microsoft icon is not displayed");
             ClickElement(MicrosoftAccount);
-            Assert.That(MicrosoftAccount_Assert.Text == "Sign in", "Microsoft Account link is not working");
+            Assert.That(MicrosoftAccount_Assert.Text == "Sign in", "Microsoft Sign Up page error");
         }
 
         public void SignUpWithFacebookAcc()

@@ -6,39 +6,29 @@ namespace BindKraftAutomation.Extensions
 {
     public static class Element_Extensions
     {
-        public static Func<string, string, int, string[]> Enter_ext =
-        (content, expected, sliceLength) =>
+        public static Func<IWebElement, string[]> IsDisplayed =
+            (element) =>
         {
             string[] result = new string[2];
             result[0] = "true";
             result[1] = "Pass";
 
-            var textStart = content.Trim().Substring(0, sliceLength);
-
-            if (textStart != expected)
+            if (!element.Displayed)
             {
                 result[0] = "false";
-                result[1] = textStart + " was different than the expected: " + expected;
+                result[1] = element + "is not Displayed";
             }
 
             return result;
         };
-        public static void Enter_Text(this IWebElement element, string text, string elementName)
+
+        public static void EnterText(this IWebElement element, string text)
         {
             element.Clear();
             element.SendKeys(text);
-            
-
         }
 
-        public static void EnterText(this IWebElement element, string text, string elementName)
-        {
-            element.Clear();
-            element.SendKeys(text);
-            Console.WriteLine(text + " entered in the " + elementName + " field.");
-        }
-
-            public static bool IsDisplayed(this IWebElement element, string elementName)
+            public static bool Is_Displayed(this IWebElement element, string elementName)
         {
             bool result;
             try
