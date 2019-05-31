@@ -42,8 +42,6 @@ namespace BindKraftAutomation
              */
             test = extent.CreateTest("Go To Login Page Test");
             homePage.GoToLoginPage();
-            var feature = extent.CreateTest<Feature>("Go to Login");
-            var scenario = feature.CreateNode<Scenario>("Navigation to login");
         }
 
         [Test, Order(2)]
@@ -52,98 +50,71 @@ namespace BindKraftAutomation
         {
             test = extent.CreateTest("Top Navigation Menu Test");
             this.homePage.TopNavigationMenu();
-            var feature = extent.CreateTest<Feature>("Check Top Navigation Menu - visibility");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
 
 
-        [Test, Order(2)]
+        [Test, Order(3)]
         [Retry(2)]
         public void KraftBoardMenuTest()
         {
             test = extent.CreateTest("KraftBoard Menu Test");
             this.homePage.KraftBoardMenu();
-            var feature = extent.CreateTest<Feature>("Check KraftBoard menu pop ups ");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(3)]
+       // [Test, Order(3)]
         [Retry(2)]
         public void KraftBoardPlansMenuTest()
         {
             test = extent.CreateTest("KraftBoardPlansMenuTest");
             this.homePage.KraftBoardPlansMenu();
-            var feature = extent.CreateTest<Feature>("Go to Board Menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(4)]
+       // [Test, Order(4)]
         [Retry(2)]
         public void KraftCrmMenuTest()
         {
             test = extent.CreateTest("KraftCrmMenuTest");
             this.homePage.KraftCrmMenu();
-            var feature = extent.CreateTest<Feature>("Go to CRM Menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
+        }
+
+        //[Test, Order(5)]
+        [Retry(2)]
+        public void KraftCrmPlansMenuTest()
+        {
+            test = extent.CreateTest("KraftCrm Plans Menu Test");
+            this.homePage.KraftCrmPlansMenu();
+        }
+
+        //[Test, Order(6)]
+        [Retry(2)]
+        public void FeaturesMenuTest()
+        {
+            test = extent.CreateTest("Features Menu Test");
+            this.homePage.FeaturesMenu();
+        }
+
+        [Test, Order(4)]
+        [Retry(2)]
+        public void TermsOfUse_PrivacyPollicyTest()
+        {
+            test = extent.CreateTest("Terms Of Use Privacy Pollicy Test");
+            this.homePage.TermsOfUse_PrivacyPollicy();
         }
 
         [Test, Order(5)]
         [Retry(2)]
-        public void KraftCrmPlansMenuTest()
+        public void Certificate1Test()
         {
-            test = extent.CreateTest("KraftCrmPlansMenuTest");
-            this.homePage.KraftCrmPlansMenu();
-            var feature = extent.CreateTest<Feature>("Go to CRM Plans");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
+            test = extent.CreateTest("Certificate1 Test");
+            this.homePage.Certificate1();
         }
 
         [Test, Order(6)]
         [Retry(2)]
-        public void FeaturesMenuTest()
-        {
-            test = extent.CreateTest("FeaturesMenuTest");
-            this.homePage.FeaturesMenu();
-            var feature = extent.CreateTest<Feature>("Go to Feature Menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
-        }
-
-        [Test, Order(7)]
-        [Retry(2)]
-        public void TermsOfUse_PrivacyPollicyTest()
-        {
-            test = extent.CreateTest("TermsOfUse_PrivacyPollicyTest");
-            this.homePage.TermsOfUse_PrivacyPollicy();
-            var feature = extent.CreateTest<Feature>("Go to Privacy Policy");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
-        }
-
-        [Test, Order(8)]
-        [Retry(2)]
-        public void Certificate1Test()
-        {
-            test = extent.CreateTest("Certificate1Test");
-            this.homePage.Certificate1();
-            var feature = extent.CreateTest<Feature>("Check certificate 1");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
-        }
-
-        [Test, Order(9)]
-        [Retry(2)]
         public void Certificate2Test()
         {
-            test = extent.CreateTest("Certificate2Test");
+            test = extent.CreateTest("Certificate2 Test");
             this.homePage.Certificate2();
-            var feature = extent.CreateTest<Feature>("Check certificate 2");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
 
         [OneTimeTearDown]

@@ -40,10 +40,6 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement ForgotPass_Submit { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-block']")]
-        [CacheLookup]
-        public IWebElement CreateAccount_Button { get; set; }
-
         [FindsBy(How = How.XPath, Using = "//input[@id='FirstName']")]
         [CacheLookup]
         public IWebElement FirstName_Field { get; set; }
@@ -123,6 +119,14 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.Id, Using = "yDmH0d")]
         [CacheLookup]
         public IWebElement GoogleAccount_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-block']")]
+        [CacheLookup]
+        public IWebElement CreateAccount_Button { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h2[@class='bk-login-title']")]
+        [CacheLookup]
+        public IWebElement CreateAccount_AssertPage { get; set; }
         #endregion
 
         public LoginPage(IWebDriver driver)
@@ -160,8 +164,15 @@ namespace BindKraftAutomation.PageObject
         //TODO: under construction
         public void CreateAccount()
         {
+            Assert.That(CreateAccount_Button.Text == "Create Account", "Create Account Button is not working");
             ClickElement(CreateAccount_Button);
-            FirstName_Field.EnterText("","");
+            Assert.That(CreateAccount_AssertPage.Text == "Create Account", "Create Account page error");
+            FirstName_Field.EnterText("John","");
+            LastName_Field.EnterText("Spring", "");
+            Email_Field.EnterText("John@abv.bg","");
+            Password_Field.EnterText("Dsa_123", "");
+            ConfirmPassword_Field.EnterText("Dsa_123","");
+            Assert.That(ConfirmPassword_Field.Text == "ConfirmPassword", "Create Account Button is not working");
         }
 
         public void ResendConfirmation()
@@ -194,6 +205,6 @@ namespace BindKraftAutomation.PageObject
             ClickElement(GoogleAccount);
             Assert.That(GoogleAccount_Assert.Displayed, "Google Sign Up page error");
         }
-
+        
     }
 }

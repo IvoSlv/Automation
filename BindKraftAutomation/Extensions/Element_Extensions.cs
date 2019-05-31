@@ -6,6 +6,31 @@ namespace BindKraftAutomation.Extensions
 {
     public static class Element_Extensions
     {
+        public static Func<string, string, int, string[]> Enter_ext =
+        (content, expected, sliceLength) =>
+        {
+            string[] result = new string[2];
+            result[0] = "true";
+            result[1] = "Pass";
+
+            var textStart = content.Trim().Substring(0, sliceLength);
+
+            if (textStart != expected)
+            {
+                result[0] = "false";
+                result[1] = textStart + " was different than the expected: " + expected;
+            }
+
+            return result;
+        };
+        public static void Enter_Text(this IWebElement element, string text, string elementName)
+        {
+            element.Clear();
+            element.SendKeys(text);
+            
+
+        }
+
         public static void EnterText(this IWebElement element, string text, string elementName)
         {
             element.Clear();
@@ -13,7 +38,7 @@ namespace BindKraftAutomation.Extensions
             Console.WriteLine(text + " entered in the " + elementName + " field.");
         }
 
-        public static bool IsDisplayed(this IWebElement element, string elementName)
+            public static bool IsDisplayed(this IWebElement element, string elementName)
         {
             bool result;
             try

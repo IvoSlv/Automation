@@ -43,7 +43,7 @@ namespace BindKraftAutomation.TestCases
             extent.Flush();
         }
 
-        [Test, Order(13)]
+       // [Test, Order(13)]
         [Retry(2)]
         public void GoToBoardTest()
         {
@@ -61,7 +61,7 @@ namespace BindKraftAutomation.TestCases
             scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(14)]
+       //[Test, Order(14)]
         [Retry(2)]
         public void GoToCrmTest()
         {
@@ -79,7 +79,7 @@ namespace BindKraftAutomation.TestCases
             scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(15)]
+        //[Test, Order(15)]
         [Retry(2)]
         public void GoToHrmTest()
         {
@@ -97,7 +97,7 @@ namespace BindKraftAutomation.TestCases
             scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(16)]
+        //[Test, Order(16)]
         [Retry(2)]
         public void OpenUserOptionMenuTest()
         {
@@ -116,7 +116,7 @@ namespace BindKraftAutomation.TestCases
             scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(17)]
+        //[Test, Order(17)]
         [Retry(2)]
         public void OpenUserProfileMenuTest()
         {
@@ -126,16 +126,11 @@ namespace BindKraftAutomation.TestCases
             var loginPage = new LoginPage(driver);
             loginPage.LoginToApplication("LogInTest");
 
-            var feature = extent.CreateTest<Feature>("Open homepage menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-
             var HomePage = new HomePage(driver);
             HomePage.OpenUserProfile();
-
-            scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(18)]
+       // [Test, Order(18)]
         [Retry(2)]
         public void CheckUserProfileInfoTest()
         {
@@ -154,7 +149,7 @@ namespace BindKraftAutomation.TestCases
             scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(19)]
+       // [Test, Order(19)]
         [Retry(2)]
         public void CheckUserProfileButtonsTest()
         {
@@ -173,7 +168,7 @@ namespace BindKraftAutomation.TestCases
             scenario.CreateNode<Given>("Steps...");
         }
 
-        [Test, Order(20)]
+       // [Test, Order(20)]
         [Retry(2)]
         public void OpenHamburgerMenuBottonTest()
         {

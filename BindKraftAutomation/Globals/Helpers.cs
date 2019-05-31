@@ -21,5 +21,7 @@ namespace BindKraftAutomation.Globals
 
             return result;
         };
+
+        
     }
 }

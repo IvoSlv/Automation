@@ -228,7 +228,6 @@ namespace BindKraftAutomation.PageObject
             Assert.That(KraftMenuClose.Displayed);
             ClickElement(KraftMenuClose);
             //Play demo
-            //TODO: Think of something to assert video is playing
             Assert.That(KraftBoard_PlayDemo.Text == "Play Demo", "Play Demo pop up error");
             ClickElement(KraftBoard_PlayDemo);
             Assert.That(KraftBoard_PlayDemoPopContent.Displayed);
