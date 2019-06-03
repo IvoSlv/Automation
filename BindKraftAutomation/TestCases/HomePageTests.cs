@@ -43,11 +43,11 @@ namespace BindKraftAutomation.TestCases
             extent.Flush();
         }
 
-       // [Test, Order(13)]
+        [Test, Order(13)]
         [Retry(2)]
         public void GoToBoardTest()
         {
-            test = extent.CreateTest("GoToBoardTest");
+            test = extent.CreateTest("Go To KraftBoard Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -55,17 +55,13 @@ namespace BindKraftAutomation.TestCases
 
             var HomePage = new HomePage(driver);
             HomePage.GoToBoard();
-
-            var feature = extent.CreateTest<Feature>("Go to Board home page");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
 
-       //[Test, Order(14)]
+       [Test, Order(14)]
         [Retry(2)]
         public void GoToCrmTest()
         {
-            test = extent.CreateTest("GoToCrmTest");
+            test = extent.CreateTest("Go To KraftCRM Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -73,13 +69,9 @@ namespace BindKraftAutomation.TestCases
 
             var HomePage = new HomePage(driver);
             HomePage.GoToCrm();
-
-            var feature = extent.CreateTest<Feature>("Go to CRM home page");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
 
-        //[Test, Order(15)]
+        [Test, Order(15)]
         [Retry(2)]
         public void GoToHrmTest()
         {
@@ -91,29 +83,20 @@ namespace BindKraftAutomation.TestCases
 
             var HomePage = new HomePage(driver);
             HomePage.GoToHrm();
-
-            var feature = extent.CreateTest<Feature>("Go to HRM home page");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
 
-        //[Test, Order(16)]
+        [Test, Order(16)]
         [Retry(2)]
         public void OpenUserOptionMenuTest()
         {
-            test = extent.CreateTest("OpenHomePageMenuTest");
+            test = extent.CreateTest("Open User Option Menu Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
             loginPage.LoginToApplication("LogInTest");
-
-            var feature = extent.CreateTest<Feature>("Open homepage menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
             
             var HomePage = new HomePage(driver);
             HomePage.OpenUserOptionMenu();
-
-            scenario.CreateNode<Given>("Steps...");
         }
 
         //[Test, Order(17)]
@@ -185,6 +168,48 @@ namespace BindKraftAutomation.TestCases
             HomePage.OpenHamburgerMenuBotton();
 
             scenario.CreateNode<Given>("Steps...");
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void NotificationMenuTest()
+        {
+            test = extent.CreateTest("Notification Menu Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+            
+            var HomePage = new HomePage(driver);
+            HomePage.CheckNotificationMenu();
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void GoToKraftUsersGuideTest()
+        {
+            test = extent.CreateTest("Go To Kraft Users Guide Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.GoToKraftUsersGuide();
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void LogoutTest()
+        {
+            test = extent.CreateTest("Logout Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.Logout();
         }
     }
 }

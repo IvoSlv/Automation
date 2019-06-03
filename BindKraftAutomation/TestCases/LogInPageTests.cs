@@ -105,7 +105,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.SignUpWithGoogleAcc();
         }
 
-       // [Test, Order(12)]
+        //[Test, Order(12)]
         [Retry(2)]
         public void CreateAccountTest()
         {

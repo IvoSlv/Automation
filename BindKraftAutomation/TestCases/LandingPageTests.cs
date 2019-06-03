@@ -33,13 +33,14 @@ namespace BindKraftAutomation
             CloseAllDrivers();
         }
 
-        [Test, Order(1)]
-        public void GoToLoginPageTest()
-        {
-            /*
+        /*
              * The test reporting feature is based in the PageTestBase class.
              * Every test need to have those three steps - Feature -> Scenario -> Nodes
              */
+
+        [Test, Order(1)]
+        public void GoToLoginPageTest()
+        {
             test = extent.CreateTest("Go To Login Page Test");
             homePage.GoToLoginPage();
         }

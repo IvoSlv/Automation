@@ -28,7 +28,7 @@ namespace BindKraftAutomation.Extensions
             element.SendKeys(text);
         }
 
-            public static bool Is_Displayed(this IWebElement element, string elementName)
+            public static bool Is_Displayed_SimpleAssert(this IWebElement element, string elementName)
         {
             bool result;
             try

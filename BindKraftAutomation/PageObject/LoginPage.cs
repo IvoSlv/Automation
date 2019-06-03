@@ -130,6 +130,12 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//h2[@class='bk-login-title']")]
         [CacheLookup]
         public IWebElement CreateAccount_AssertPage { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@id='RegisterConsentsViewModel_CommunicationConsent']")]
+        [CacheLookup]
+        public IWebElement InformationAboutKraftApps_CheckBox { get; set; }
+
+        
         #endregion
 
         public LoginPage(IWebDriver driver)
@@ -185,12 +191,44 @@ namespace BindKraftAutomation.PageObject
             Assert.That(CreateAccount_Button.Text == "Create Account", "Create Account Button is not working");
             ClickElement(CreateAccount_Button);
             Assert.That(CreateAccount_AssertPage.Text == "Create Account", "Create Account page error");
+
+            string[] assertTopElements = Element_Extensions.IsDisplayed(FirstName_Field);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             FirstName_Field.EnterText("John");
+
+            assertTopElements = Element_Extensions.IsDisplayed(LastName_Field);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             LastName_Field.EnterText("Spring");
+
+            assertTopElements = Element_Extensions.IsDisplayed(Email_Field);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Email_Field.EnterText("John@abv.bg");
+
+            assertTopElements = Element_Extensions.IsDisplayed(Password_Field);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Password_Field.EnterText("Dsa_123");
+
+            assertTopElements = Element_Extensions.IsDisplayed(ConfirmPassword_Field);
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ConfirmPassword_Field.EnterText("Dsa_123");
-            Assert.That(ConfirmPassword_Field.Text == "ConfirmPassword", "Create Account Button is not working");
+
+            Assert.That(InformationAboutKraftApps_CheckBox.Displayed);
+            //Assert.That(InformationAboutKraftApps_CheckBox.Text == "RegisterConsentsViewModel_CommunicationConsent", "I agree to receive information about KraftApp check box is not working");
+            ClickElement(InformationAboutKraftApps_CheckBox);
+
+            Assert.That(InformationAboutKraftApps_CheckBox.Displayed);
+            //Assert.That(CreateAccount_Button.Text == "TermsOfService", "Create Account Button is not working");
+            ClickElement(TermsOfService_CheckBox);
+
+            Assert.That(InformationAboutKraftApps_CheckBox.Displayed);
+            ClickElement(PrivacyPolicy_CheckBox);
+
+            Assert.That(CreateAccount_SubmitButton.Displayed);
         }
 
         public void ResendConfirmation()

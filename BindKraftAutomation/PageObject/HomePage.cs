@@ -4,12 +4,15 @@ using NUnit.Framework;
 using System;
 using OpenQA.Selenium.Support.UI;
 using BindKraftAutomation.Models;
+using BindKraftAutomation.Extensions;
 
 namespace BindKraftAutomation.PageObject
 {
     class HomePage : PageTestBase
     {
         private readonly WebDriverWait wait;
+        private const int BOOL_INDEX = 0;
+        private const int ERR_MSG_INDEX = 1;
 
         public HomePage(IWebDriver driver)
         {
@@ -29,7 +32,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftBoard { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/*")]
+        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")]
         [CacheLookup]
         public IWebElement UserOption_Menu { get; set; }
 
@@ -92,31 +95,72 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@class='bk-svg-main-oposit hamburger-button']")]
         [CacheLookup]
         public IWebElement HamburgerMenuBotton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h1[contains(text(),'Kraft CRM')]")]
+        [CacheLookup]
+        public IWebElement KraftCrm_AssertPage { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h1[contains(text(),'Kraft HRM')]")]
+        [CacheLookup]
+        public IWebElement KraftHrm_AssertPage { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='bk-svg-nochshell']//*[@id='Layer_1']")]
+        [CacheLookup]
+        public IWebElement NotificationIcon { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='bk-color-text']")]
+        [CacheLookup]
+        public IWebElement NotificationMenu_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='header-icons']//div[2]")]
+        [CacheLookup]
+        public IWebElement KraftUsersGuideIcon { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h2[contains(text(),'Kraft CRM Users guide')]")]
+        [CacheLookup]
+        public IWebElement KraftUsersGuidePage_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Notification settings')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Logout')]")]
+        [CacheLookup]
+        public IWebElement Logout_Button { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h2[@class='bk-login-title']")]
+        [CacheLookup]
+        public IWebElement Logout_AfterClickLogout_Assert { get; set; }
         #endregion
-        // Under construction
+
         public void GoToCrm()
         {
+            Assert.That(KraftCrm.Text == "KraftCRM", "KraftCRM is not displayed");
             ClickElement(KraftCrm);
-            Assert.AreEqual(KraftCrm, KraftCrm);
+            Assert.That(KraftCrm_AssertPage.Text == "Kraft CRM", "KraftCRM page error");
         }
-        // Under construction
+        
         public void GoToBoard()
         {
+            Assert.That(KraftBoard.Text == "KraftBoard", "KraftBoard is not displayed");
             ClickElement(KraftBoard);
-            Assert.AreEqual(KraftBoard, KraftBoard);
-            Assert.AreEqual(KraftBoard_Assert, KraftBoard_Assert);
+            Assert.That(KraftBoard_Assert.Text == "Kraft Board", "KraftBoard page error");
         }
-        // Under construction
+        
         public void GoToHrm()
         {
+            Assert.That(KraftHrm.Text == "KraftHRM", "KraftHRM is not displayed");
             ClickElement(KraftHrm);
-            Assert.AreEqual(KraftHrm, KraftHrm);
+            Assert.That(KraftHrm_AssertPage.Text == "Kraft HRM", "KraftHRM  page error");
         }
-        // Under construction
+        
         public void OpenUserOptionMenu()
         {
+            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserOption_Menu);
-            Assert.AreEqual(UserOption_Menu, UserOption_Menu);
+            Assert.That(NotificationSettings.Text == "Notification settings", "Users option window error");
         }
         // Under construction
         public void OpenUserProfile()
@@ -154,6 +198,37 @@ namespace BindKraftAutomation.PageObject
         public void OpenHamburgerMenuBotton()
         {
             ClickElement(HamburgerMenuBotton);
+        }
+
+        public void CheckNotificationMenu()
+        {
+            string[] assertTopElements = Element_Extensions.IsDisplayed(NotificationIcon);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(NotificationIcon);
+            Assert.That(NotificationMenu_Assert.Text == "Notifications", "Notification window error");
+        }
+
+        public void GoToKraftUsersGuide()
+        {
+            string[] assertTopElements = Element_Extensions.IsDisplayed(KraftUsersGuideIcon);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(KraftUsersGuideIcon);
+            Assert.That(KraftUsersGuidePage_Assert.Text == "Kraft CRM Users guide", "Kraft Users guide page error");
+        }
+
+        public void Logout()
+        {
+            // Open user option menu
+            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu);
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(UserOption_Menu);
+            // Click Logout button
+            Assert.That(Logout_Button.Text == "Logout", "Logout button is not working");
+            ClickElement(Logout_Button);
+            Assert.That(Logout_AfterClickLogout_Assert.Text == "Log in", "Login page error, after click Logout button");
         }
     }
 }
