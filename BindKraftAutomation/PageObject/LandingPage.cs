@@ -6,6 +6,7 @@ using System;
 using OpenQA.Selenium.Support.UI;
 using BindKraftAutomation.Models;
 using BindKraftAutomation.Globals;
+using BindKraftAutomation.Extensions;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -316,7 +317,9 @@ namespace BindKraftAutomation.PageObject
 
         public void Certificate1()
         {
-            Assert.That(Certificate_Iso27001.Displayed, "Certificate1 icon is not displayed");
+            string[] assertTopElements = Element_Extensions.IsDisplayed(Certificate_Iso27001, "Certificate_Iso27001");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Certificate_Iso27001.Click();
 
             string newTabHandle = driver.WindowHandles.Last();
@@ -328,7 +331,9 @@ namespace BindKraftAutomation.PageObject
 
         public void Certificate2()
         {
-            Assert.That(Certificate_Iso9001.Displayed, "Certificate2 icon is not displayed");
+            string[] assertTopElements = Element_Extensions.IsDisplayed(Certificate_Iso9001, "Certificate_Iso9001");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Certificate_Iso9001.Click();
 
             string newTabHandle = driver.WindowHandles.Last();

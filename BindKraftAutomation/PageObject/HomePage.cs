@@ -5,6 +5,7 @@ using System;
 using OpenQA.Selenium.Support.UI;
 using BindKraftAutomation.Models;
 using BindKraftAutomation.Extensions;
+using System.Threading.Tasks;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -122,7 +123,7 @@ namespace BindKraftAutomation.PageObject
 
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Notification settings')]")]
         [CacheLookup]
-        public IWebElement NotificationSettings { get; set; }
+        public IWebElement NotificationSettings_Button { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Logout')]")]
         [CacheLookup]
@@ -131,6 +132,74 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//h2[@class='bk-login-title']")]
         [CacheLookup]
         public IWebElement Logout_AfterClickLogout_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body//div[@class='bk-form']//div[@class='bk-form']//div//div[1]//input[1]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_BoardCheckBox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body//div[@class='bk-form']//div[@class='bk-form']//div//div[2]//input[1]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_CrmCheckBox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body/div[@id='bindkraft']/div[@id='container']/div[contains(@class,'bk-ffamily-third')]/div[@class='bk-client-position']/div[@class='bk-simplewindow ui-draggable window_active']/div[@class='bk-client-position f_view_container']/div[@class='bk-form']/div/div[@class='bk-form']/div[1]/input[1]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_DecktopCheckBox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body/div[@id='bindkraft']/div[@id='container']/div[contains(@class,'bk-ffamily-third')]/div[@class='bk-client-position']/div[@class='bk-simplewindow ui-draggable window_active']/div[@class='bk-client-position f_view_container']/div[@class='bk-form']/div/div[@class='bk-form']/div[2]/input[1]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_InAppCheckBox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='bk-windowtitle']")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_WindowAssert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[contains(@class,'bk-button bk-button-small')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_SaveButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h4[contains(text(),'Subscribe for Applications:')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_SubscribeForApplicationText { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'Board')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_BoardText { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'CRM')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_CrmText { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h4[contains(text(),'Receive notifications through:')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_ReceiveNotificationsThroughText { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'Desktop')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_DesktopText { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'In-App')]")]
+        [CacheLookup]
+        public IWebElement NotificationSettings_InAppText { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='bk-windowtitle']")]
+        [CacheLookup]
+        public IWebElement UserProfileMenu_WindowAssert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='text-apps-startmenu'][contains(text(),'KraftBoard')]")]
+        [CacheLookup]
+        public IWebElement HamburgerMenu_KraftBoardLink { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='text-apps-startmenu'][contains(text(),'KraftCRM')]")]
+        [CacheLookup]
+        public IWebElement HamburgerMenu_KraftCrmLink { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='text-apps-startmenu'][contains(text(),'KraftHRM')]")]
+        [CacheLookup]
+        public IWebElement HamburgerMenu_KraftHrmLink { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Home')]")]
+        [CacheLookup]
+        public IWebElement HamburgerMenu_HomeLink { get; set; }
         #endregion
 
         public void GoToCrm()
@@ -156,53 +225,80 @@ namespace BindKraftAutomation.PageObject
         
         public void OpenUserOptionMenu()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu, "UserOption_Menu");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserOption_Menu);
-            Assert.That(NotificationSettings.Text == "Notification settings", "Users option window error");
+            Assert.That(NotificationSettings_Button.Text == "Notification settings", "Users option window error");
         }
-        // Under construction
-        public void OpenUserProfile()
+        
+        public void UserProfileMenu()
         {
+            // Check items
             ClickElement(UserOption_Menu);
+            Assert.That(UserProfile.Text == "User profile", "User profile button is not displayed");
             ClickElement(UserProfile);
-            Assert.AreEqual(UserProfile, UserProfile);
-        }
-        // Under construction
-        public void CheckUserProfileInfo()
-        {
-            ClickElement(UserOption_Menu);
-            ClickElement(UserProfile);
-            Assert.AreEqual(UserProfile_FirstName, UserProfile_FirstName);
-            Assert.AreEqual(UserProfile_LastName, UserProfile_LastName);
-            Assert.AreEqual(UserProfile_Subscribe, UserProfile_Subscribe);
-            Assert.AreEqual(UserProfile_LastLoginDate, UserProfile_LastLoginDate);
-        }
-        // Under construction
-        public void CheckUserProfileButtons()
-        {
-            ClickElement(UserOption_Menu);
-            ClickElement(UserProfile);
+            Assert.That(UserProfileMenu_WindowAssert.Text == "User Profile", "User profile window is not displayed");
+            Assert.That(UserProfile_FirstName.Text == "First Name", " 'First Name' is not displayed");
+            Assert.That(UserProfile_LastName.Text == "Last Name", " 'Last name' is not displayed");
+            Assert.That(UserProfile_Subscribe.Text == "Subscribe for our newsletter", "'Subscribe for our newsletter' is not displayed");
+            Assert.That(UserProfile_LastLoginDate.Text == "Last login date", " 'Last login date' is not displayed");
+            //Delete button
+            Assert.That(UserProfile_DeleteButton.Text == "Delete", " 'Delete' button is not displayed");
+            //Close button 
+            string[] assertTopElements = Element_Extensions.IsDisplayed(UserProfile_CloseButton, "UserProfile_CloseButton");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Edit button
+            Assert.That(UserProfile_Edit.Text == "Edit", " 'Edit' button is not displayed");
             ClickElement(UserProfile_Edit);
-            Assert.AreEqual(UserProfile, UserProfile);
-            ClickElement(UserProfile_CancelButton);
-            Assert.AreEqual(UserProfile_CancelButton, UserProfile_CancelButton);
-            ClickElement(UserProfile_Edit);
-            ClickElement(UserProfile_SubscribeCheckBox, UserProfile_SubscribeCheckBox);
-            Assert.AreEqual(UserProfile_SubscribeCheckBox, UserProfile_SubscribeCheckBox);
+            //Subscribe for our newsletter check box
+            assertTopElements = Element_Extensions.IsDisplayed(UserProfile_SubscribeCheckBox, "UserProfile_SubscribeCheckBox");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(UserProfile_SubscribeCheckBox);
+            //Cancel button
+            Assert.That(UserProfile_CancelButton.Text == "Cancel", " 'Cancel' button is not displayed");
+            ClickElement(UserProfile_CancelButton, UserProfile_Edit);
+            //Save button
+            Assert.That(UserProfile_SaveButton.Text == "Save", " 'Save' button is not displayed");
             ClickElement(UserProfile_SaveButton);
-            Assert.AreEqual(UserProfile_SaveButton, UserProfile_SaveButton);
+
         }
+        
         // Under construction
-        public void OpenHamburgerMenuBotton()
+        public void HamburgerMenu()
         {
+            string[] assertTopElements = Element_Extensions.IsDisplayed(HamburgerMenuBotton, "HamburgerMenuBotton");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(HamburgerMenuBotton);
+            //Check items
+            Task.Delay(300).Wait();
+            Assert.That(HamburgerMenu_KraftBoardLink.Text == "KraftBoard", "KraftBoard link is not displayed");
+            Assert.That(HamburgerMenu_KraftCrmLink.Text == "KraftCRM", "KraftCRM link is not displayed");
+            Assert.That(HamburgerMenu_KraftHrmLink.Text == "KraftHRM", "KraftHRM link is not displayed");
+            Assert.That(HamburgerMenu_HomeLink.Text == "Home", "Home link is not displayed");
+            //Check menu buttons
+            ClickElement(HamburgerMenu_KraftBoardLink);
+            Assert.That(KraftBoard_Assert.Text == "Kraft Board", "KraftBoard button is not working");
+            ClickElement(HamburgerMenuBotton);
+            Task.Delay(300).Wait();
+            ClickElement(HamburgerMenu_KraftCrmLink);
+            Assert.That(KraftCrm_AssertPage.Text == "Kraft CRM", "KraftCRM button is not working");
+            ClickElement(HamburgerMenuBotton);
+            Task.Delay(300).Wait();
+            ClickElement(HamburgerMenu_KraftHrmLink);
+            Assert.That(KraftHrm_AssertPage.Text == "Kraft HRM", "KraftHRM button is not working");
+            ClickElement(HamburgerMenuBotton);
+            Task.Delay(300).Wait();
+            ClickElement(HamburgerMenu_HomeLink);
+            Assert.That(KraftHrm.Text == "KraftHRM", "Home button is not working");
         }
 
         public void CheckNotificationMenu()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(NotificationIcon);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(NotificationIcon, "NotificationIcon");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(NotificationIcon);
@@ -211,7 +307,7 @@ namespace BindKraftAutomation.PageObject
 
         public void GoToKraftUsersGuide()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(KraftUsersGuideIcon);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(KraftUsersGuideIcon, "KraftUsersGuideIcon");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftUsersGuideIcon);
@@ -221,7 +317,7 @@ namespace BindKraftAutomation.PageObject
         public void Logout()
         {
             // Open user option menu
-            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu, "UserOption_Menu");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserOption_Menu);
@@ -229,6 +325,33 @@ namespace BindKraftAutomation.PageObject
             Assert.That(Logout_Button.Text == "Logout", "Logout button is not working");
             ClickElement(Logout_Button);
             Assert.That(Logout_AfterClickLogout_Assert.Text == "Log in", "Login page error, after click Logout button");
+        }
+
+        public void NotificationSettings()
+        {
+            ClickElement(UserOption_Menu);
+            Assert.That(NotificationSettings_Button.Text == "Notification settings", "Notification settings button is not working");
+            ClickElement(NotificationSettings_Button);
+
+            Assert.That(NotificationSettings_SubscribeForApplicationText.Text == "Subscribe for Applications:", " 'Subscribe for Applications:' is not displayed");
+            Assert.That(NotificationSettings_BoardText.Text == "Board", " 'Board' is not displayed");
+            Assert.That(NotificationSettings_CrmText.Text == "CRM", " 'CRM' is not displayed");
+            Assert.That(NotificationSettings_ReceiveNotificationsThroughText.Text == "Receive notifications through:", " 'Receive notifications through: ' is not displayed");
+            Assert.That(NotificationSettings_DesktopText.Text == "Desktop", " 'Desktop' is not displayed");
+            Assert.That(NotificationSettings_InAppText.Text == "In-App", " 'In-App' is not displayed");
+
+            Assert.That(NotificationSettings_WindowAssert.Text == "Notification Settings", "Notification settings window is not working");
+            Assert.That(NotificationSettings_BoardCheckBox.Displayed);
+            ClickElement(NotificationSettings_BoardCheckBox);
+            Assert.That(NotificationSettings_CrmCheckBox.Displayed);
+            ClickElement(NotificationSettings_CrmCheckBox);
+            Assert.That(NotificationSettings_DecktopCheckBox.Displayed);
+            ClickElement(NotificationSettings_DecktopCheckBox);
+            Assert.That(NotificationSettings_InAppCheckBox.Displayed);
+            ClickElement(NotificationSettings_InAppCheckBox);
+            Assert.That(NotificationSettings_SaveButton.Text == "Save", "Save button is not displayed");
+            ClickElement(NotificationSettings_SaveButton);
+            Assert.That(KraftCrm.Text == "KraftCRM", "Save button is not working");
         }
     }
 }

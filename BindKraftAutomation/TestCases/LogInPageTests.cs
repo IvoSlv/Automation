@@ -105,8 +105,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.SignUpWithGoogleAcc();
         }
 
-        //[Test, Order(12)]
-        [Retry(2)]
+        [Test, Order(12)]
         public void CreateAccountTest()
         {
             test = extent.CreateTest("Create Account - Form test");

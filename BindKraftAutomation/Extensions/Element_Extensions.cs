@@ -6,17 +6,25 @@ namespace BindKraftAutomation.Extensions
 {
     public static class Element_Extensions
     {
-        public static Func<IWebElement, string[]> IsDisplayed =
-            (element) =>
+        public static Func<IWebElement, string, string[]> IsDisplayed =
+            (element, elName) =>
         {
             string[] result = new string[2];
             result[0] = "true";
             result[1] = "Pass";
 
-            if (!element.Displayed)
+            try
+            {
+                if (!element.Displayed)
+                {
+                    result[0] = "false";
+                    result[1] = element + " is not Displayed";
+                }
+            }
+            catch (Exception)
             {
                 result[0] = "false";
-                result[1] = element + "is not Displayed";
+                result[1] = elName + " is not Displayed";
             }
 
             return result;

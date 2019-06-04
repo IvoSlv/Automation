@@ -150,12 +150,12 @@ namespace BindKraftAutomation.PageObject
         public void LoginToApplication(string LogInTest)
         {
             //Email
-            string[] assertTopElements = Element_Extensions.IsDisplayed(Email);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(Email, "Email");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Email.EnterText( "drake@abv.bg");
             //Password
-            assertTopElements = Element_Extensions.IsDisplayed(Password);
+            assertTopElements = Element_Extensions.IsDisplayed(Password, "Password");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Password.EnterText("Dsa_123");
@@ -172,7 +172,7 @@ namespace BindKraftAutomation.PageObject
             //Forgot pass page
             Assert.That(ForgotPasswodPage_Assert.Text == "Forgot your password?", "Forgot password page is not working");
             //Forgot pass field
-            string[] assertTopElements = Element_Extensions.IsDisplayed(ForgotPass_EnterYourEmail);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(ForgotPass_EnterYourEmail, "ForgotPass_EnterYourEmail");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ForgotPass_EnterYourEmail.EnterText("drake@abv.bg");
@@ -185,50 +185,56 @@ namespace BindKraftAutomation.PageObject
             var expectedNewTabTitle = "Forgot password confirmation - KraftApps-Authorization";
             Assert.AreEqual(expectedNewTabTitle, newTab.Title, "Forgot password confirmation page error");
         }
-        //TODO: under construction
+        
         public void CreateAccount()
         {
             Assert.That(CreateAccount_Button.Text == "Create Account", "Create Account Button is not working");
             ClickElement(CreateAccount_Button);
             Assert.That(CreateAccount_AssertPage.Text == "Create Account", "Create Account page error");
 
-            string[] assertTopElements = Element_Extensions.IsDisplayed(FirstName_Field);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(FirstName_Field, "FirstName_Field");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             FirstName_Field.EnterText("John");
 
-            assertTopElements = Element_Extensions.IsDisplayed(LastName_Field);
+            assertTopElements = Element_Extensions.IsDisplayed(LastName_Field, "LastName_Field");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             LastName_Field.EnterText("Spring");
 
-            assertTopElements = Element_Extensions.IsDisplayed(Email_Field);
+            assertTopElements = Element_Extensions.IsDisplayed(Email_Field, "LastName_Field");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Email_Field.EnterText("John@abv.bg");
 
-            assertTopElements = Element_Extensions.IsDisplayed(Password_Field);
+            assertTopElements = Element_Extensions.IsDisplayed(Password_Field, "LastName_Field");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Password_Field.EnterText("Dsa_123");
 
-            assertTopElements = Element_Extensions.IsDisplayed(ConfirmPassword_Field);
+            assertTopElements = Element_Extensions.IsDisplayed(ConfirmPassword_Field, "LastName_Field");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ConfirmPassword_Field.EnterText("Dsa_123");
 
-            Assert.That(InformationAboutKraftApps_CheckBox.Displayed);
-            //Assert.That(InformationAboutKraftApps_CheckBox.Text == "RegisterConsentsViewModel_CommunicationConsent", "I agree to receive information about KraftApp check box is not working");
+            assertTopElements = Element_Extensions.IsDisplayed(InformationAboutKraftApps_CheckBox, "InformationAboutKraftApps_CheckBox");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(InformationAboutKraftApps_CheckBox);
 
-            Assert.That(InformationAboutKraftApps_CheckBox.Displayed);
-            //Assert.That(CreateAccount_Button.Text == "TermsOfService", "Create Account Button is not working");
+            assertTopElements = Element_Extensions.IsDisplayed(TermsOfService_CheckBox, "TermsOfService_CheckBox");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(TermsOfService_CheckBox);
 
-            Assert.That(InformationAboutKraftApps_CheckBox.Displayed);
+            assertTopElements = Element_Extensions.IsDisplayed(PrivacyPolicy_CheckBox, "PrivacyPolicy_CheckBox");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(PrivacyPolicy_CheckBox);
 
-            Assert.That(CreateAccount_SubmitButton.Displayed);
+            assertTopElements = Element_Extensions.IsDisplayed(CreateAccount_SubmitButton, "CreateAccount_SubmitButton");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
         }
 
         public void ResendConfirmation()
@@ -239,7 +245,7 @@ namespace BindKraftAutomation.PageObject
             //Resend Confirmation page
             Assert.That(ResendConfirmationPage_Assert.Text == "Resend confirmation", "Resend Confirmation page error");
             //Resend Confirmation field
-            string[] assertTopElements = Element_Extensions.IsDisplayed(ResendConfirmation_EnterYourEmail);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(ResendConfirmation_EnterYourEmail, "ResendConfirmation_EnterYourEmail");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ResendConfirmation_EnterYourEmail.EnterText("drake@abv.bg");
@@ -251,21 +257,28 @@ namespace BindKraftAutomation.PageObject
 
         public void SignUpWithMicrosoftAcc()
         {
-            Assert.That(MicrosoftAccount.Displayed, "Microsoft icon is not displayed");
+            string[] assertTopElements = Element_Extensions.IsDisplayed(MicrosoftAccount, "MicrosoftAccount");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(MicrosoftAccount);
+
             Assert.That(MicrosoftAccount_Assert.Text == "Sign in", "Microsoft Sign Up page error");
         }
 
         public void SignUpWithFacebookAcc()
         {
-            Assert.That(FacebookAccount.Displayed, "Facebook icon is not displayed");
+            string[] assertTopElements = Element_Extensions.IsDisplayed(FacebookAccount, "FacebookAccount");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(FacebookAccount);
             Assert.That(FacebookAccount_Assert.Displayed, "Facebook Sign Up page error");
         }
 
         public void SignUpWithGoogleAcc()
         {
-            Assert.That(GoogleAccount.Displayed, "Google icon is not displayed");
+            string[] assertTopElements = Element_Extensions.IsDisplayed(GoogleAccount, "GoogleAccount");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(GoogleAccount);
             Assert.That(GoogleAccount_Assert.Displayed, "Google Sign Up page error");
         }

@@ -99,75 +99,34 @@ namespace BindKraftAutomation.TestCases
             HomePage.OpenUserOptionMenu();
         }
 
-        //[Test, Order(17)]
+        [Test, Order(17)]
         [Retry(2)]
-        public void OpenUserProfileMenuTest()
+        public void UserProfileMenuTest()
         {
-            test = extent.CreateTest("OpenHomePageMenuTest");
+            test = extent.CreateTest("User Profile Menu Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
             loginPage.LoginToApplication("LogInTest");
 
             var HomePage = new HomePage(driver);
-            HomePage.OpenUserProfile();
+            HomePage.UserProfileMenu();
         }
 
-       // [Test, Order(18)]
-        [Retry(2)]
-        public void CheckUserProfileInfoTest()
-        {
-            test = extent.CreateTest("OpenHomePageMenuTest");
-            this.homePage.GoToLoginPage();
-
-            var loginPage = new LoginPage(driver);
-            loginPage.LoginToApplication("LogInTest");
-
-            var feature = extent.CreateTest<Feature>("Open homepage menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-
-            var HomePage = new HomePage(driver);
-            HomePage.CheckUserProfileInfo();
-
-            scenario.CreateNode<Given>("Steps...");
-        }
-
-       // [Test, Order(19)]
-        [Retry(2)]
-        public void CheckUserProfileButtonsTest()
-        {
-            test = extent.CreateTest("OpenHomePageMenuTest");
-            this.homePage.GoToLoginPage();
-
-            var loginPage = new LoginPage(driver);
-            loginPage.LoginToApplication("LogInTest");
-
-            var feature = extent.CreateTest<Feature>("Open homepage menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-
-            var HomePage = new HomePage(driver);
-            HomePage.CheckUserProfileButtons();
-
-            scenario.CreateNode<Given>("Steps...");
-        }
+       
 
        // [Test, Order(20)]
-        [Retry(2)]
-        public void OpenHamburgerMenuBottonTest()
+        [Retry(1)]
+        public void HamburgerMenuTest()
         {
-            test = extent.CreateTest("OpenHomePageMenuTest");
+            test = extent.CreateTest("Hamburger Menu Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
             loginPage.LoginToApplication("LogInTest");
 
-            var feature = extent.CreateTest<Feature>("Open homepage menu");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-
             var HomePage = new HomePage(driver);
-            HomePage.OpenHamburgerMenuBotton();
-
-            scenario.CreateNode<Given>("Steps...");
+            HomePage.HamburgerMenu();
         }
 
         [Test, Order(20)]
@@ -210,6 +169,20 @@ namespace BindKraftAutomation.TestCases
 
             var HomePage = new HomePage(driver);
             HomePage.Logout();
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void NotificationSetingsTest()
+        {
+            test = extent.CreateTest("Notification Setings Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.NotificationSettings();
         }
     }
 }
