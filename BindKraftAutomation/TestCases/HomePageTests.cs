@@ -115,11 +115,11 @@ namespace BindKraftAutomation.TestCases
 
        
 
-       // [Test, Order(20)]
-        [Retry(1)]
-        public void HamburgerMenuTest()
+        [Test, Order(20)]
+        [Retry(2)]
+        public void HamburgerMenuTestElements()
         {
-            test = extent.CreateTest("Hamburger Menu Test");
+            test = extent.CreateTest("Hamburger Menu Test Elements");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -127,6 +127,62 @@ namespace BindKraftAutomation.TestCases
 
             var HomePage = new HomePage(driver);
             HomePage.HamburgerMenu();
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void HamburgerMenu_GoToKraftBoardTest()
+        {
+            test = extent.CreateTest("Hamburger Menu Go To KraftBoard Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.HamburgerMenu_GoToKraftBoard();
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void HamburgerMenu_GoToKraftCrmTest()
+        {
+            test = extent.CreateTest("Hamburger Menu Go To KraftCrm");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.HamburgerMenu_GoToKraftCrm();
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void HamburgerMenu_GoToKraftHrmTest()
+        {
+            test = extent.CreateTest("Hamburger Menu_Go To KraftHrm");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.HamburgerMenu_GoToKraftHrm();
+        }
+
+        [Test, Order(20)]
+        [Retry(2)]
+        public void HamburgerMenu_ClickHomeButtonTest()
+        {
+            test = extent.CreateTest("Hamburger Menu Click Home Button");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.HamburgerMenu_ClickHomeButton();
         }
 
         [Test, Order(20)]

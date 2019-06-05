@@ -62,7 +62,7 @@ namespace BindKraftAutomation
             this.homePage.KraftBoardMenu();
         }
 
-       // [Test, Order(3)]
+        [Test, Order(3)]
         [Retry(2)]
         public void KraftBoardPlansMenuTest()
         {

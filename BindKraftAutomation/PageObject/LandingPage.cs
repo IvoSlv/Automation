@@ -174,6 +174,10 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement PrivacyPolicy_AssertContent { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@id='modal-body']//div//li[contains(text(),'Unlimited number of Boards')]")]
+        [CacheLookup]
+        public IWebElement KraftBoardPlansBasicPlan_SeeAllContent { get; set; }
+
         #endregion
 
         public LandingPage(IWebDriver driver)
@@ -210,7 +214,9 @@ namespace BindKraftAutomation.PageObject
             string[] assertTopElements = Helpers.assertByStartHtml(BoardsPopContent.Text, "Easily", 6);
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-            Assert.That(KraftMenuClose.Displayed);
+            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
             //Teams
             Assert.That(KraftBoard_Teams.Text == "Teams", "Teams pop up error");
@@ -218,7 +224,9 @@ namespace BindKraftAutomation.PageObject
             assertTopElements = Helpers.assertByStartHtml(TeamsPopContent.Text, "The best", 8);
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-            Assert.That(KraftMenuClose.Displayed);
+            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
             //Diversified Access Right
             Assert.That(KraftBoard_DiversifiedAccessRight.Text == "Diversified Access Rights", "Diversified Access Rights pop up error");
@@ -226,26 +234,34 @@ namespace BindKraftAutomation.PageObject
             assertTopElements = Helpers.assertByStartHtml(KraftBoard_DiversifiedAccessRightPopContent.Text, "The ability", 11);
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-            Assert.That(KraftMenuClose.Displayed);
+            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
             //Play demo
             Assert.That(KraftBoard_PlayDemo.Text == "Play Demo", "Play Demo pop up error");
             ClickElement(KraftBoard_PlayDemo);
             Assert.That(KraftBoard_PlayDemoPopContent.Displayed);
-            Assert.That(KraftMenuClose.Displayed);
+            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
-
         }
-        // Under construction
+        
         public void KraftBoardPlansMenu()
         {
-            ClickElement(KraftBoardPlans);
-            Assert.AreEqual(KraftBoardPlans, KraftBoardPlans);
-            ClickElement(KraftBoardPlansBasicPlan_SeeAll, KraftMenuClose);
-            Assert.AreEqual(KraftBoardPlansBasicPlan_SeeAll, KraftBoardPlansBasicPlan_SeeAll);
+            Assert.That(KraftBoardPlansBasicPlan_SeeAll.Text == "see all...", "See all pop up is not displayed");
+            ClickElement(KraftBoardPlansBasicPlan_SeeAll);
+            Assert.That(KraftBoardPlansBasicPlan_SeeAllContent.Text == "Unlimited number of Boards", "See all pop up error");
+
+            string [] assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(KraftMenuClose);
+
+            Assert.That(KraftBoardPlans_GetStarted.Text == "Get Started", "Get started button is not displayed");
             ClickElement(KraftBoardPlans_GetStarted);
-            Assert.AreEqual(KraftBoardPlans_GetStarted, KraftBoardPlans_GetStarted);
-            driver.Navigate().Back();
+            Assert.That(LogInPage_LogInTitle.Text == "Log in", "Log in title is missing");
         }
         // Under construction
         public void KraftCrmMenu()

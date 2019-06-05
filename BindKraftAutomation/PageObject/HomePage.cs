@@ -200,6 +200,10 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//p[contains(text(),'Home')]")]
         [CacheLookup]
         public IWebElement HamburgerMenu_HomeLink { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "///span[contains(@class,'bk-svg-arrow-menu')]//*[@id='Layer_1']")]
+        [CacheLookup]
+        public IWebElement HamburgerMenu_ArrowSvg { get; set; }
         #endregion
 
         public void GoToCrm()
@@ -266,7 +270,7 @@ namespace BindKraftAutomation.PageObject
 
         }
         
-        // Under construction
+        
         public void HamburgerMenu()
         {
             string[] assertTopElements = Element_Extensions.IsDisplayed(HamburgerMenuBotton, "HamburgerMenuBotton");
@@ -279,17 +283,35 @@ namespace BindKraftAutomation.PageObject
             Assert.That(HamburgerMenu_KraftCrmLink.Text == "KraftCRM", "KraftCRM link is not displayed");
             Assert.That(HamburgerMenu_KraftHrmLink.Text == "KraftHRM", "KraftHRM link is not displayed");
             Assert.That(HamburgerMenu_HomeLink.Text == "Home", "Home link is not displayed");
-            //Check menu buttons
+        }
+
+        public void HamburgerMenu_GoToKraftBoard()
+        {
+            ClickElement(HamburgerMenuBotton);
+            Task.Delay(300).Wait();
             ClickElement(HamburgerMenu_KraftBoardLink);
             Assert.That(KraftBoard_Assert.Text == "Kraft Board", "KraftBoard button is not working");
+        }
+
+        public void HamburgerMenu_GoToKraftCrm()
+        {
             ClickElement(HamburgerMenuBotton);
             Task.Delay(300).Wait();
             ClickElement(HamburgerMenu_KraftCrmLink);
             Assert.That(KraftCrm_AssertPage.Text == "Kraft CRM", "KraftCRM button is not working");
+        }
+
+        public void HamburgerMenu_GoToKraftHrm()
+        {
             ClickElement(HamburgerMenuBotton);
             Task.Delay(300).Wait();
             ClickElement(HamburgerMenu_KraftHrmLink);
             Assert.That(KraftHrm_AssertPage.Text == "Kraft HRM", "KraftHRM button is not working");
+        }
+
+        public void HamburgerMenu_ClickHomeButton()
+        {
+            ClickElement(KraftCrm);
             ClickElement(HamburgerMenuBotton);
             Task.Delay(300).Wait();
             ClickElement(HamburgerMenu_HomeLink);
