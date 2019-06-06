@@ -95,8 +95,10 @@
     <Compile Include="Globals\Constants.cs" />
     <Compile Include="Globals\Helpers.cs" />
     <Compile Include="Models\PageTestBase.cs" />
+    <Compile Include="PageObject\CrmPage.cs" />
     <Compile Include="PageObject\HomePage.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="TestCases\CrmPageTests.cs" />
     <Compile Include="TestCases\HomePageTests.cs" />
     <Compile Include="TestCases\LandingPageTests.cs" />
     <Compile Include="PageObject\LandingPage.cs" />

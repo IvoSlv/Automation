@@ -43,7 +43,7 @@ namespace BindKraftAutomation.TestCases
             extent.Flush();
         }
 
-        [Test, Order(13)]
+        [Test, Order(6)]
         [Retry(2)]
         public void GoToBoardTest()
         {
@@ -57,7 +57,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.GoToBoard();
         }
 
-       [Test, Order(14)]
+       [Test, Order(6)]
         [Retry(2)]
         public void GoToCrmTest()
         {
@@ -71,7 +71,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.GoToCrm();
         }
 
-        [Test, Order(15)]
+        [Test, Order(6)]
         [Retry(2)]
         public void GoToHrmTest()
         {
@@ -85,7 +85,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.GoToHrm();
         }
 
-        [Test, Order(16)]
+        [Test, Order(6)]
         [Retry(2)]
         public void OpenUserOptionMenuTest()
         {
@@ -99,7 +99,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.OpenUserOptionMenu();
         }
 
-        [Test, Order(17)]
+        [Test, Order(7)]
         [Retry(2)]
         public void UserProfileMenuTest()
         {
@@ -112,10 +112,8 @@ namespace BindKraftAutomation.TestCases
             var HomePage = new HomePage(driver);
             HomePage.UserProfileMenu();
         }
-
-       
-
-        [Test, Order(20)]
+        
+        [Test, Order(6)]
         [Retry(2)]
         public void HamburgerMenuTestElements()
         {
@@ -129,7 +127,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.HamburgerMenu();
         }
 
-        [Test, Order(20)]
+        [Test, Order(8)]
         [Retry(2)]
         public void HamburgerMenu_GoToKraftBoardTest()
         {
@@ -143,7 +141,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.HamburgerMenu_GoToKraftBoard();
         }
 
-        [Test, Order(20)]
+        [Test, Order(8)]
         [Retry(2)]
         public void HamburgerMenu_GoToKraftCrmTest()
         {
@@ -157,7 +155,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.HamburgerMenu_GoToKraftCrm();
         }
 
-        [Test, Order(20)]
+        [Test, Order(8)]
         [Retry(2)]
         public void HamburgerMenu_GoToKraftHrmTest()
         {
@@ -171,7 +169,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.HamburgerMenu_GoToKraftHrm();
         }
 
-        [Test, Order(20)]
+        [Test, Order(8)]
         [Retry(2)]
         public void HamburgerMenu_ClickHomeButtonTest()
         {
@@ -185,7 +183,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.HamburgerMenu_ClickHomeButton();
         }
 
-        [Test, Order(20)]
+        [Test, Order(6)]
         [Retry(2)]
         public void NotificationMenuTest()
         {
@@ -199,7 +197,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.CheckNotificationMenu();
         }
 
-        [Test, Order(20)]
+        [Test, Order(6)]
         [Retry(2)]
         public void GoToKraftUsersGuideTest()
         {
@@ -213,7 +211,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.GoToKraftUsersGuide();
         }
 
-        [Test, Order(20)]
+        [Test, Order(7)]
         [Retry(2)]
         public void LogoutTest()
         {
@@ -227,7 +225,7 @@ namespace BindKraftAutomation.TestCases
             HomePage.Logout();
         }
 
-        [Test, Order(20)]
+        [Test, Order(7)]
         [Retry(2)]
         public void NotificationSetingsTest()
         {

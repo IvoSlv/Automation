@@ -36,6 +36,10 @@ namespace BindKraftAutomation
         /*
              * The test reporting feature is based in the PageTestBase class.
              * Every test need to have those three steps - Feature -> Scenario -> Nodes
+             * 
+             * var feature = extent.CreateTest<Feature>("Create Account Test");
+             *  var scenario = feature.CreateNode<Scenario>("Scenario");
+             * scenario.CreateNode<Given>("Steps...");
              */
 
         [Test, Order(1)]
@@ -70,7 +74,7 @@ namespace BindKraftAutomation
             this.homePage.KraftBoardPlansMenu();
         }
 
-       // [Test, Order(4)]
+       // [Test, Order(3)]
         [Retry(2)]
         public void KraftCrmMenuTest()
         {
@@ -78,7 +82,7 @@ namespace BindKraftAutomation
             this.homePage.KraftCrmMenu();
         }
 
-        //[Test, Order(5)]
+        //[Test, Order(3)]
         [Retry(2)]
         public void KraftCrmPlansMenuTest()
         {
@@ -86,7 +90,7 @@ namespace BindKraftAutomation
             this.homePage.KraftCrmPlansMenu();
         }
 
-        //[Test, Order(6)]
+        //[Test, Order(3)]
         [Retry(2)]
         public void FeaturesMenuTest()
         {
@@ -94,7 +98,7 @@ namespace BindKraftAutomation
             this.homePage.FeaturesMenu();
         }
 
-        [Test, Order(4)]
+        [Test, Order(3)]
         [Retry(2)]
         public void TermsOfUse_PrivacyPollicyTest()
         {
@@ -102,7 +106,7 @@ namespace BindKraftAutomation
             this.homePage.TermsOfUse_PrivacyPollicy();
         }
 
-        [Test, Order(5)]
+        [Test, Order(3)]
         [Retry(2)]
         public void Certificate1Test()
         {
@@ -110,7 +114,7 @@ namespace BindKraftAutomation
             this.homePage.Certificate1();
         }
 
-        [Test, Order(6)]
+        [Test, Order(3)]
         [Retry(2)]
         public void Certificate2Test()
         {

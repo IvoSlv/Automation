@@ -36,7 +36,13 @@ namespace BindKraftAutomation.Extensions
             element.SendKeys(text);
         }
 
-            public static bool Is_Displayed_SimpleAssert(this IWebElement element, string elementName)
+        public static void EnterText1(this IWebElement element,string a)
+        {
+            element.Clear();
+            element.SendKeys(a);
+        }
+
+        public static bool Is_Displayed_SimpleAssert(this IWebElement element, string elementName)
         {
             bool result;
             try

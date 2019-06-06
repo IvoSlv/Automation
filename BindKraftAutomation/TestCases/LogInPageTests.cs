@@ -39,7 +39,7 @@ namespace BindKraftAutomation.TestCases
             extent.Flush();
         }
 
-        [Test, Order(7)]
+        [Test, Order(4)]
         [Retry(2)]
         public void LoginTest()
         {
@@ -50,7 +50,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.LoginToApplication("LogInTest");
         }
 
-        [Test, Order(8)]
+        [Test, Order(5)]
         [Retry(2)]
         public void ForgotYourEmailTest()
         {
@@ -61,7 +61,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.ForgotYourPasword();
         }
 
-        [Test, Order(9)]
+        [Test, Order(5)]
         [Retry(2)]
         public void ResendConfirmationTest()
         {
@@ -72,7 +72,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.ResendConfirmation();
         }
 
-        [Test, Order(10)]
+        [Test, Order(5)]
         [Retry(2)]
         public void SignUpWithMicrosoftAccountTest()
         {
@@ -83,7 +83,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.SignUpWithMicrosoftAcc();
         }
 
-        [Test, Order(11)]
+        [Test, Order(5)]
         [Retry(2)]
         public void SignUpWithFacebookAccountTest()
         {
@@ -94,7 +94,7 @@ namespace BindKraftAutomation.TestCases
             loginPage.SignUpWithFacebookAcc();
         }
 
-        [Test, Order(12)]
+        [Test, Order(5)]
         [Retry(2)]
         public void SignUpWithGoogleAccountTest()
         {
@@ -105,7 +105,8 @@ namespace BindKraftAutomation.TestCases
             loginPage.SignUpWithGoogleAcc();
         }
 
-        [Test, Order(12)]
+        [Test, Order(5)]
+        [Retry(2)]
         public void CreateAccountTest()
         {
             test = extent.CreateTest("Create Account - Form test");
@@ -113,10 +114,6 @@ namespace BindKraftAutomation.TestCases
 
             var loginPage = new LoginPage(driver);
             loginPage.CreateAccount();
-
-            var feature = extent.CreateTest<Feature>("Create Account Test");
-            var scenario = feature.CreateNode<Scenario>("Scenario");
-            scenario.CreateNode<Given>("Steps...");
         }
     }
 }
