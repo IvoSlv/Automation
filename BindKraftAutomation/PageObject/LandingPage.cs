@@ -188,23 +188,6 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
-
-        //Sample - used in KraftBoardMenu() [//Assert.That(testBoardPopUp(), "Kraft board pop up error.");]
-        public bool testBoardPopUp()
-        {
-            var len = BoardsPopContent.Text.Length;
-            var textStart = BoardsPopContent.Text.Trim().Substring(0, 6);
-            var textEnd = BoardsPopContent.Text.Substring(len - 6);
-
-            if (BoardsPopTitle.Text != "Boards" ||
-                textStart != "Easily" ||
-                textEnd != "teams.")
-            {
-                return false;
-            }
-
-            return true;
-        }
         
         public void KraftBoardMenu()
         {
@@ -263,7 +246,7 @@ namespace BindKraftAutomation.PageObject
             ClickElement(KraftBoardPlans_GetStarted);
             Assert.That(LogInPage_LogInTitle.Text == "Log in", "Log in title is missing");
         }
-        // Under construction
+        //TODO: Under construction
         public void KraftCrmMenu()
         {
             ClickElement(KraftCrm);
@@ -278,7 +261,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftCrm_PlayDemo, KraftCrm_PlayDemo);
             Assert.AreEqual(PlayDemo_Assert, PlayDemo_Assert);
         }
-        // Under construction
+        //TODO: Under construction
         public void KraftCrmPlansMenu()
         {
             ClickElement(KraftCrmPlans);
@@ -289,7 +272,7 @@ namespace BindKraftAutomation.PageObject
             Assert.AreEqual(KraftCrmPlans_BasicPlan_GetStarted, KraftCrmPlans_BasicPlan_GetStarted);
             driver.Navigate().Back();
         }
-        // Under construction
+        //TODO: Under construction
         public void FeaturesMenu()
         {
             ClickElement(Features);

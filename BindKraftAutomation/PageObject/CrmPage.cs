@@ -27,7 +27,7 @@ namespace BindKraftAutomation.PageObject
         #region
         [FindsBy(How = How.XPath, Using = "//div[@class='bk-board-info-box']")]
         [CacheLookup]
-        public IWebElement MyCrm { get; set; }
+        public IWebElement OpenCrm { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//h4[contains(text(),'Create Company')]")]
         [CacheLookup]
@@ -84,14 +84,68 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-small bk-pushable']")]
         [CacheLookup]
         public IWebElement CreateCompany_SaveButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the abbreviatin of the company']")]
+        [CacheLookup]
+        public IWebElement CreateCompany_AbbreviationField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the type of industry. E.g Trade, Food, Electronic']")]
+        [CacheLookup]
+        public IWebElement CreateCompany_IndustryField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the name of the CEO']")]
+        [CacheLookup]
+        public IWebElement CreateCompany_CeoField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body//div[@class='bk-companies-list bk-flex']//div//div[1]//div[4]//span[1]")]
+        [CacheLookup]
+        public IWebElement OpenCompany { get; set; }
         #endregion
 
-        public void CreateCompany([Values("a", "b", "c")] string a)
+        public void CreateCompany()
         {
-            ClickElement(MyCrm);
+            //Open CRM 
+            string[] assertTopElements = Element_Extensions.IsDisplayed(OpenCrm, "Ivo CRM is not displayed");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCrm);
+            //Click on Create company button
+            Assert.That(CreateCompany_PlusButton.Text == "+", "CreateCompany_PlusButton is not working");
             ClickElement(CreateCompany_PlusButton);
-            CreateCompany_NameField.EnterText1("{0} {1} {2}");
+            //Enter text on name field 
+            assertTopElements = Element_Extensions.IsDisplayed(CreateCompany_NameField, "CreateCompany_NameField");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            CreateCompany_NameField.EnterText("New Company");
+            //Enter text on abbreviation field 
+            assertTopElements = Element_Extensions.IsDisplayed(CreateCompany_AbbreviationField, "CreateCompany_AbbreviationField is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            CreateCompany_AbbreviationField.EnterText("New Abb");
+            //Enter text on industry field 
+            assertTopElements = Element_Extensions.IsDisplayed(CreateCompany_IndustryField, "CreateCompany_IndustryField is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            CreateCompany_IndustryField.EnterText("Trade");
+            //Enter text on CEO field 
+            assertTopElements = Element_Extensions.IsDisplayed(CreateCompany_CeoField, "CreateCompany_CeoField is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            CreateCompany_CeoField.EnterText("John");
+            //Click on save button
+            assertTopElements = Element_Extensions.IsDisplayed(CreateCompany_SaveButton, "CreateCompany_SaveButton is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(CreateCompany_SaveButton);
+        }
+
+        public void CheckCompanyContent()
+        {
+            ClickElement(OpenCrm);
+            string[] assertTopElements = Element_Extensions.IsDisplayed(OpenCompany, "New Company is not displayed");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCompany);
         }
 
     }

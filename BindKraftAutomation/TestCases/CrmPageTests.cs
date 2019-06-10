@@ -43,11 +43,11 @@ namespace BindKraftAutomation.TestCases
             extent.Flush();
         }
 
-        [Test, Pairwise, Order(6)]
+        [Test, Order(10)]
         [Retry(2)]
-        public void GoToBoardTest()
+        public void CreateCompanyTest()
         {
-            test = extent.CreateTest("Go To KraftBoard Test");
+            test = extent.CreateTest("Create Company Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -57,7 +57,24 @@ namespace BindKraftAutomation.TestCases
             HomePage.GoToCrm();
 
             var CrmPage = new CrmPage(driver);
-            CrmPage.CreateCompany("name");
+            CrmPage.CreateCompany();
+        }
+
+        [Test, Order(11)]
+        [Retry(2)]
+        public void OpenCompanyTest()
+        {
+            test = extent.CreateTest("Create Company Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.GoToCrm();
+
+            var CrmPage = new CrmPage(driver);
+            CrmPage.CheckCompanyContent();
         }
     }
 }
