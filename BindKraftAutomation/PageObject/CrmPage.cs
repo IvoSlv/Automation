@@ -160,6 +160,54 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Comments (0)')]")]
         [CacheLookup]
         public IWebElement Company_CommentsMenu { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h2[@class='bk-svg-main-oposit']")]
+        [CacheLookup]
+        public IWebElement Company_AddAddressesButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the country']")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_CountryField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the city']")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_CityField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the street']")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_StreetField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the additional information']")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_AdditionalField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-small bk-interact bk-pushable bk-margin-small']")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_SaveButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Close')]")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_CloseButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Edit')]")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_EditButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='bk-form-with-validation']//button[@class='bk-button bk-button-small bk-pushable'][contains(text(),'Delete')]")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_Edit_DeleteButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='bk-button bk-button-small bk-pushable'][contains(text(),'Close')]")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_Edit_CloseButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Additional...']")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_Edit_AdditionalField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='bk-form-with-validation']//button[@class='bk-button bk-button-small bk-pushable'][contains(text(),'Save')]")]
+        [CacheLookup]
+        public IWebElement Company_Addresses_Edit_SaveButton { get; set; }
         #endregion
 
         public void CheckMainTabsAndOptions()
@@ -316,5 +364,82 @@ namespace BindKraftAutomation.PageObject
             ClickElement(Company_DeleteButtonNo);
         }
 
+        public void CompanyAddressesMenu()
+        {
+            //Open CRM
+            string[] assertTopElements = Element_Extensions.IsDisplayed(OpenCrm, "Ivo CRM is not displayed");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCrm);
+            //Open Company
+            assertTopElements = Element_Extensions.IsDisplayed(OpenCompany, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCompany);
+            Task.Delay(300).Wait();
+            //Addresses tab
+            Assert.That(Company_AddessesMenu.Text == "Addresses", "Addresses menu is not displayed");
+            ClickElement(Company_AddessesMenu);
+            //Add adresses button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_AddAddressesButton, "Add Addresses button is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_AddAddressesButton);
+            //Country field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_CountryField, "Addresses - Country Field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Addresses_CountryField.EnterText("Bulgaria");
+            //City field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_CityField, "Addresses_City Field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Addresses_CityField.EnterText("Sofia");
+            //Street field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_StreetField, "Addresses_Street Field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Addresses_StreetField.EnterText("Friend 12");
+            //Additional field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_AdditionalField, "Addresses_Additional Field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Addresses_AdditionalField.EnterText("DSA");
+            //Close button
+            Assert.That(Company_Addresses_CloseButton.Text == "Close", "Close button is not displayed");
+            //Save button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_SaveButton, "Save button is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Addresses_SaveButton);
+            //Edit button
+            Assert.That(Company_Addresses_EditButton.Text == "Edit", "Save button is not working");
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_EditButton, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Addresses_EditButton);
+            //Close button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_Edit_CloseButton, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Additional field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_Edit_AdditionalField, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Addresses_Edit_AdditionalField.EnterText("DSA");
+            //Save button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_Edit_SaveButton, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Delete button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_Edit_DeleteButton, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Addresses_Edit_DeleteButton);
+            //Delete button Yes/No
+            Assert.That(Company_DeleteButtonNo.Text == "No", "Addresses menu is not displayed");
+            Assert.That(Company_DeleteButtonYes.Text == "Yes", "Addresses menu is not displayed");
+            ClickElement(Company_DeleteButtonYes);
+        }
     }
 }
