@@ -5,7 +5,7 @@ using NUnit.Framework.Interfaces;
 using AventStack.ExtentReports;
 using BindKraftAutomation.PageObject;
 
-namespace BindKraftAutomation
+namespace BindKraftAutomation.TestCases
 {
     [TestFixture]
     class LandingPageTests : PageTestBase

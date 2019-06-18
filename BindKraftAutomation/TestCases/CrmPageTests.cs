@@ -45,6 +45,23 @@ namespace BindKraftAutomation.TestCases
 
         [Test, Order(10)]
         [Retry(2)]
+        public void CheckMainTabsAndOptionsTest()
+        {
+            test = extent.CreateTest("Check Main Tabs And Options Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.GoToCrm();
+
+            var CrmPage = new CrmPage(driver);
+            CrmPage.CheckMainTabsAndOptions();
+        }
+
+        [Test, Order(11)]
+        [Retry(2)]
         public void CreateCompanyTest()
         {
             test = extent.CreateTest("Create Company Test");
@@ -60,11 +77,11 @@ namespace BindKraftAutomation.TestCases
             CrmPage.CreateCompany();
         }
 
-        [Test, Order(11)]
+        [Test, Order(12)]
         [Retry(2)]
-        public void OpenCompanyTest()
+        public void CheckCompanyTabs()
         {
-            test = extent.CreateTest("Create Company Test");
+            test = extent.CreateTest("Check Company Menus Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -74,7 +91,24 @@ namespace BindKraftAutomation.TestCases
             HomePage.GoToCrm();
 
             var CrmPage = new CrmPage(driver);
-            CrmPage.CheckCompanyContent();
+            CrmPage.CheckCompanyMenus();
+        }
+
+        [Test, Order(13)]
+        [Retry(2)]
+        public void CompanyMenuTest()
+        {
+            test = extent.CreateTest("Company Menu Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.GoToCrm();
+
+            var CrmPage = new CrmPage(driver);
+            CrmPage.CompanyMenu();
         }
     }
 }
