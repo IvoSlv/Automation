@@ -8,6 +8,7 @@ using BindKraftAutomation.PageObject;
 namespace BindKraftAutomation.TestCases
 {
     [TestFixture]
+    [Order(1)]
     class LandingPageTests : PageTestBase
     {
         private LandingPage homePage;

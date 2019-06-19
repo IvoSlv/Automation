@@ -208,6 +208,42 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@class='bk-form-with-validation']//button[@class='bk-button bk-button-small bk-pushable'][contains(text(),'Save')]")]
         [CacheLookup]
         public IWebElement Company_Addresses_Edit_SaveButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//h2[@class='bk-svg-main-oposit']")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_AddContactButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'(please select)')]")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_Type { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Email')]")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_Type_Email { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Facebook')]")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_Type_Facebook { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Phone')]")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_Type_Phone { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'LinkedIn')]")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_Type_LinkedIn { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='Enter the contact']")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_ImputContact { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Close')]")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_CloseButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='bk-form-with-validation']//button[@class='bk-button bk-button-small bk-pushable'][contains(text(),'Save')]")]
+        [CacheLookup]
+        public IWebElement Company_Contacts_SaveButton { get; set; }
         #endregion
 
         public void CheckMainTabsAndOptions()
@@ -218,7 +254,7 @@ namespace BindKraftAutomation.PageObject
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
             //Check Companies,People,Reminders,Users tabs
-            Task.Delay(500).Wait();
+            Task.Delay(1000).Wait();
             Assert.That(CompanyTab.Text == "Companies", "Companies tab is not displayed");
             Assert.That(PeopleTab.Text == "People", "People tab is not displayed");
             Assert.That(RemindersTab.Text == "Reminders", "Reminders tab is not displayed");
@@ -431,6 +467,65 @@ namespace BindKraftAutomation.PageObject
             assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_Edit_SaveButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Delete button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_Edit_DeleteButton, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Addresses_Edit_DeleteButton);
+            //Delete button Yes/No
+            Assert.That(Company_DeleteButtonNo.Text == "No", "Addresses menu is not displayed");
+            Assert.That(Company_DeleteButtonYes.Text == "Yes", "Addresses menu is not displayed");
+            ClickElement(Company_DeleteButtonYes);
+        }
+
+        public void CompanyContactsMenu()
+        {
+            //Open CRM
+            string[] assertTopElements = Element_Extensions.IsDisplayed(OpenCrm, "Ivo CRM is not displayed");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCrm);
+            //Open Company
+            assertTopElements = Element_Extensions.IsDisplayed(OpenCompany, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCompany);
+            Task.Delay(300).Wait();
+            //Contats tab
+            Assert.That(Company_ContactsMenu.Text == "Contacts", "Contacts menu is not displayed");
+            ClickElement(Company_ContactsMenu);
+            //Add contact button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Contacts_AddContactButton, "Contacts type drop-down is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Contacts_AddContactButton);
+            //Contacts type drop-down
+            Assert.That(Company_Contacts_Type.Text == "(please select)", "Email type is not displayed");
+            ClickElement(Company_Contacts_Type);
+            //Check different types of contacts
+            Task.Delay(300).Wait();
+            Assert.That(Company_Contacts_Type_Email.Text == "Email", "Email type is not displayed");
+            Assert.That(Company_Contacts_Type_Facebook.Text == "Facebook", "Facebook type is not displayed");
+            Assert.That(Company_Contacts_Type_Phone.Text == "Phone", "Phone type is not displayed");
+            Assert.That(Company_Contacts_Type_LinkedIn.Text == "LinkedIn", "LinkedIn type is not displayed");
+            ClickElement(Company_Contacts_Type_LinkedIn);
+            //Imput contact field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Contacts_ImputContact, "Imput Contact field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Contacts_ImputContact.EnterText("drake");
+            //Check Close/Save buttons
+            Assert.That(Company_Contacts_CloseButton.Text == "Close", "Email type is not displayed");
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Contacts_SaveButton, "Save button is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Contacts_SaveButton);
+            //Edit button
+            Assert.That(Company_Addresses_EditButton.Text == "Edit", "Save button is not working");
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_EditButton, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Addresses_EditButton);
             //Delete button
             assertTopElements = Element_Extensions.IsDisplayed(Company_Addresses_Edit_DeleteButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;

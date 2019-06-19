@@ -8,6 +8,7 @@ using AventStack.ExtentReports.Gherkin.Model;
 namespace BindKraftAutomation.TestCases
 {
     [TestFixture]
+    [Order(2)]
     class LogInPageTests : PageTestBase
     {
         private LandingPage homePage;

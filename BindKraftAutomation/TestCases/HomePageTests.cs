@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace BindKraftAutomation.TestCases
 {
     [TestFixture]
+    [Order(3)]
     class HomePageTests : PageTestBase
     {
         private LandingPage homePage;

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace BindKraftAutomation.TestCases
 {
     [TestFixture]
+    [Order(4)]
     class CrmPageTests : PageTestBase
     {
         private LandingPage homePage;
@@ -115,7 +116,7 @@ namespace BindKraftAutomation.TestCases
         [Retry(2)]
         public void CompanyAddressesMenuTest()
         {
-            test = extent.CreateTest("Company Menu Test");
+            test = extent.CreateTest("Addresses Menu Test");
             this.homePage.GoToLoginPage();
 
             var loginPage = new LoginPage(driver);
@@ -126,6 +127,23 @@ namespace BindKraftAutomation.TestCases
 
             var CrmPage = new CrmPage(driver);
             CrmPage.CompanyAddressesMenu();
+        }
+
+        [Test, Order(15)]
+        [Retry(2)]
+        public void CompanyContactsMenuTest()
+        {
+            test = extent.CreateTest("Contacts Menu Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.GoToCrm();
+
+            var CrmPage = new CrmPage(driver);
+            CrmPage.CompanyContactsMenu();
         }
     }
 }
