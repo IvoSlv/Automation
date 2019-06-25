@@ -320,6 +320,7 @@ namespace BindKraftAutomation.PageObject
 
         public void CheckNotificationMenu()
         {
+            Task.Delay(500).Wait();
             string[] assertTopElements = Element_Extensions.IsDisplayed(NotificationIcon, "NotificationIcon");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);

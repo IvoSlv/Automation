@@ -153,7 +153,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement Company_ContactsMenu { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'People')]")]
+        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[4]/a[1]")]
         [CacheLookup]
         public IWebElement Company_PeopleMenu { get; set; }
 
@@ -244,6 +244,62 @@ namespace BindKraftAutomation.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@class='bk-form-with-validation']//button[@class='bk-button bk-button-small bk-pushable'][contains(text(),'Save')]")]
         [CacheLookup]
         public IWebElement Company_Contacts_SaveButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//td[@class='bk-buckets-selected']//input[@placeholder='Search...']")]
+        [CacheLookup]
+        public IWebElement Company_People_bucketsSelector_Selected { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//td[@class='bk-buckets-not-selected']//input[@placeholder='Search...']")]
+        [CacheLookup]
+        public IWebElement Company_People_bucketsSelector_Nonselected { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//textarea[@placeholder='Enter your text']")]
+        [CacheLookup]
+        public IWebElement Company_Comments_AddComent_ImputField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@id='addComment']")]
+        [CacheLookup]
+        public IWebElement Company_Comments_AddComent_Button { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='crm-tab-body']//div[3]")]
+        [CacheLookup]
+        public IWebElement Company_Comments_EditCommentIcon { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body//div[@class='bk-simplewindow-headless window_active']//div[@class='bk-simplewindow-headless window_active']//div[4]")]
+        [CacheLookup]
+        public IWebElement Company_Comments_DeleteCommentIcon { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//textarea[@class='bk-edit-comment-edit-textarea']")]
+        [CacheLookup]
+        public IWebElement Company_Comments_EditCommentField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='saveComment']")]
+        [CacheLookup]
+        public IWebElement Company_Comments_EditComment_SaveCommentIcon { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body//div[@class='bk-simplewindow-headless window_active']//div[@class='bk-simplewindow-headless window_active']//div[4]")]
+        [CacheLookup]
+        public IWebElement Company_Comments_EditComment_CloseCommentIcon { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='crm-pager']")]
+        [CacheLookup]
+        public IWebElement Company_Comments_DeleteComment_Assert { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='try-something']//input")]
+        [CacheLookup]
+        public IWebElement Settings_NameField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@id='saveInfo']")]
+        [CacheLookup]
+        public IWebElement Settings_SaveButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Contact Types')]")]
+        [CacheLookup]
+        public IWebElement Settings_ContactTypes { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//body/div[@id='bindkraft']/div[@id='container']/div[contains(@class,'bk-ffamily-third')]/div[@class='bk-client-position']/div[@class='bk-image-background bk-mainwindow window_active']/div[@class='bk-client bk-client-position']/div[@class='bk-simplewindow window_active']/div[@class='bk-client-position']/div[@class='bk-tabsetwindow-with-header ui-draggable']/div[@class='bk-tabset-pages']/div[@class='bk-simplewindow-headless window_active']/div[@class='bk-client-position f_view_container ps']/div[1]/div[1]")]
+        [CacheLookup]
+        public IWebElement Settings_ContactTypes_Content { get; set; }
         #endregion
 
         public void CheckMainTabsAndOptions()
@@ -535,6 +591,118 @@ namespace BindKraftAutomation.PageObject
             Assert.That(Company_DeleteButtonNo.Text == "No", "Addresses menu is not displayed");
             Assert.That(Company_DeleteButtonYes.Text == "Yes", "Addresses menu is not displayed");
             ClickElement(Company_DeleteButtonYes);
+        }
+
+        public void CompanyPeopleMenu()
+        {
+            //Open CRM
+            string[] assertTopElements = Element_Extensions.IsDisplayed(OpenCrm, "Ivo CRM is not displayed");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCrm);
+            //Open Company
+            assertTopElements = Element_Extensions.IsDisplayed(OpenCompany, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCompany);
+            Task.Delay(300).Wait();
+            //Open People menu
+            assertTopElements = Element_Extensions.IsDisplayed(Company_PeopleMenu, "People menu is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_PeopleMenu);
+            Task.Delay(300).Wait();
+            //Check people menu content
+            assertTopElements = Element_Extensions.IsDisplayed(Company_People_bucketsSelector_Selected, "BucketsSelector Selected is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
+            assertTopElements = Element_Extensions.IsDisplayed(Company_People_bucketsSelector_Nonselected, "BucketsSelector Nonselected is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+        }
+
+        public void CompanyCommentsMenu()
+        {
+            //Open CRM
+            string[] assertTopElements = Element_Extensions.IsDisplayed(OpenCrm, "Ivo CRM is not displayed");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCrm);
+            //Open Company
+            assertTopElements = Element_Extensions.IsDisplayed(OpenCompany, "New Company is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCompany);
+            Task.Delay(300).Wait();
+            //Open Comments Menu
+            Assert.That(Company_CommentsMenu.Text == "Comments (0)", "Comments menu is not displayed");
+            ClickElement(Company_CommentsMenu);
+            //Add comment field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Comments_AddComent_ImputField, "Add comments field is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Comments_AddComent_ImputField.EnterText("drake");
+            //Add comment button
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Comments_AddComent_Button, "Add comments button is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Comments_AddComent_Button);
+            //Edit comment icon
+            Task.Delay(300).Wait();
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Comments_EditCommentIcon, "Edit Comment Icon is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Comments_EditCommentIcon);
+            //Edit comment field
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Comments_EditCommentField, "Edit comments field is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Company_Comments_EditCommentField.EnterText("drake@abv.bg");
+            //Close comment
+            Task.Delay(300).Wait();
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Comments_EditComment_CloseCommentIcon, "Close Comment Icon is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Save comment
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Comments_EditComment_SaveCommentIcon, "Save Comment Icon is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Comments_EditComment_SaveCommentIcon);
+            //Delete comment
+            Task.Delay(300).Wait();
+            assertTopElements = Element_Extensions.IsDisplayed(Company_Comments_DeleteCommentIcon, "Delete Comment Icon is not working");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Company_Comments_DeleteCommentIcon);
+            Assert.That(Company_DeleteButtonNo.Text == "No", "Delete Comment button (No) is not working");
+            Assert.That(Company_DeleteButtonYes.Text == "Yes", "Delete Comment button (Yes) is not working");
+            ClickElement(Company_DeleteButtonYes);
+        }
+
+        public void SettingsMenu()
+        {
+            //Open CRM
+            string[] assertTopElements = Element_Extensions.IsDisplayed(OpenCrm, "Ivo CRM is not displayed");
+            bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(OpenCrm);
+            //Open Settings menu
+            assertTopElements = Element_Extensions.IsDisplayed(SettingsIcon, "Settings icon is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(SettingsIcon); 
+            //Name field
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_NameField, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            Settings_NameField.EnterText("Ivo123");
+            //Check Save button
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_SaveButton, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
+
         }
     }
 }

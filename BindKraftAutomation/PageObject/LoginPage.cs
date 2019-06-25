@@ -8,6 +8,7 @@ using NUnit.Framework;
 using System.Linq;
 using BindKraftAutomation.Models;
 using BindKraftAutomation.Extensions;
+using System.Threading.Tasks;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -262,7 +263,7 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(MicrosoftAccount);
-
+            Task.Delay(500).Wait();
             Assert.That(MicrosoftAccount_Assert.Text == "Sign in", "Microsoft Sign Up page error");
         }
 
