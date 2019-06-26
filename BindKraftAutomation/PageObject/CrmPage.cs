@@ -297,9 +297,25 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement Settings_ContactTypes { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//body/div[@id='bindkraft']/div[@id='container']/div[contains(@class,'bk-ffamily-third')]/div[@class='bk-client-position']/div[@class='bk-image-background bk-mainwindow window_active']/div[@class='bk-client bk-client-position']/div[@class='bk-simplewindow window_active']/div[@class='bk-client-position']/div[@class='bk-tabsetwindow-with-header ui-draggable']/div[@class='bk-tabset-pages']/div[@class='bk-simplewindow-headless window_active']/div[@class='bk-client-position f_view_container ps']/div[1]/div[1]")]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Email')]")]
         [CacheLookup]
-        public IWebElement Settings_ContactTypes_Content { get; set; }
+        public IWebElement Settings_ContactTypes_Email { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Facebook')]")]
+        [CacheLookup]
+        public IWebElement Settings_ContactTypes_Facebook { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Phone')]")]
+        [CacheLookup]
+        public IWebElement Settings_ContactTypes_Phone { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'LinkedIn')]")]
+        [CacheLookup]
+        public IWebElement Settings_ContactTypes_LinkedIn { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'bk-tabs-panel bk-window-header-height flex-justify')]//span[contains(@class,'bk-margin-normal')]//*[@id='Layer_1']")]
+        [CacheLookup]
+        public IWebElement Settings_CloseIcon { get; set; }
         #endregion
 
         public void CheckMainTabsAndOptions()
@@ -688,6 +704,7 @@ namespace BindKraftAutomation.PageObject
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
             //Open Settings menu
+            Task.Delay(300).Wait();
             assertTopElements = Element_Extensions.IsDisplayed(SettingsIcon, "Settings icon is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
@@ -701,8 +718,32 @@ namespace BindKraftAutomation.PageObject
             assertTopElements = Element_Extensions.IsDisplayed(Settings_SaveButton, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-
-
+            //Open Contact Types tab
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_ContactTypes, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Settings_ContactTypes);
+            //Check Contact Type Email 
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_ContactTypes_Email, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Check Contact Type Facebook
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_ContactTypes_Facebook, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Check Contact Type Phone
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_ContactTypes_Phone, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Check Contact Type LinkedIn
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_ContactTypes_LinkedIn, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            //Close Settings button
+            assertTopElements = Element_Extensions.IsDisplayed(Settings_CloseIcon, "Name field is not displayed");
+            assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
+            Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+            ClickElement(Settings_CloseIcon);
         }
     }
 }

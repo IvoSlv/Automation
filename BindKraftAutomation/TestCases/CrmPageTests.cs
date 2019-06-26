@@ -179,5 +179,22 @@ namespace BindKraftAutomation.TestCases
             var CrmPage = new CrmPage(driver);
             CrmPage.CompanyCommentsMenu();
         }
+
+        [Test, Order(18)]
+        [Retry(2)]
+        public void CrmSettingsTest()
+        {
+            test = extent.CreateTest("Comments Menu Test");
+            this.homePage.GoToLoginPage();
+
+            var loginPage = new LoginPage(driver);
+            loginPage.LoginToApplication("LogInTest");
+
+            var HomePage = new HomePage(driver);
+            HomePage.GoToCrm();
+
+            var CrmPage = new CrmPage(driver);
+            CrmPage.SettingsMenu();
+        }
     }
 }
