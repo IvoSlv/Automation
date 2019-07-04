@@ -1,9 +1,34 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 
 namespace BindKraftAutomation.Globals
 {
     public static class Helpers
     {
+        public static Func<IWebElement, string, string[]> IsDisplayed =
+            (element, elName) =>
+            {
+                string[] result = new string[2];
+                result[0] = "true";
+                result[1] = "Pass";
+
+                try
+                {
+                    if (!element.Displayed)
+                    {
+                        result[0] = "false";
+                        result[1] = element + " is not Displayed";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result[0] = "false";
+                    result[1] = "Error with element: " + elName + ": " + ex.Message;
+                }
+
+                return result;
+            };
+
         public static Func<string, string, int, string[]> assertByStartHtml =
         (content, expected, sliceLength) =>
         {
@@ -21,24 +46,5 @@ namespace BindKraftAutomation.Globals
 
             return result;
         };
-
-        //Sample - used in KraftBoardMenu() [//Assert.That(testBoardPopUp(), "Kraft board pop up error.");]
-       // public bool testBoardPopUp()
-       // {
-        //    var len = BoardsPopContent.Text.Length;
-         //   var textStart = BoardsPopContent.Text.Trim().Substring(0, 6);
-         //   var textEnd = BoardsPopContent.Text.Substring(len - 6);
-         //
-         //   if (BoardsPopTitle.Text != "Boards" ||
-         //       textStart != "Easily" ||
-         //       textEnd != "teams.")
-         //   {
-         //       return false;
-        //    }
-
-        //    return true;
-       // }
-
-
     }
 }

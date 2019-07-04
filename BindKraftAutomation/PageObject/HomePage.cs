@@ -4,8 +4,8 @@ using NUnit.Framework;
 using System;
 using OpenQA.Selenium.Support.UI;
 using BindKraftAutomation.Models;
-using BindKraftAutomation.Extensions;
 using System.Threading.Tasks;
+using BindKraftAutomation.Globals;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -229,7 +229,7 @@ namespace BindKraftAutomation.PageObject
         
         public void OpenUserOptionMenu()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu, "UserOption_Menu");
+            string[] assertTopElements = Helpers.IsDisplayed(UserOption_Menu, "UserOption_Menu");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserOption_Menu);
@@ -250,14 +250,14 @@ namespace BindKraftAutomation.PageObject
             //Delete button
             Assert.That(UserProfile_DeleteButton.Text == "Delete", " 'Delete' button is not displayed");
             //Close button 
-            string[] assertTopElements = Element_Extensions.IsDisplayed(UserProfile_CloseButton, "UserProfile_CloseButton");
+            string[] assertTopElements = Helpers.IsDisplayed(UserProfile_CloseButton, "UserProfile_CloseButton");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             //Edit button
             Assert.That(UserProfile_Edit.Text == "Edit", " 'Edit' button is not displayed");
             ClickElement(UserProfile_Edit);
             //Subscribe for our newsletter check box
-            assertTopElements = Element_Extensions.IsDisplayed(UserProfile_SubscribeCheckBox, "UserProfile_SubscribeCheckBox");
+            assertTopElements = Helpers.IsDisplayed(UserProfile_SubscribeCheckBox, "UserProfile_SubscribeCheckBox");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserProfile_SubscribeCheckBox);
@@ -273,7 +273,7 @@ namespace BindKraftAutomation.PageObject
         
         public void HamburgerMenu()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(HamburgerMenuBotton, "HamburgerMenuBotton");
+            string[] assertTopElements = Helpers.IsDisplayed(HamburgerMenuBotton, "HamburgerMenuBotton");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(HamburgerMenuBotton);
@@ -321,7 +321,7 @@ namespace BindKraftAutomation.PageObject
         public void CheckNotificationMenu()
         {
             Task.Delay(500).Wait();
-            string[] assertTopElements = Element_Extensions.IsDisplayed(NotificationIcon, "NotificationIcon");
+            string[] assertTopElements = Helpers.IsDisplayed(NotificationIcon, "NotificationIcon");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(NotificationIcon);
@@ -330,7 +330,7 @@ namespace BindKraftAutomation.PageObject
 
         public void GoToKraftUsersGuide()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(KraftUsersGuideIcon, "KraftUsersGuideIcon");
+            string[] assertTopElements = Helpers.IsDisplayed(KraftUsersGuideIcon, "KraftUsersGuideIcon");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftUsersGuideIcon);
@@ -340,7 +340,7 @@ namespace BindKraftAutomation.PageObject
         public void Logout()
         {
             // Open user option menu
-            string[] assertTopElements = Element_Extensions.IsDisplayed(UserOption_Menu, "UserOption_Menu");
+            string[] assertTopElements = Helpers.IsDisplayed(UserOption_Menu, "UserOption_Menu");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserOption_Menu);

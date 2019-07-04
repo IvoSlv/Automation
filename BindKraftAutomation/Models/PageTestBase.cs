@@ -27,6 +27,11 @@ namespace BindKraftAutomation.Models
             initReporter();
         }
 
+        /// <summary>
+        /// Click element when its displayed
+        /// </summary>
+        /// <param name="el">Main element to click</param>
+        /// <param name="close">If this is some sort of a pop-up, element to click for close</param>
         public void ClickElement(IWebElement el, IWebElement close = null)
         {
             try

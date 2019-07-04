@@ -6,7 +6,6 @@ using System;
 using OpenQA.Selenium.Support.UI;
 using BindKraftAutomation.Models;
 using BindKraftAutomation.Globals;
-using BindKraftAutomation.Extensions;
 
 namespace BindKraftAutomation.PageObject
 {
@@ -197,7 +196,7 @@ namespace BindKraftAutomation.PageObject
             string[] assertTopElements = Helpers.assertByStartHtml(BoardsPopContent.Text, "Easily", 6);
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElements = Helpers.IsDisplayed(KraftMenuClose, "KraftMenuClose");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
@@ -207,7 +206,7 @@ namespace BindKraftAutomation.PageObject
             assertTopElements = Helpers.assertByStartHtml(TeamsPopContent.Text, "The best", 8);
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElements = Helpers.IsDisplayed(KraftMenuClose, "KraftMenuClose");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
@@ -217,7 +216,7 @@ namespace BindKraftAutomation.PageObject
             assertTopElements = Helpers.assertByStartHtml(KraftBoard_DiversifiedAccessRightPopContent.Text, "The ability", 11);
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
-            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElements = Helpers.IsDisplayed(KraftMenuClose, "KraftMenuClose");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
@@ -225,7 +224,7 @@ namespace BindKraftAutomation.PageObject
             Assert.That(KraftBoard_PlayDemo.Text == "Play Demo", "Play Demo pop up error");
             ClickElement(KraftBoard_PlayDemo);
             Assert.That(KraftBoard_PlayDemoPopContent.Displayed);
-            assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            assertTopElements = Helpers.IsDisplayed(KraftMenuClose, "KraftMenuClose");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
@@ -237,7 +236,7 @@ namespace BindKraftAutomation.PageObject
             ClickElement(KraftBoardPlansBasicPlan_SeeAll);
             Assert.That(KraftBoardPlansBasicPlan_SeeAllContent.Text == "Unlimited number of Boards", "See all pop up error");
 
-            string [] assertTopElements = Element_Extensions.IsDisplayed(KraftMenuClose, "KraftMenuClose");
+            string [] assertTopElements = Helpers.IsDisplayed(KraftMenuClose, "KraftMenuClose");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
@@ -316,7 +315,7 @@ namespace BindKraftAutomation.PageObject
 
         public void Certificate1()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(Certificate_Iso27001, "Certificate_Iso27001");
+            string[] assertTopElements = Helpers.IsDisplayed(Certificate_Iso27001, "Certificate_Iso27001");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Certificate_Iso27001.Click();
@@ -330,7 +329,7 @@ namespace BindKraftAutomation.PageObject
 
         public void Certificate2()
         {
-            string[] assertTopElements = Element_Extensions.IsDisplayed(Certificate_Iso9001, "Certificate_Iso9001");
+            string[] assertTopElements = Helpers.IsDisplayed(Certificate_Iso9001, "Certificate_Iso9001");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Certificate_Iso9001.Click();
