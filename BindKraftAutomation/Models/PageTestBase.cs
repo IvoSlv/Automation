@@ -17,7 +17,24 @@ namespace BindKraftAutomation.Models
         internal ExtentHtmlReporter htmlReport;
         internal static ExtentReports extent = new ExtentReports();
         internal static ExtentTest test;
+        private int waitSeconds;
         
+        public int WaitSeconds
+        {
+            get
+            {
+                return waitSeconds;
+            }
+            set
+            {
+                if (0 > value || value > 60)
+                {
+                    throw new Exception("Wait seconds can't be less than 0 or more than a minute.");
+                }
+                waitSeconds = value;
+            }
+        }
+
         internal void InitDriver(string url = Constants.BINDKRAFT_URL)
         {
             this.driver = new ChromeDriver();
@@ -32,18 +49,19 @@ namespace BindKraftAutomation.Models
         /// </summary>
         /// <param name="el">Main element to click</param>
         /// <param name="close">If this is some sort of a pop-up, element to click for close</param>
-        public void ClickElement(IWebElement el, IWebElement close = null)
+        /// <param name="waitSeconds">Time to wait for element to be displayed</param>
+        public void ClickElement(IWebElement el, IWebElement close = null, int waitSeconds = 10)
         {
+            this.WaitSeconds = waitSeconds;
+
             try
             {
-                var clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(el));
-                Task.Delay(300).Wait();
+                var clickableElement = GetDisplayedElement(el);
                 clickableElement.Click();
 
                 if (close != null)
                 {
-                    clickableElement = new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(close));
-                    Task.Delay(300).Wait();
+                    clickableElement = GetDisplayedElement(close);
                     clickableElement.Click();
                 }
             }
@@ -52,6 +70,30 @@ namespace BindKraftAutomation.Models
                 CloseAllDrivers();
                 throw ex;
             }
+        }
+
+        public IWebElement GetDisplayedElement(IWebElement el)
+        {
+            IWebElement resultElement = null;
+
+            for (int i = 0; i < WaitSeconds; i++)
+            {
+                Task.Delay(1000).Wait();
+                try
+                {
+                    if (el.Displayed)
+                    {
+                        resultElement = el;
+                        return resultElement;
+                    }
+                }
+                catch (Exception)
+                {
+                    //Swallow
+                }
+            }
+
+            return resultElement;
         }
 
         public void initReporter()

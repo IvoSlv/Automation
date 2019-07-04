@@ -356,6 +356,7 @@ namespace BindKraftAutomation.PageObject
             assertTopElements = Helpers.IsDisplayed(SettingsIcon, "Settings Icon Icon is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Close icon
             assertTopElements = Helpers.IsDisplayed(CloseIcon, "Close Icon Icon is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
@@ -369,29 +370,35 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
+
             //Click on Create company button
             Assert.That(CreateCompany_PlusButton.Text == "+", "CreateCompany_PlusButton is not working");
             ClickElement(CreateCompany_PlusButton);
+
             //Enter text on name field 
             assertTopElements = Helpers.IsDisplayed(CreateCompany_NameField, "CreateCompany_NameField");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             CreateCompany_NameField.EnterText("New Company");
+
             //Enter text on abbreviation field 
             assertTopElements = Helpers.IsDisplayed(CreateCompany_AbbreviationField, "CreateCompany_AbbreviationField is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             CreateCompany_AbbreviationField.EnterText("New Abb");
+
             //Enter text on industry field 
             assertTopElements = Helpers.IsDisplayed(CreateCompany_IndustryField, "CreateCompany_IndustryField is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             CreateCompany_IndustryField.EnterText("Trade");
+
             //Enter text on CEO field 
             assertTopElements = Helpers.IsDisplayed(CreateCompany_CeoField, "CreateCompany_CeoField is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             CreateCompany_CeoField.EnterText("John");
+
             //Click on save button
             assertTopElements = Helpers.IsDisplayed(CreateCompany_SaveButton, "CreateCompany_SaveButton is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
@@ -411,7 +418,8 @@ namespace BindKraftAutomation.PageObject
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCompany);
-            Task.Delay(300).Wait();
+            //Task.Delay(300).Wait();
+
             //Check company tabs 
             Assert.That(Company_CompanyMenu.Text == "Company", "Company menu is not displayed");
             Assert.That(Company_AddessesMenu.Text == "Addresses", "Addresses menu is not displayed");
@@ -423,53 +431,65 @@ namespace BindKraftAutomation.PageObject
         public void CompanyMenu()
         {
             ClickElement(OpenCrm);
+
             //Open company
             string[] assertTopElements = Helpers.IsDisplayed(OpenCompany, "New Company is not displayed");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCompany);
+
             //Check default image
             assertTopElements = Helpers.IsDisplayed(Company_DefaultImage, "Default Image is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Check add image button
             assertTopElements = Helpers.IsDisplayed(Company_AddImage, "Add Image button is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Name field
             assertTopElements = Helpers.IsDisplayed(CreateCompany_NameField, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Abbreviation field
             assertTopElements = Helpers.IsDisplayed(CreateCompany_AbbreviationField, "Abbreviation field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Industry field
             assertTopElements = Helpers.IsDisplayed(CreateCompany_IndustryField, "Industry field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             CreateCompany_IndustryField.EnterText("New Trade");
+
             //CEO field
             assertTopElements = Helpers.IsDisplayed(CreateCompany_CeoField, "Ceo field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Tags field
             assertTopElements = Helpers.IsDisplayed(Company_TagField, "Tags field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Save button
             assertTopElements = Helpers.IsDisplayed(Company_SaveButton, "Save button is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Delete button
             assertTopElements = Helpers.IsDisplayed(Company_DeleteButton, "Delete button is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_DeleteButton);
+
             //Delete button (Yes)
             assertTopElements = Helpers.IsDisplayed(Company_DeleteButtonYes, "Delete button (Yes) is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Delete button (No)
             assertTopElements = Helpers.IsDisplayed(Company_DeleteButtonNo, "Delete button (No) is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
@@ -484,71 +504,86 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
+
             //Open Company
             assertTopElements = Helpers.IsDisplayed(OpenCompany, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCompany);
             Task.Delay(300).Wait();
+
             //Addresses tab
             Assert.That(Company_AddessesMenu.Text == "Addresses", "Addresses menu is not displayed");
             ClickElement(Company_AddessesMenu);
+
             //Add adresses button
             assertTopElements = Helpers.IsDisplayed(Company_AddAddressesButton, "Add Addresses button is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_AddAddressesButton);
+
             //Country field
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_CountryField, "Addresses - Country Field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Addresses_CountryField.EnterText("Bulgaria");
+
             //City field
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_CityField, "Addresses_City Field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Addresses_CityField.EnterText("Sofia");
+
             //Street field
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_StreetField, "Addresses_Street Field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Addresses_StreetField.EnterText("Friend 12");
+
             //Additional field
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_AdditionalField, "Addresses_Additional Field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Addresses_AdditionalField.EnterText("DSA");
+
             //Close button
             Assert.That(Company_Addresses_CloseButton.Text == "Close", "Close button is not displayed");
+
             //Save button
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_SaveButton, "Save button is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Addresses_SaveButton);
+
             //Edit button
             Assert.That(Company_Addresses_EditButton.Text == "Edit", "Save button is not working");
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_EditButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Addresses_EditButton);
+
             //Close button
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_Edit_CloseButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Additional field
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_Edit_AdditionalField, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Addresses_Edit_AdditionalField.EnterText("DSA");
+
             //Save button
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_Edit_SaveButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Delete button
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_Edit_DeleteButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Addresses_Edit_DeleteButton);
+
             //Delete button Yes/No
             Assert.That(Company_DeleteButtonNo.Text == "No", "Addresses menu is not displayed");
             Assert.That(Company_DeleteButtonYes.Text == "Yes", "Addresses menu is not displayed");
@@ -562,23 +597,28 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
+
             //Open Company
             assertTopElements = Helpers.IsDisplayed(OpenCompany, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCompany);
             Task.Delay(300).Wait();
+
             //Contats tab
             Assert.That(Company_ContactsMenu.Text == "Contacts", "Contacts menu is not displayed");
             ClickElement(Company_ContactsMenu);
+
             //Add contact button
             assertTopElements = Helpers.IsDisplayed(Company_Contacts_AddContactButton, "Contacts type drop-down is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Contacts_AddContactButton);
+
             //Contacts type drop-down
             Assert.That(Company_Contacts_Type.Text == "(please select)", "Email type is not displayed");
             ClickElement(Company_Contacts_Type);
+
             //Check different types of contacts
             Task.Delay(300).Wait();
             Assert.That(Company_Contacts_Type_Email.Text == "Email", "Email type is not displayed");
@@ -586,28 +626,33 @@ namespace BindKraftAutomation.PageObject
             Assert.That(Company_Contacts_Type_Phone.Text == "Phone", "Phone type is not displayed");
             Assert.That(Company_Contacts_Type_LinkedIn.Text == "LinkedIn", "LinkedIn type is not displayed");
             ClickElement(Company_Contacts_Type_LinkedIn);
+
             //Imput contact field
             assertTopElements = Helpers.IsDisplayed(Company_Contacts_ImputContact, "Imput Contact field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Contacts_ImputContact.EnterText("drake");
+
             //Check Close/Save buttons
             Assert.That(Company_Contacts_CloseButton.Text == "Close", "Email type is not displayed");
             assertTopElements = Helpers.IsDisplayed(Company_Contacts_SaveButton, "Save button is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Contacts_SaveButton);
+
             //Edit button
             Assert.That(Company_Addresses_EditButton.Text == "Edit", "Save button is not working");
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_EditButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Addresses_EditButton);
+
             //Delete button
             assertTopElements = Helpers.IsDisplayed(Company_Addresses_Edit_DeleteButton, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Addresses_Edit_DeleteButton);
+
             //Delete button Yes/No
             Assert.That(Company_DeleteButtonNo.Text == "No", "Addresses menu is not displayed");
             Assert.That(Company_DeleteButtonYes.Text == "Yes", "Addresses menu is not displayed");
@@ -621,18 +666,21 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
+
             //Open Company
             assertTopElements = Helpers.IsDisplayed(OpenCompany, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCompany);
             Task.Delay(300).Wait();
+
             //Open People menu
             assertTopElements = Helpers.IsDisplayed(Company_PeopleMenu, "People menu is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_PeopleMenu);
             Task.Delay(300).Wait();
+
             //Check people menu content
             assertTopElements = Helpers.IsDisplayed(Company_People_bucketsSelector_Selected, "BucketsSelector Selected is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
@@ -650,46 +698,55 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
+
             //Open Company
             assertTopElements = Helpers.IsDisplayed(OpenCompany, "New Company is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCompany);
             Task.Delay(300).Wait();
+
             //Open Comments Menu
             Assert.That(Company_CommentsMenu.Text == "Comments (0)", "Comments menu is not displayed");
             ClickElement(Company_CommentsMenu);
+
             //Add comment field
             assertTopElements = Helpers.IsDisplayed(Company_Comments_AddComent_ImputField, "Add comments field is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Comments_AddComent_ImputField.EnterText("drake");
+
             //Add comment button
             assertTopElements = Helpers.IsDisplayed(Company_Comments_AddComent_Button, "Add comments button is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Comments_AddComent_Button);
+
             //Edit comment icon
             Task.Delay(300).Wait();
             assertTopElements = Helpers.IsDisplayed(Company_Comments_EditCommentIcon, "Edit Comment Icon is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Comments_EditCommentIcon);
+
             //Edit comment field
             assertTopElements = Helpers.IsDisplayed(Company_Comments_EditCommentField, "Edit comments field is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Company_Comments_EditCommentField.EnterText("drake@abv.bg");
+
             //Close comment
             Task.Delay(300).Wait();
             assertTopElements = Helpers.IsDisplayed(Company_Comments_EditComment_CloseCommentIcon, "Close Comment Icon is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Save comment
             assertTopElements = Helpers.IsDisplayed(Company_Comments_EditComment_SaveCommentIcon, "Save Comment Icon is not working");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Company_Comments_EditComment_SaveCommentIcon);
+
             //Delete comment
             Task.Delay(300).Wait();
             assertTopElements = Helpers.IsDisplayed(Company_Comments_DeleteCommentIcon, "Delete Comment Icon is not working");
@@ -708,42 +765,51 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(OpenCrm);
+
             //Open Settings menu
             Task.Delay(300).Wait();
             assertTopElements = Helpers.IsDisplayed(SettingsIcon, "Settings icon is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(SettingsIcon); 
+
             //Name field
             assertTopElements = Helpers.IsDisplayed(Settings_NameField, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Settings_NameField.EnterText("Ivo123");
+
             //Check Save button
             assertTopElements = Helpers.IsDisplayed(Settings_SaveButton, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Open Contact Types tab
             assertTopElements = Helpers.IsDisplayed(Settings_ContactTypes, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(Settings_ContactTypes);
+
             //Check Contact Type Email 
             assertTopElements = Helpers.IsDisplayed(Settings_ContactTypes_Email, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Check Contact Type Facebook
             assertTopElements = Helpers.IsDisplayed(Settings_ContactTypes_Facebook, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Check Contact Type Phone
             assertTopElements = Helpers.IsDisplayed(Settings_ContactTypes_Phone, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Check Contact Type LinkedIn
             assertTopElements = Helpers.IsDisplayed(Settings_ContactTypes_LinkedIn, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Close Settings button
             assertTopElements = Helpers.IsDisplayed(Settings_CloseIcon, "Name field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
