@@ -298,14 +298,17 @@ namespace BindKraftAutomation.PageObject
             //Terms of Use
             Assert.That(TermsOfUse.Text == "Terms of Use", "Terms of Use link is not work");
             ClickElement(TermsOfUse);
+
             //Assert content
             string[] assertTopElements = Helpers.assertByStartHtml(TermsOfService_AssertContent.Text, "TERMS", 5);
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             driver.Navigate().Back();
+
             //Privacy Policy
             Assert.That(PrivacyPollicy.Text == "Privacy Policy", "Privacy Policy link is not work");
             ClickElement(PrivacyPollicy);
+
             //Assert content
             assertTopElements = Helpers.assertByStartHtml(PrivacyPolicy_AssertContent.Text, "Privacy", 7);
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;

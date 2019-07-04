@@ -154,11 +154,13 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Email.EnterText( "drake@abv.bg");
+
             //Password
             assertTopElements = Helpers.IsDisplayed(Password, "Password");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Password.EnterText("Dsa_123");
+
             //Login
             Login.Submit();
             Assert.That(LoginTest_Assert.Text == "KraftBoard", "Login - error");
@@ -169,16 +171,20 @@ namespace BindKraftAutomation.PageObject
             //ForgotYourPasswordLink
             Assert.That(ForgotYourPasswordLink.Text == "Forgot your password?", "Forgot password link is not working");
             ClickElement(ForgotYourPasswordLink);
+
             //Forgot pass page
             Assert.That(ForgotPasswodPage_Assert.Text == "Forgot your password?", "Forgot password page is not working");
+
             //Forgot pass field
             string[] assertTopElements = Helpers.IsDisplayed(ForgotPass_EnterYourEmail, "ForgotPass_EnterYourEmail");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ForgotPass_EnterYourEmail.EnterText("drake@abv.bg");
+
             //Submit
             Assert.That(ForgotPass_Submit.Text == "Submit", "Submit button is not working");
             ClickElement(ForgotPass_Submit);
+
             //Forgot password confirmation page
             string newTabHandle = driver.WindowHandles.Last();
             var newTab = driver.SwitchTo().Window(newTabHandle);
@@ -192,46 +198,55 @@ namespace BindKraftAutomation.PageObject
             Assert.That(CreateAccount_Button.Text == "Create Account", "Create Account Button is not working");
             ClickElement(CreateAccount_Button);
             Assert.That(CreateAccount_AssertPage.Text == "Create Account", "Create Account page error");
+
             //First name field
             string[] assertTopElements = Helpers.IsDisplayed(FirstName_Field, "FirstName Field");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             FirstName_Field.EnterText("John");
+
             //Last name field
             assertTopElements = Helpers.IsDisplayed(LastName_Field, "LastName Field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             LastName_Field.EnterText("Spring");
+
             //Email field 
             assertTopElements = Helpers.IsDisplayed(Email_Field, "Email field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Email_Field.EnterText("John@abv.bg");
+
             //Password field
             assertTopElements = Helpers.IsDisplayed(Password_Field, "Password Field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Password_Field.EnterText("Dsa_123");
+
             //Confirm Pass field
             assertTopElements = Helpers.IsDisplayed(ConfirmPassword_Field, "Confirm Pass Field is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ConfirmPassword_Field.EnterText("Dsa_123");
+
             //Info about kraft apps checkbox
             assertTopElements = Helpers.IsDisplayed(InformationAboutKraftApps_CheckBox, "InformationAboutKraftApps_CheckBox is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(InformationAboutKraftApps_CheckBox);
+
             //Terms Of Service CheckBox
             assertTopElements = Helpers.IsDisplayed(TermsOfService_CheckBox, "TermsOfService_CheckBox is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(TermsOfService_CheckBox);
+
             //Privacy Policy CheckBox
             assertTopElements = Helpers.IsDisplayed(PrivacyPolicy_CheckBox, "PrivacyPolicy_CheckBox is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(PrivacyPolicy_CheckBox);
+
             //Create Account Submit Button
             assertTopElements = Helpers.IsDisplayed(CreateAccount_SubmitButton, "CreateAccount_SubmitButton is not displayed");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
@@ -243,13 +258,16 @@ namespace BindKraftAutomation.PageObject
             //Resend Confirmation link
             Assert.That(Resend_Confirmation.Text == "Resend Confirmation", "Resend Confirmation link is not work");
             ClickElement(Resend_Confirmation);
+
             //Resend Confirmation page
             Assert.That(ResendConfirmationPage_Assert.Text == "Resend confirmation", "Resend Confirmation page error");
+
             //Resend Confirmation field
             string[] assertTopElements = Helpers.IsDisplayed(ResendConfirmation_EnterYourEmail, "Resend Confirmation Enter Your Email");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ResendConfirmation_EnterYourEmail.EnterText("drake@abv.bg");
+
             //Submit
             Assert.That(ResendConfirmation_Submit.Text == "Submit", "Submit button is not working");
             ClickElement(ResendConfirmation_Submit);

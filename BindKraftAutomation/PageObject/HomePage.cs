@@ -247,23 +247,29 @@ namespace BindKraftAutomation.PageObject
             Assert.That(UserProfile_LastName.Text == "Last Name", " 'Last name' is not displayed");
             Assert.That(UserProfile_Subscribe.Text == "Subscribe for our newsletter", "'Subscribe for our newsletter' is not displayed");
             Assert.That(UserProfile_LastLoginDate.Text == "Last login date", " 'Last login date' is not displayed");
+
             //Delete button
             Assert.That(UserProfile_DeleteButton.Text == "Delete", " 'Delete' button is not displayed");
+
             //Close button 
             string[] assertTopElements = Helpers.IsDisplayed(UserProfile_CloseButton, "UserProfile_CloseButton");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
+
             //Edit button
             Assert.That(UserProfile_Edit.Text == "Edit", " 'Edit' button is not displayed");
             ClickElement(UserProfile_Edit);
+
             //Subscribe for our newsletter check box
             assertTopElements = Helpers.IsDisplayed(UserProfile_SubscribeCheckBox, "UserProfile_SubscribeCheckBox");
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserProfile_SubscribeCheckBox);
+
             //Cancel button
             Assert.That(UserProfile_CancelButton.Text == "Cancel", " 'Cancel' button is not displayed");
             ClickElement(UserProfile_CancelButton, UserProfile_Edit);
+
             //Save button
             Assert.That(UserProfile_SaveButton.Text == "Save", " 'Save' button is not displayed");
             ClickElement(UserProfile_SaveButton);
@@ -277,6 +283,7 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(HamburgerMenuBotton);
+
             //Check items
             Task.Delay(300).Wait();
             Assert.That(HamburgerMenu_KraftBoardLink.Text == "KraftBoard", "KraftBoard link is not displayed");
@@ -344,6 +351,7 @@ namespace BindKraftAutomation.PageObject
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(UserOption_Menu);
+
             // Click Logout button
             Assert.That(Logout_Button.Text == "Logout", "Logout button is not working");
             ClickElement(Logout_Button);
