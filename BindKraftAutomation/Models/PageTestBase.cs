@@ -13,12 +13,13 @@ namespace BindKraftAutomation.Models
 {
     public abstract class PageTestBase
     {
+        private static string _driverPath = Environment.CurrentDirectory.ToString() + "\\Drivers\\ChromeDriver";
         internal IWebDriver driver;
         internal ExtentHtmlReporter htmlReport;
         internal static ExtentReports extent = new ExtentReports();
         internal static ExtentTest test;
         private int waitSeconds;
-        
+
         public int WaitSeconds
         {
             get
@@ -37,7 +38,7 @@ namespace BindKraftAutomation.Models
 
         internal void InitDriver(string url = Constants.BINDKRAFT_URL)
         {
-            this.driver = new ChromeDriver();
+            this.driver = new ChromeDriver(_driverPath);
             this.driver.Url = url;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
