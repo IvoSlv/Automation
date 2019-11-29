@@ -13,7 +13,7 @@ namespace BindKraftAutomation.Models
 {
     public abstract class PageTestBase
     {
-        private static string _driverPath = Environment.CurrentDirectory.ToString() + "\\Drivers\\ChromeDriver";
+        private static string _driverPath = AppDomain.CurrentDomain.BaseDirectory;
         internal IWebDriver driver;
         internal ExtentHtmlReporter htmlReport;
         internal static ExtentReports extent = new ExtentReports();
@@ -45,13 +45,17 @@ namespace BindKraftAutomation.Models
             initReporter();
         }
 
-        /// <summary>
-        /// Click element when its displayed
-        /// </summary>
-        /// <param name="el">Main element to click</param>
-        /// <param name="close">If this is some sort of a pop-up, element to click for close</param>
-        /// <param name="waitSeconds">Time to wait for element to be displayed</param>
-        public void ClickElement(IWebElement el, IWebElement close = null, int waitSeconds = 10)
+
+/// <summary>
+/// Click element when its displayed
+/// </summary>
+/// <param name="el">Main element to click</param>
+/// <param name="close">If this is some sort of a pop-up, element to click for close</param>
+/// <param name="waitSeconds">Time to wait for element to be displayed</param>
+/// 
+         
+
+public void ClickElement(IWebElement el, IWebElement close = null, int waitSeconds = 10)
         {
             this.WaitSeconds = waitSeconds;
 
@@ -103,7 +107,7 @@ namespace BindKraftAutomation.Models
             {
                 return;
             }
-
+            
             try
             {
                 var rootPath = new DirectoryInfo(
@@ -128,5 +132,20 @@ namespace BindKraftAutomation.Models
             this.driver.Close();
             this.driver.Dispose();
         }
+
+        //FluentWait for C# (TODO: Need corrections)
+        public void FluentWait() {
+            using (var driver = new ChromeDriver())
+            {
+                WebDriverWait wait = new WebDriverWait(driver, timeout: TimeSpan.FromSeconds(30))
+                {
+                    PollingInterval = TimeSpan.FromSeconds(5),
+                };
+                wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+
+                var foo = wait.Until(drv => drv.FindElement(By.Id("foo")));
+            }
+        }
+
     }
 }
