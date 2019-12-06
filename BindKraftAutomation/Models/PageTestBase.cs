@@ -20,6 +20,7 @@ namespace BindKraftAutomation.Models
         internal static ExtentTest test;
         private int waitSeconds;
 
+
         public int WaitSeconds
         {
             get
@@ -46,16 +47,16 @@ namespace BindKraftAutomation.Models
         }
 
 
-/// <summary>
-/// Click element when its displayed
-/// </summary>
-/// <param name="el">Main element to click</param>
-/// <param name="close">If this is some sort of a pop-up, element to click for close</param>
-/// <param name="waitSeconds">Time to wait for element to be displayed</param>
-/// 
-         
+        /// <summary>
+        /// Click element when its displayed
+        /// </summary>
+        /// <param name="el">Main element to click</param>
+        /// <param name="close">If this is some sort of a pop-up, element to click for close</param>
+        /// <param name="waitSeconds">Time to wait for element to be displayed</param>
+        /// 
 
-public void ClickElement(IWebElement el, IWebElement close = null, int waitSeconds = 10)
+
+        public void ClickElement(IWebElement el, IWebElement close = null, int waitSeconds = 10)
         {
             this.WaitSeconds = waitSeconds;
 
@@ -107,7 +108,7 @@ public void ClickElement(IWebElement el, IWebElement close = null, int waitSecon
             {
                 return;
             }
-            
+
             try
             {
                 var rootPath = new DirectoryInfo(
@@ -139,13 +140,28 @@ public void ClickElement(IWebElement el, IWebElement close = null, int waitSecon
             {
                 WebDriverWait wait = new WebDriverWait(driver, timeout: TimeSpan.FromSeconds(30))
                 {
+
                     PollingInterval = TimeSpan.FromSeconds(5),
+
                 };
                 wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-
-                var foo = wait.Until(drv => drv.FindElement(By.Id("foo")));
             }
         }
 
+        //myWebElement.WaitUntil(myWebElement =>myWebElement.Displayed).SendKeys("Some Text");
+
+        public void IClick(IWebDriver driver, By locator)
+        {
+
+            WebDriverWait wait1 = new WebDriverWait(driver, TimeSpan.FromSeconds(30))
+            {
+                PollingInterval = TimeSpan.FromMilliseconds(500)
+            };
+           IWebElement el = wait1.Until(ExpectedConditions.ElementIsVisible(locator));
+           el.Click();
+
+        }
     }
+
+
 }

@@ -124,7 +124,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement KraftBoard { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='ka-btn-start is-active']//a[contains(text(),'Get Started')]")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='ka-btn-start is-active']//a//img")]
         [CacheLookup]
         public IWebElement GetStarted { get; set; }
 
@@ -187,9 +187,11 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
+          
         
         public void KraftBoardMenu()
         {
+            
             //Boards
             Assert.That(KraftBoard_Boards.Text == "Boards", "Boards pop up error");
             ClickElement(KraftBoard_Boards);
@@ -228,6 +230,7 @@ namespace BindKraftAutomation.PageObject
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             ClickElement(KraftMenuClose);
+            
         }
         
         public void KraftBoardPlansMenu()
@@ -288,9 +291,10 @@ namespace BindKraftAutomation.PageObject
         
         public void GoToLoginPage()
         {
-            Assert.That(GetStarted.Text == "Get Started","Get Started button error");
-            ClickElement(GetStarted);
-            Assert.That(LogInPage_LogInTitle.Text == "Log in","Log in title is missing");
+            IClick(driver,By.XPath(""));
+            //Assert.That(GetStarted.Text == "Get Started","Get Started button error");
+            //ClickElement(GetStarted);
+            //Assert.That(LogInPage_LogInTitle.Text == "Log in","Log in title is missing");
         }
 
         public void TermsOfUse_PrivacyPollicy()

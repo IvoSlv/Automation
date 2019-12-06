@@ -146,9 +146,12 @@ namespace BindKraftAutomation.PageObject
             this.wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10000));
             PageFactory.InitElements(driver, this);
         }
+
         
         public void LoginToApplication(string LogInTest)
         {
+            
+            
             //Email
             string[] assertTopElements = Helpers.IsDisplayed(Email, "Email");
             bool assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
@@ -160,7 +163,7 @@ namespace BindKraftAutomation.PageObject
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Password.EnterText("Dsa_123");
-
+            
             //Login
             Login.Submit();
             Assert.That(LoginTest_Assert.Text == "KraftBoard", "Login - error");
