@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace BindKraftAutomation.Models
 {
+    //Under construction
     class BrowserFactory
     {
         private static string _driverPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -64,7 +65,7 @@ namespace BindKraftAutomation.Models
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
-        public static void LoadUrl (string url = Constants.BINDKRAFT_URL)
+        public static void LoadUrl (string url)
         {
             Driver.Url = url;
         }
