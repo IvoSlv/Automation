@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public const string BINDKRAFT_URL = "https://www.bindkraft.com/en/";
+        public const string BINDKRAFT_URL = "https://bindkraft.com/en/";
     }
 }

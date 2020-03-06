@@ -163,9 +163,9 @@ namespace BindKraftAutomation.PageObject
             assertTopElementsResult = assertTopElements[BOOL_INDEX].ToLower() == "true" ? true : false;
             Assert.That(assertTopElementsResult, assertTopElements[ERR_MSG_INDEX]);
             Password.EnterText("Dsa_123");
-            
+
             //Login
-            Login.Submit();
+            ClickElement(Login);
             Assert.That(LoginTest_Assert.Text == "KraftBoard", "Login - error");
         }
 
@@ -191,7 +191,7 @@ namespace BindKraftAutomation.PageObject
             //Forgot password confirmation page
             string newTabHandle = driver.WindowHandles.Last();
             var newTab = driver.SwitchTo().Window(newTabHandle);
-            var expectedNewTabTitle = "Forgot password confirmation - KraftApps-Authorization";
+            var expectedNewTabTitle = "Forgot your password? - KraftApps-Authorization";
             Assert.AreEqual(expectedNewTabTitle, newTab.Title, "Forgot password confirmation page error");
         }
         
@@ -259,7 +259,7 @@ namespace BindKraftAutomation.PageObject
         public void ResendConfirmation()
         {
             //Resend Confirmation link
-            Assert.That(Resend_Confirmation.Text == "Resend Confirmation", "Resend Confirmation link is not work");
+            Assert.That(Resend_Confirmation.Text == "Resend Confirmation?", "Resend Confirmation link is not work");
             ClickElement(Resend_Confirmation);
 
             //Resend Confirmation page

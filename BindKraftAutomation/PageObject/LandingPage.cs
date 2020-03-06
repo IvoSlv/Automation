@@ -20,6 +20,14 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement Features_Close { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//em[@class='material-icons welcome-close']")]
+        [CacheLookup]
+        public IWebElement WelcomePopup_Close { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='ka-btn-start ka-btn-modal is-active']//a//img")]
+        [CacheLookup]
+        public IWebElement WelcomePopup_GetStarted { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//i[@class='material-icons close']")]
         [CacheLookup]
         public IWebElement KraftCrm_Close { get; set; }
@@ -291,9 +299,9 @@ namespace BindKraftAutomation.PageObject
         
         public void GoToLoginPage()
         {
-            IClick(driver,By.XPath(""));
+            ClickElement(WelcomePopup_Close);
             //Assert.That(GetStarted.Text == "Get Started","Get Started button error");
-            //ClickElement(GetStarted);
+            ClickElement(GetStarted);
             //Assert.That(LogInPage_LogInTitle.Text == "Log in","Log in title is missing");
         }
 

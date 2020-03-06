@@ -97,7 +97,7 @@ namespace BindKraftAutomation.PageObject
         [CacheLookup]
         public IWebElement HamburgerMenuBotton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//h1[contains(text(),'Kraft CRM')]")]
+        [FindsBy(How = How.XPath, Using = "//h1[contains(text(),'IvoTest')]")]
         [CacheLookup]
         public IWebElement KraftCrm_AssertPage { get; set; }
 
@@ -210,7 +210,7 @@ namespace BindKraftAutomation.PageObject
         {
             Assert.That(KraftCrm.Text == "KraftCRM", "KraftCRM is not displayed");
             ClickElement(KraftCrm);
-            Assert.That(KraftCrm_AssertPage.Text == "Kraft CRM", "KraftCRM page error");
+            Assert.That(KraftCrm_AssertPage.Text == "IvoTest", "KraftCRM page error");
         }
         
         public void GoToBoard()

@@ -6,6 +6,7 @@ namespace BindKraftAutomation.Globals
 {
     public static class Helpers
     {
+        //Check that the element is displayed 
         public static Func<IWebElement, string, string[]> IsDisplayed =
             (element, elName) =>
             {

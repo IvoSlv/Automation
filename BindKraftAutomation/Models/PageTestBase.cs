@@ -21,6 +21,9 @@ namespace BindKraftAutomation.Models
         private int waitSeconds;
 
 
+        /// <summary>
+        /// Counter
+        /// </summary>
         public int WaitSeconds
         {
             get
@@ -37,6 +40,9 @@ namespace BindKraftAutomation.Models
             }
         }
 
+        /// <summary>
+        /// initialize the driver
+        /// </summary>
         internal void InitDriver(string url = Constants.BINDKRAFT_URL)
         {
             this.driver = new ChromeDriver(_driverPath);
@@ -157,11 +163,13 @@ namespace BindKraftAutomation.Models
             {
                 PollingInterval = TimeSpan.FromMilliseconds(500)
             };
-           IWebElement el = wait1.Until(ExpectedConditions.ElementIsVisible(locator));
-           el.Click();
-
+            IWebElement el = wait1.Until(ExpectedConditions.ElementIsVisible(locator));
+            el.Click();
         }
+
     }
+
+    
 
 
 }
